@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid #999;
+            padding: 5px;
+            margin: 0 0 20px 0;
+        }
+        h3{
+            background-color: #f1f1f1;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>1.숫자 1부터 10까지 출력하세요.</h3>
+        <script>
+            for(var i = 1; i<11; i++){
+                document.write(i+' ');
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>2.숫자 10부터 1까지 출력하세요.</h3>
+        <script>
+            for(var i = 10; i>0; i--){
+                document.write(i+' ');
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>3.숫자 1부터 10까지 짝수만 출력하세요.</h3>
+        <script>
+            for(var i = 2; i<11; i+=2){
+                document.write(i+' ');
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>4.숫자 1부터 10까지 홀수만 출력하세요.</h3>
+        <script>
+            for(var i = 1; i<11; i+=2){
+                document.write(i+' ');
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>5.숫자 1부터 10중에서 5,10을 *처리해서 출력하세요.</h3>
+        <script>
+            for(var i = 1; i<11; i++){
+                if(i % 5 == 0){
+                    document.write('* ')
+                    continue
+                }
+                document.write(i + ' ')
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>6.숫자 1부터 10중에서 3,6,9를 제외하고 출력하세요.</h3>
+        <script>
+            for(var i = 1; i<11; i++){
+                if(i % 3 == 0){continue}
+                document.write(i+' ');
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>7.2단 구구단을 출력하세요.</h3>
+        <script>
+            for(var i = 1; i<10; i++){
+                document.write('2 x ' + i+' = ' + (2*i) + "<br>");
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>8.숫자 1부터 10중에서 3번째 짝수까지만 출력하세요.</h3> <!--2, 4, 6-->
+        <script>
+            var count = 0;
+            for(var i = 1; i<11; i++){
+                if(i % 2 == 0){
+                    count++;
+                    if(count > 3){break}
+                    document.write(i + ' ')
+                }
+                continue
+            }
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+@charset "utf-8";
+body, div, form, ul, li, p, button, span, a, img ,input, h2, header{
+    margin: 0;
+    padding: 0;
+}
+body, input, button{
+    font-size: 12px;
+    font-family: '나눔고딕', sans-serif;
+    color: #333;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+img{border: none;}
+ul{list-style: none;}
+
+.appWrap{
+    width: 100%;
+    position: relative;
+}
+.title{
+    font-size: 14px;
+    font-weight: 300;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    text-align: center;
+}
+.contents{
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+input[type="text"]{
+    width: 100%;
+    margin: 20px auto;
+    display: block;
+    height: 24px;
+    position: relative;
+    outline: none;
+    border: 1px solid #a3a3a3;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.btnReset{
+    background-color: #626262;
+    position: absolute;
+    top: 6px;
+    right: 2%;
+    width: 14px;
+    height: 14px;
+    border: none;
+    border-radius: 100%;
+}
+.btnReset::after{
+    content: '';
+    width: 8px;
+    height: 1px;
+    background-color: #fff;
+    display: block;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 3px;
+    top: 6px;
+}
+.btnReset::before{
+    content: '';
+    width: 8px;
+    height: 1px;
+    background-color: #fff;
+    display: block;
+    transform: rotate(135deg);
+    position: absolute;
+    left: 3px;
+    top: 6px;
+}
+
+.search-text{
+    color: #999;
+    text-align: center;
+}
+.tabs{
+    width: 100%;
+}
+.tabs li{
+    display: inline-flex;
+    width: 50%;
+    height: 24px;
+    background-color: #d5d5d5;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #a7a7a7;
+}
+.tabs .active{
+    background-color: #07c;
+    color: #fff;
+}
+
+.list{
+    line-height: 28px;
+    height: 28px;
+}
+.list li{
+    border-bottom: 1px solid #d6d6d6;
+    position: relative;
+}
+.date{
+    float: right;
+    padding-right: 30px;
+    color: #888;
+}
+.btnRemove{
+    position: absolute;
+    top: 6px;
+    right: 1%;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    background-color: #888;
+    border: none;
+    outline: none;
+}
+.btnRemove::after{
+    content: '';
+    width: 8px;
+    height: 1px;
+    background-color: #fff;
+    display: block;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 3px;
+    top: 6px;
+}
+.btnRemove::before{
+    content: '';
+    width: 8px;
+    height: 1px;
+    background-color: #fff;
+    display: block;
+    transform: rotate(135deg);
+    position: absolute;
+    left: 3px;
+    top: 6px;
+}
+
+.list-search{
+    text-align: center;
+    display: block;
+    color: #999;
+    margin-top: 20px;
+}

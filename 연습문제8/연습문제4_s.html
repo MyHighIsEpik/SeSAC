@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="Generator" content="EditPlus®">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>Document</title>
+	<style type="text/css">
+	<!--
+	body,table, caption,colgroup,col,thead,tr,td,tbody,th,span,p,img,a{margin:0;padding:0}
+	body{font-size:12px;
+	color:#333;
+	font-family:"돋움",dotum;
+	
+	}
+	table{border-collapse:collapse; width:100%;}
+	img{border:none}
+	a{text-decoration:none;
+		color:#333}
+	caption{}
+	.section{width:938px;
+			margin:50px auto}
+	thead th{border-top:2px solid #009999;
+			border-bottom:1px solid #099;
+			padding:18px 0;}
+	tbody td{text-align:center;
+			border-bottom:1px solid #d5d5d5;
+			padding:8px 0}
+	tfoot th,tfoot td{border-bottom:2px solid #099;
+					text-align:center;
+					padding:10px 0;
+					}
+	.point{margin:15px 0;
+		text-align:right;
+		border-bottom:1px dotted #d5d5d5;
+		padding-bottom:10px;}
+	.point span{display:inline-block;
+	}
+	.point span.point_t{width:100px;
+					font-weight:bold;
+					font-size:14px;}
+	.point span.point_check{width:100px;
+						
+						text-align:center;}
+
+	input,img{vertical-align:middle;}
+	h4{margin:25px 0 0 5px;
+	border-bottom:1px solid #d5d5d5;
+	padding-bottom:5px;}
+	.total_box{margin:15px 0 0 0 }
+	.total_box input{width:200px;
+					height:24px;
+					border:1px solid #d5d5d5;}
+		.btn{margin-top:20px;
+			text-align:center}
+		span.txt{font-size:14px;
+				font-weight:bold;}
+	input[type="text"]{border:1px solid #c3c3c3;
+					height:22px;
+										padding-left:10px;}
+	</style>
+	<script type="text/javascript">
+	/*  포인트값 랜덤 생성   Math.floor((Math.random() * 1000) + 1);*/
+		function menu(){
+			var basic_menu=Number(document.getElementById('total').defaultValue);
+			for(var i=1; i<=3; i++){
+				var chkobj=document.getElementById('opt'+i);
+				if(chkobj.checked){
+					basic_menu+= Number(chkobj.value)
+				}
+			}
+			document.getElementById('total').value=basic_menu;
+			document.getElementById('totalvalue').value=document.getElementById('total').value;
+		}
+
+		function pointerbtn(){
+			var chk = document.getElementById('pointcheck');
+			var x = document.getElementById('point_value');
+			var num2 = document.getElementById('poinervalue')
+			if(chk.checked){
+				x.value = Math.floor((Math.random() * 1000) + 1);
+				num2.value=x.value;
+			}else{
+				x.value=0;
+				num2.value=0;
+			}
+		}
+		
+		function btn(){
+			var num1=document.getElementById('totalvalue');
+			var num2=document.getElementById('poinervalue');
+			var num3=document.getElementById('point_value');
+			var num4=document.getElementById('totalvalue2');
+			var pointchk=document.getElementById('pointcheck');
+			if(pointchk.checked){
+				num4.value=Number(num1.value)-Number(num2.value);
+			}else{
+				num3.value='0';
+				num2.value='0';
+				num4.value=Number(num1.value);
+			}
+		}
+		
+
+	</script>
+	</head>
+	<body>
+	<div class="section">
+	<p class="step"><img src="images/tab.jpg" alt=""/></p>
+		<h4><img src="images/title1.jpg" alt=" 주문상품"/></h4>
+	
+	<table cellpadding="0" cellspacing="0" class="" summary="" >
+		<caption></caption>
+		<colgroup>
+			<col width="10%"/><col width="*"/>
+			<col width="15%"/><col width="10%"/>
+		</colgroup>
+		<thead>
+			<tr>
+				<th>선택</th>
+				<th>구매</th>
+				<th>금액</th>
+				<th>배송료</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+			<th colspan="2">합계</th>
+			<td colspan="2"><input type="text" class="it " title="" id="total" value="0" name=""/></td>
+			</tr>
+		</tfoot>
+		<tbody>
+			<tr>
+				<td><input type="checkbox" id="opt1" class="it " title="" value="10000" name="" onclick="menu()"/></td>
+				<td><img src="images/p_1.jpg"  alt=""/><span class="txt">[원더배송] 스파클 생수
+	500mL X 40펫 무료배송</span></td>
+				<td>10,000원</td>
+				<td>0원</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" id="opt2" class="it " title="" value="20000" name="" onclick="menu()"/></td>
+				<td><img src="images/p_2.jpg"  alt=""/><span class="txt"> [무료배송] 깜짝특가!
+	달콤 꿀 참외 10kg이내</span></td>
+				<td>20,000원</td>
+				<td>0원</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"  id="opt3"class="it " title="" value="5000" name="" onclick="menu()"/></td>
+				<td><img src="images/p_3.jpg"  alt=""/><span class="txt">[먼지제로] 미세먼지
+	도 잡는 프리텍 마스크</span></td>
+				<td>5,000원</td>
+				<td>0원</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<div class="point" >
+		<span class="point_t"  ><a href="#" onclick="pointerbtn();return false;">포인트확인</a></span>
+		<span class="point_check"><input type="checkbox" class="pointcheck " title="" value="0" name="" id="pointcheck" checked="checked"/><label for="pointcheck" >사용</label>
+		</span>
+		<input type="text" class="point_value"  id="point_value" title="" value="" name=""/>
+	</div>
+
+
+	<h4><img src="images/title_2.jpg" alt=" 결제정보"/></h4>
+
+	<div class="total_box" id="divbox">
+		합계<input type="text" class="it " title="" value="0" id="totalvalue" name=""/> <img  src="images/btn1.jpg" alt=""/> 사용포인트<input type="text" class="point_" title="" value="0" name="" id="poinervalue"/><img  src="images/btn3.jpg" alt=""/>결재금액<input type="text" class="it " title="" value="0" name="" id="totalvalue2"
+		/>
+	</div>
+	<div class="btn"><a href="#" onclick="btn();return false;"><img src="images/btn4.jpg" alt=""/></a></div>
+	</div>
+	</body>
+	</html>

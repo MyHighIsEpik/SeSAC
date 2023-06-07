@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, h3, ul, li, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+        img{border: none;}
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+
+        .wrap{
+            width: 700px;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        .menu{
+            width: 300px;
+            position: relative;
+            height: 150px;
+            margin-right: 50px;
+            float: left;
+        }
+        .tabMenu > li{
+            float: left;
+        }
+        .tabList{
+            position: absolute;
+            top: 30px;
+            left: 0;
+        }
+        h3{
+            font-size: 1em;
+            font-weight: 400;
+            width: 60px;
+            background-color: #2c2c2c;
+            text-align: center;
+            line-height: 28px;
+            height: 28px;
+            border-radius: 2px;
+            margin-right: 2px;
+        }
+        .on{
+            background-color: #07c;
+        }
+        h3 a{color: #fff;}
+        .none{
+            display: none;
+        }
+        .tabList li{
+            line-height: 2.4;
+        }
+    </style>
+    <script>
+        var currentNum=0;
+
+        function markTab(menuName){
+            var tabDiv=document.getElementById(menuName);
+            var tabUl=tabDiv.getElementsByClassName('tabMenu')[0];
+            var tabH=tabDiv.getElementsByTagName('h3');
+            var tab_ul=tabUl.getElementsByTagName('ul');
+            tabDiv.currentNum=0;
+
+            for(var i=0; i<tabH.length; i++){
+                tabH[i].getElementsByTagName('a')[0].num=i;
+                tabH[i].getElementsByTagName('a')[0].onclick=function(){
+                    if(tabDiv.currentNum != this.num){
+                        tabH[tabDiv.currentNum].className="";
+                        tabH[this.num].className="on";
+
+                        tab_ul[tabDiv.currentNum].style.display="none";
+                        tab_ul[this.num].style.display="block";
+
+                        tabDiv.currentNum=this.num;
+                        return false;
+                    }
+                }
+            }
+        }
+        function init(){
+            markTab('tab1')
+            markTab('tab2')
+        }
+        window.onload=init;
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="menu_1 menu" id="tab1">
+            <ul class="tabMenu">
+                <li>
+                    <h3 class="on"><a href="">공지사항</a></h3>
+                    <ul class="tabList">
+                        <li><a href="">공지사항 입니다.</a></li>
+                        <li><a href="">공지사항 입니다.</a></li>
+                        <li><a href="">공지사항 입니다.</a></li>
+                        <li><a href="">공지사항 입니다.</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <h3><a href="">입찰공고</a></h3>
+                    <ul class="tabList none">
+                        <li><a href="">입찰공고 입니다.</a></li>
+                        <li><a href="">입찰공고 입니다.</a></li>
+                        <li><a href="">입찰공고 입니다.</a></li>
+                        <li><a href="">입찰공고 입니다.</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="menu_2 menu" id="tab2">
+            <ul class="tabMenu">
+                <li>
+                    <h3 class="on"><a href="">공단소식</a></h3>
+                    <ul class="tabList">
+                        <li><a href="">공단소식 입니다.</a></li>
+                        <li><a href="">공단소식 입니다.</a></li>
+                        <li><a href="">공단소식 입니다.</a></li>
+                        <li><a href="">공단소식 입니다.</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <h3><a href="">협회소식</a></h3>
+                    <ul class="tabList none">
+                        <li><a href="">협회소식 입니다.</a></li>
+                        <li><a href="">협회소식 입니다.</a></li>
+                        <li><a href="">협회소식 입니다.</a></li>
+                        <li><a href="">협회소식 입니다.</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

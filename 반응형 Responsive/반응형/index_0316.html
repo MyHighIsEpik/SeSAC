@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                type:"GET",
+                url:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
+                data:{
+                    "key":"982323d7ae4f8d7b5d8a5c6675c38544",
+                    "targetDt":"20220315",
+                    "multiMovieYn":"Y"
+                },
+                dataType:"json",
+                success: function(data) {
+                    console.log(data.boxOfficeResult.dailyBoxOfficeList);
+                    $(data.boxOfficeResult.dailyBoxOfficeList).each(function(i,v){
+                        $('#movi_table tbody').append(
+                            "<tr><td>"+v.rank+"</td><td>"+v.movieNm+"</td><td>"+v.audiAcc+"</td></tr>"
+                        )
+                    })
+                },
+                error: function(jqXHR,textStatus,errorThrown) {
+                alert(textStatus+", "+errorThrown);
+                }
+            });
+        })
+    </script>
+    <style>
+        table{
+            width: 600px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th,td{
+            border: 1px solid #d9d9d9;
+            padding: 15px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table id="movi_table">
+        <caption>상업영화 우선순위</caption>
+        <thead>
+            <tr>
+                <th>순위</th>
+                <th>영화명</th>
+                <th>누적관객수</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+</html>

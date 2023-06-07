@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        body, div, h3, ul, li, span, input, p{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-weight: 400;
+        }
+        body{
+            font-size: 12px;
+            font-family: "나눔고딕",sans-serif;
+            color: #333;
+        }
+        ul{
+            list-style-type: none;
+        }
+        h3{
+            font-size: 1em;
+        }
+        .wrap{
+            width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #07c;
+        }
+        .purchase{
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        h3{
+            font-size: 1.4em;
+            color: #fff;
+            border-bottom: rgba(0, 0, 0, 0.4) 1px solid;
+            padding-bottom: 5px;
+        }
+        .item{
+            color: #fff;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .item li{
+            margin-bottom: 10px;
+        }
+        .item span{
+            width: 100px;
+            display: inline-block;
+        }
+        input[type="number"]{
+            width: 200px;
+            height: 20px;
+            border-radius: 3px 0 0 3px;
+            border: none;
+            padding-left: 10px;
+        }
+        .purchase ul {
+            margin-bottom: 20px;
+        }
+        .purchase ul li {
+            line-height: 2.5;
+            border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+        }
+        .line{
+            line-height: 2;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .tip{
+            color: #dd6906;
+            margin-top: 20px;
+        }
+        button{
+            display: block;
+            background-color: #dd6906;
+            color: #fff;
+            width: 80px;
+            height: 30px;
+            border: none;
+            border-radius: 50px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="wrap">
+        <h3>학용품 구매</h3>
+        <ul class="item">
+            <li v-for="item in items" v-bind:key="item.name">
+                <span>{{item.name}}의 개수 : </span>
+                <input type="number" title="" min="0" max="5" v-model="item.quantity">
+            </li>
+        </ul>
+        <br><br>
+        <div class="purchase" v-bind:style="errorMsg">
+            <ul>
+                <li v-for="item in items" v-bind:key="item.name">{{item.name}} : {{item.price}} x {{item.quantity}} = {{item.price * item.quantity}} 원</li>
+            </ul>
+            <p class="line">
+                소계 : {{totalPrice | numberlimiter}} 원
+            </p>
+            <p class="line">
+                합계(세포함) : {{totalPriceTax | numberlimiter}} 원
+            </p>
+            <p class="tip" v-show="!canBuy">
+                !!! {{1000 || numberlimiter}}원 이상부터 구매 가능합니다.
+            </p>
+            <button v-on:click="doBuy" v-bind:disabled="!canBuy">구매</button>
+        </div>
+    </div>
+
+
+    <script>
+        var items=[
+            {
+                name:'연필',
+                price:100,
+                quantity:0
+            },
+            {
+                name:'공책',
+                price:200,
+                quantity:0
+            },
+            {
+                name:'지우개',
+                price:300,
+                quantity:0
+            }
+        ]
+        new Vue({
+            el:'#app',
+            data:{//변수선언
+                items:items
+            },
+            filters:{//텍스트 형식을 적용
+                numberlimiter: function(value){
+                    if(!value){
+                        return '0'
+                    }
+                    return value.toString().replace(/(\d)(?=(\d{3})+$)/g,"$1,")
+                }
+            },
+            methods:{//함수
+                doBuy(){
+                    alert(this.totalPriceTax+'원 판매 되었습니다.')
+                    this.items.forEach(function(item){
+                        item.quantity=0
+                    })
+                }
+            },
+            computed:{//계산
+                totalPrice(){
+                    return this.items.reduce(function(sum,item){
+                        //console.log(sum,item)
+                        return sum + (item.price * item.quantity)
+                    },0)
+                },
+                totalPriceTax(){
+                    return Math.floor(this.totalPrice * 1.10)
+                },
+                canBuy(){
+                    return this.totalPrice>=1000
+                },
+                errorMsg(){
+                    return{
+                        color: this.canBuy ? "" : "#07c",
+                        border: this.canBuy ? "" : "1px solid #07c"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

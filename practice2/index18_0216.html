@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, ul, li, a, span, img{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+
+        .banner{
+            position: relative;
+            width: 1000px;
+            height: 460px;
+            margin: 50px auto;
+        }
+        .visual{
+            position: relative;
+            width: 1000px;
+            height: 460px;
+        }
+        .visual .off{display: none;}
+        .visualBtn{
+            position: absolute;
+            right: 180px;
+            bottom: 20px;
+        }
+        .ctrl{
+            position: absolute;
+            right: 30px;
+            bottom: 20px;
+        }
+        .pageNum{
+            font-weight: 700;
+            font-size: 18px;
+        }
+    </style>
+    <script src="js/visual.js"></script>
+</head>
+<body>
+    <div class="banner">
+        <ul class="visual" id="visual">
+            <li class=""><a href=""><img src="ex4/main_visual_1_151217.jpg" alt=""></a></li>
+            <li class="off"><a href=""><img src="ex4/main_visual_2_151217.jpg" alt=""></a></li>
+            <li class="off"><a href=""><img src="ex4/main_visual_3_151217.jpg" alt=""></a></li>
+            <li class="off"><a href=""><img src="ex4/main_visual_4_151217.jpg" alt=""></a></li>
+        </ul>
+
+        <div class="visualBtn" id="visualBtn">
+            <span class="btn on"><a href=""><img src="ex4/btn_over.png" alt=""></a></span>
+            <span class="btn"><a href=""><img src="ex4/btn.png" alt=""></a></span>
+            <span class="btn"><a href=""><img src="ex4/btn.png" alt=""></a></span>
+            <span class="btn"><a href=""><img src="ex4/btn.png" alt=""></a></span>
+        </div>
+
+        <div class="ctrl">
+            <a href="" onclick="stopBtn(); return false;"><img src="ex4/btnStop.gif" alt=""></a>
+            <a href="" onclick="playBtn(); return false;"><img src="ex4/btnPlay.gif" alt=""></a>
+            <a href="" onclick="prevBtn(); return false;"><img src="ex4/btnL.gif" alt=""></a>
+            <a href="" onclick="nextBtn(); return false;"><img src="ex4/btnR.gif" alt=""></a>
+            <span class="pageNum"><span class="page">1</span>/4</span>
+        </div>
+    </div>
+</body>
+</html>

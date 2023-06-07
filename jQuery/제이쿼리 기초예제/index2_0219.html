@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body, div, ul, li, a, img, p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{text-decoration: none;}
+        img{
+            border: none;
+            vertical-align: middle;
+        }
+
+        .subMenu{
+            width: 200px;
+            margin: 50px auto;
+        }
+        .group{
+            border-bottom: 1px solid #120f26;
+        }
+        .title{
+            height: 45px;
+            line-height: 45px;
+            background-color: #373c46;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            width: 100%;
+            display: inline-block;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+        .sub li{
+            height: 35px;
+            line-height: 35px;
+            border-bottom: 1px solid #717171;
+            background-color: #505661;
+        }
+        .sub li a{
+            color: #fff;;
+            padding-left: 10px
+        }
+        .sub li:hover{
+            background-color: #87a2d4;
+        }
+
+    </style>
+    <script>
+        /* 원하는 것을 클릭하면 메뉴를 보여지게 하고자 할 때, 클릭 시 다 숨기고(1) 선택한 것만 보여지게 함(2)*/
+        $(document).ready(function(){
+            /*$('.navi ul').hide();
+            $('.navi ul').eq(0).show();
+            $('.title').on('click',function(e){
+                e.preventDefault();
+                $('.sub').hide();
+                $(this).next().show();
+            })
+            */
+
+            $('.sub:not(:eq(0))').hide();
+            $('.title').on('click',function(e){
+                e.preventDefault();
+                if($(this).next().css('display')=='none'){
+                    $('.navi ul').slideUp(500)
+                }
+                $(this).next().slideDown(500)
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="subMenu">
+        <ul class="navi">
+            <li class="group">
+                <span class="title">정부3.0정보공개</span>
+                <ul class="sub">
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                </ul>
+            </li>
+            
+            <li class="group">
+                <span class="title">전자민원</span>
+                <ul class="sub">
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                </ul>
+            </li>
+            
+            <li class="group">
+                <span class="title">소통참여</span>
+                <ul class="sub">
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                    <li><a href="">정보공개제도</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

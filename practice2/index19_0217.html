@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, h3, ul, li, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+        img{border: none;}
+
+        .footer_familySite{
+            width: 120px;
+            position: relative;
+            margin: 50px auto;
+            background-color: #1b1b1b;
+        }
+        .footer_familySite h3{
+            background: url(ex4/footer_familyOpen.gif) no-repeat 100px 15px;
+            padding: 0 0 0 10px;
+        }
+        .footer_familySite h3.on{
+            background: url(ex4/footer_familyClose.gif) no-repeat 100px 15px;
+        }
+
+        .footer_familySite ul{
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 120px;
+            background-color: #1b1b1b;
+        }
+        .footer_familySite ul li{
+            margin: 5px;
+        }
+
+        .footer_familySite ul li a{
+            padding: 0 0 0 5px;
+        }
+        .footer_familySite ul li a.on{
+            padding: 0 0 0 10px;
+        }
+
+        .off{
+            display: none;
+        }
+    </style>
+    <script>
+        var st;
+        function init(){
+            var familySite=document.getElementById('footer_familySite');
+            var familySiteTitle=familySite.getElementsByTagName('h3')[0];
+            var familySiteBody=familySite.getElementsByTagName('ul')[0];
+
+            familySiteTitle.onmouseover=familySiteBody.onmouseover=function(){
+                familySiteTitle.className="on";
+                familySiteBody.className="";
+                clearTimeout(st)
+            }
+            familySiteTitle.onmouseout=familySiteBody.onmouseout=function(){
+                st=setTimeout(selectList,1000)
+            }
+            function selectList(){
+                familySiteTitle.className="";
+                familySiteBody.className="off";
+            }
+            var familySiteli=familySiteBody.getElementsByTagName('li');
+            for(var i=0; i<familySiteli.length; i++){
+                familySiteli[i].getElementsByTagName('a')[0].onmouseover=function(){
+                    this.className="on"
+                }
+                familySiteli[i].getElementsByTagName('a')[0].onmouseout=function(){
+                    this.className=""
+                }
+            }
+        }
+        window.onload=init;
+    </script>
+</head>
+<body>
+    <div class="footer_familySite" id="footer_familySite">
+        <h3><img src="ex4/footer_familySite.gif" alt=""></h3>
+        <ul class="off">
+            <li><a href=""><img src="ex4/footer_familyList01.gif" alt=""></a></li>
+            <li><a href=""><img src="ex4/footer_familyList02.gif" alt=""></a></li>
+            <li><a href=""><img src="ex4/footer_familyList03.gif" alt=""></a></li>
+            <li><a href=""><img src="ex4/footer_familyList04.gif" alt=""></a></li>
+            <li><a href=""><img src="ex4/footer_familyList05.gif" alt=""></a></li>
+        </ul>
+    </div>
+</body>
+</html>

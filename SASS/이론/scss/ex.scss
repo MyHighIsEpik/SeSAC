@@ -1,0 +1,313 @@
+div::after{
+    content:"hello"+world;
+    flex-flow: row+ "-reverse"+ " " + wrap;
+}
+div{
+    color: #123456 + #345678;
+    background-color: rgba(50, 10, 150, 0.5) + rgba(10, 20, 30, 0.5);
+}
+$color:rgba(10,20,40,0.5);
+p{
+    color: opacify($color, 0.3);
+    background-color: transparentize($color, 0.2);
+}
+
+$width:90px;
+div{
+    @if not($width>100px){
+        height: 300px;
+    }
+}
+
+//@mixins(선언하기) @include(포함하기)
+// @mixin 이름 {
+//     스타일
+// }
+@mixin size($w,$h) {
+    width: $w;
+    height: $h;
+}
+.box1{
+    @include size(100px, 200px)
+}
+.box2{
+    @include size(200px, 200px)
+}
+.box3{
+    @include size(300px, 200px)
+}
+
+@mixin sizein($w:100px, $h:100px) {
+    width: $w;
+    height: $h;
+}
+.box1{
+    @include sizein;//동일한 값을 처리할 경우 ()값 입력할 필요 x
+}
+.box2{
+    @include sizein($w:150px, $h:130px);//
+}
+.box3{
+    @include sizein($h:300px);//세로값만 변경
+}
+
+//상위(부모)요소 참조 &
+@mixin larg-text {
+    font: {
+        size:22px;
+        weight:bold;
+        family:sans-serif;
+    }
+    color: orange;
+
+    &::after{
+        //&상위요소 참조
+        content: "!!";
+    }
+}
+.box1,
+.box2{
+    @include larg-text;
+}
+
+/*
+@mixin 믹스인이름 ($매개변수) {
+    스타일
+}
+@include 믹스인이름(인수);
+*/
+
+@mixin dash-line($width, $color) {
+    border:$width dashed $color;
+}
+.box1{
+    @include dash-line(1px, red)
+}
+//인수는 기본값을 가질 수 있음
+/*
+    키워드인수
+    @mixin 믹스인이름($매개변수A:기본값, $매개변수B:기본값{
+        스타일
+    }
+    @include 믹스인일름($매개변수B:인수)
+*/
+@mixin dash-lines ($width:1px, $color:color) {
+    border: $width dashed $color;
+}
+.box1{
+    @include dash-lines;
+}
+.box2{
+    @include dash-lines(blue);//$width에 blue가 들어감
+}
+
+//가변인수 ... (입력할 인수의 개수가 불확실)
+/*
+    @mixin 믹스인이름 ($매개변수...){
+        스타일
+    }
+    @include 믹스인이름(인수A,인수B,인수C)
+*/
+
+@mixin var($w, $h, $bg ...) {
+    width: $w;
+    height: $h;
+    background: $bg;
+}
+.box{
+    @include var(1,2,3,4,5,6);
+    //3번 째 이후의 인수는 마지막에 적힌 매개변수에 다 들어감
+}
+
+@mixin font($style:normal, $weight:normal, $size:16px, $family:sans-serif) {
+    font:{
+        style:$style;
+        weight:$weight;
+        size:$size;
+        family:$family;
+    }
+}
+div{//매개변수 순서와 개수에 맞게 전달ㄹ
+    $font-values:italio,bold,16px,sans-serif;
+    @include font($font-values...);
+}
+span{//필요한 값만 키워드 인수로 변수에 담아 전달
+    $font-values:(
+        style:italio,
+        size:20px
+    );
+    @include font($font-values...)
+}
+a{//필요한 값만 키워드 인수로 전달
+    @include font((weight:900,family:dotum)...)
+}
+
+/* @content 해당하는 부분에 원하는 스타일을 전달*/
+@mixin icon ($url) {
+    &::after{
+        content: $url;
+        @content;
+        //삽입하고자 하는 코드블럭을 넣을 수 있다.
+    }
+}
+
+.box1{
+    @include icon("images/icon.png")
+}
+
+.box2{
+    @include icon("images/icon.png"){
+        display: block;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+    }
+}
+//@extend: 특정 선택자가 다른 선택자의 모든 스타일을 가져야 하는 경우 해당 선택자의 이름을 사용
+.btn{
+    padding: 10px;
+    margin: 10px;
+    background-color: blue;
+}
+.btn-danger{
+    @extend .btn;
+    background-color: red; //바꾸고싶은 값만 따로 씀
+}
+
+/*
+    @function 함수이름 ($매개변수) {
+        @return 값
+    }
+    함수이름(인수)
+
+    @mixin 믹스인이름 ($매개변수) {
+        스타일 ;
+    }
+    
+    @include 믹스인이름(인수)
+*/
+
+@function col($number, $columns, $width){
+    @return $width * ($number / $columns);
+}
+.container{
+    $width:1200px;
+    width: $width;
+
+    .item:nth-child(1){
+        width: col(1,12,$width);
+    }
+    
+    .item:nth-child(2){
+        width: col(8,10,$width);
+    }
+    
+    .item:nth-child(3){
+        width: col(6,8,$width);
+    }
+}
+
+//조건문과 반복
+
+//삼항연산자 조건(조건, 표현식1, 표현식2)
+
+$width:555px;
+div{
+    width:if($width>300px, true, false)
+}
+//@if @else if
+$bg:true;
+div{
+    @if $bg{
+        background-color: red;
+    }
+}
+$color:orange;
+div{
+    @if $color == tomato {
+        color: blue;
+    } @else if $color==orange{
+        color: green;
+    } @else{
+        color: red;
+    }
+}
+
+@function limitsize($size){
+    @if ($size>=0 and $size<=200px){
+        @return 200px;
+    } @else{
+        @return 800px;
+    }
+}
+div{
+    width: limitsize(180px);
+    height: limitsize(300px);
+}
+
+@mixin positionCenter ($w, $h, $p:absolute) {
+    @if ($p == absolute or $p == fixed or $p == relative){
+        width: if(unitless($w),#{$w}px, $w);
+        height: if(unitless($h),#{$h}px, $h);
+        position: $p;
+    }
+}
+.box1{
+    @include positionCenter(10px, 20px)
+}
+.box2{
+    @include positionCenter(10px, 20px, fixed)
+}
+.box3{
+    @include positionCenter(100, 200, relative)
+}
+
+//@for  --for문과 유사
+
+//@for $변수 from 시작 through 종료 {    } 권장방식
+//@for $변수 from 시작 to 종료 {     }
+//to는 주어진 값 직전 까지만 반복할 경우
+@for $i from 1 through 3 {
+    .through:nth-child(#{$i}){
+        width: 20px * $i; //
+    }
+}
+
+@for $i from 1 to 3 {
+    .to:nth-child(#{$i}){
+        width: 20px * $i;
+    }
+}
+
+//@each : list와 map 데이터를 반복
+//@each $변수 in 데이터
+//for in 문법과 유사
+
+$fruits : (apple, orange, banana, mango);
+.fruits {
+    @each $fruit in $fruits {
+        $i:index($fruits, $fruit);
+        li:nth-child(#{$i}){
+            left: 50px * $i;
+        }
+
+        // li.#{$fruit}{
+        //     background: url("/images/#{$fruit}.png");
+        // }
+    }
+}
+
+//@while : 조건이 false 가 될 때까지 반복
+/*
+    @while 조건{
+        내용
+    }
+*/
+
+$i:6;
+@while $i > 0 {
+    .item-#{$i}{
+        width:2px * $i;
+    }
+    $i:$i - 2;
+}

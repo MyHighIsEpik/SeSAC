@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex2이미지 이용 사진넘기기</title>
+    <style>
+        body,div,span,a,img,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        img{
+            border: none;
+        }
+
+        .banner{
+            width: 697px;
+            height: 326px;
+            position: relative;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        .bannerList{
+            width: 3485px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .bannerList li{
+            float: left;
+        }
+        .banner span{
+            position: absolute;
+            top: 150px;
+            z-index: 50;
+        }
+        .leftBtn{
+            left: 0;
+        }
+        .rightBtn{
+            right: 0;
+        }
+    </style>
+
+    <script>
+        var bannerWith=697;
+        var isnum=0;
+
+        function leftBtn(){
+            isnum--;
+            if(isnum<0){
+                isnum = 4
+            }
+            animate(isnum)
+        }
+        function rightBtn(){
+            isnum++;
+            if(isnum>4){
+                isnum = 0;
+            }
+            animate(isnum)
+        }
+        function animate(num){
+            document.getElementsByClassName('bannerList')[0].style.left=-(bannerWith * isnum)+'px';
+        }
+    </script>
+</head>
+<body>
+    <div class="banner">
+        <span class="leftBtn">
+            <a href="" onclick="leftBtn();return false;">
+                <img src="ex2/leftbtn.jpg" alt="">
+            </a>
+        </span>
+        <ul class="bannerList">
+            <li><a href=""><img src="ex2/img1.jpg" alt=""></a></li>
+            <li><a href=""><img src="ex2/img2.jpg" alt=""></a></li>
+            <li><a href=""><img src="ex2/img3.jpg" alt=""></a></li>
+            <li><a href=""><img src="ex2/img4.jpg" alt=""></a></li>
+            <li><a href=""><img src="ex2/img5.jpg" alt=""></a></li>
+        </ul>
+
+        <span class="rightBtn">
+            <a href="" onclick="rightBtn();return false;">
+                <img src="ex2/rightbtn.jpg" alt="">
+            </a>
+        </span>
+    </div>
+</body>
+</html>

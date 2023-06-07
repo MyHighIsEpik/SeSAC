@@ -1,0 +1,153 @@
+.container{
+    $size:100px;
+    .item{
+        width: $size;
+        height: $size;
+        background-color: tomato;
+    }
+}
+/**/
+//
+
+.section{
+    width: 100%;
+    .list{
+        padding: 20px;
+        li{
+            float: left;
+            width: 300px;
+        }
+    }
+}
+
+.content{
+    border: 1px solid red;
+    & .inner{
+        font-size: 24px;
+        background-color: #07c;
+    }
+}
+
+.btn{
+    &_blue{
+        background-color:blue;
+        color:#fff;
+    }
+    &_red{
+        background-color:red;
+        color:#fff;
+    }
+    &_green{
+        background-color:green;
+        color:#fff;
+    }
+}
+
+.list{
+    $w:100px;
+    $h:100px;
+    $bgcolor:tomato;
+    & li{
+        width: $w;
+        width: $h;
+        background-color: $bgcolor;
+    }
+    @at-root .box{
+        width: $w;
+        height: $h;
+        background-color: $bgcolor;
+    }
+}
+
+.attr{
+    font:{
+        size: 24px;
+        weight:900;
+        family:sans-serif;
+    }
+    margin: {
+        top:10px;
+        right:10px;
+    }
+    padding: {
+        bottom:20px;
+        left:20px;
+    }
+}
+
+$color-primary:#07c;
+$url-img:'../img/';
+$w:350px;
+$h:300px;
+.gallery{
+    width: $w;
+    height: $h;
+    margin-left: $w;
+    background: url($url-img+"img.png") no-repeat center center $color-primary;
+}
+.box1{
+    $color:#07c;
+    background-color: $color;
+}
+
+$red: #f00;
+$blue: #00f;
+$color-p: $blue;
+$color-d: $red;
+
+.box3{
+    color: $color-p;
+    background-color: $color-d;
+}
+
+$color: #000;
+.box4{
+    $color: #f00 !global;
+    background-color: $color;
+}
+.box5{
+    background-color: $color;
+}
+.box6{
+    $color: #07c;
+    background-color: $color;
+}
+
+$bg:#000;
+$fontcolor:#fff;
+.box7{
+    $bg:#07c !default;
+    background-color: $bg;
+    color: $fontcolor;
+}
+
+$family:unquote("Droid+sans");
+@import url("http://fonts.googleapis.com/css?family=#{$family}");
+
+/*
+@import는 파일을 가져올 때, 컴파일 4가지 상황
+-파일확장자 .css
+-파일이름이 htt://로 시작
+-url()이 붙었을 때
+-미디어쿼리가 있는 경우
+-여러 개의 파일을 가져올 때
+*/
+
+@import "font","bgcolor";
+
+/*
+    산술연산자
+    비교연산자
+    논리연산자
+    불린연산자
+*/
+
+div{
+    width: 20px + 20px;
+    height: 40px - 10px;
+    font-size: 10px * 2;
+    margin: (30px / 2); //단독 나누기는 괄호 필요
+    $x: 200px;
+    width: $x/2; //변수에 저장되거나 함수에 의해 반환계산 가능
+    font-size: 10px + 12px / 3;
+}

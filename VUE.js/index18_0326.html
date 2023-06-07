@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@4.0.5/dist/vue-router.global.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+
+    <title>뷰라우터2</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            margin-right: 30px;
+        }
+        a:hover{
+            text-decoration: underline;
+            color: #07c;
+        }
+        .page{
+            text-align: center;
+            font-size: 40px;
+            margin-top: 50px;
+        }
+        .wrap{
+            width: 1200px;
+            margin: 50px auto;
+        }
+        .btn{
+            padding: 20px;
+            background-color: tomato;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 네스티드 라우터 : 라우터 페이지로 이동할 때 최소 2개 이상의 컴포넌트를 화면에 표현 -->
+    <div id="app">
+        <router-view></router-view>
+    </div>
+
+    <script>
+        // 컴포넌트 내용 정의
+        const User={
+            template:'<div>User Component</div>'
+        }
+        const UserProfile={
+            template:'<div>User Profile Component</div>'
+        }
+        const UserPost={
+            template:'<div>User posts Component</div>'
+        }
+        // 라우팅 정의
+        const routes=[
+            {
+                path:'/user',
+                component:User,
+                children:[
+                    {
+                        path:'posts',
+                        component:UserPost,
+                    },
+                    {
+                        path:'profile',
+                        component:UserProfile,
+                    }
+                ]
+            }
+        ]
+        // 뷰라우터 정의
+        const router=new VueRouter({
+            routes
+        })
+        // 뷰인스턴스에 라우터 추가
+        new Vue({
+            router
+        }).$mount('#app')
+    </script>
+</body>
+</html>

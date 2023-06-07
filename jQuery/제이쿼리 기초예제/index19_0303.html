@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body,div, ul, li, p, img, dl,dt, input, span, a{
+            margin: 0;
+            padding: 0;
+        }
+        body, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        .aside-fixed{
+            width: 100px;
+            position: relative;
+            margin: 50px auto;
+            border: 1px solid #e4e4e4;
+            padding: 10px;
+            font-size: 12px;
+        }
+        .choiceBtn{
+            margin: 10px 0;
+        }
+        .choiceBtn a{
+            background-color: #545454;
+            padding: 3px 17px;
+        }
+        .saleWrap{
+            position: relative;
+            height: 430px;
+            overflow: hidden;
+        }
+        .sale{
+            margin-bottom: 15px;
+        }
+        .sale span{
+            display: block;
+            letter-spacing: -0.05em;
+        }
+        .cell{
+            position: absolute;
+            top: 0;
+            left: -600px;
+            width: 580px;
+            height: 500px;
+            border: 1px solid #b1b1b1;
+            text-align: center;
+            padding: 2px;
+        }
+        .cell img{
+            width: 580px;
+            height: 400px;
+        }
+        .cell .tit{font-size: 16px;}
+        .cell .con{color: #999; display: inline-block;}
+        .cell .price{
+            font-size: 16px;
+            color: #ff6347;
+        }
+        .saleList{
+            height: 1000px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.saleList > li > a').mouseenter(function(){
+                $(this).next().show()
+                $('.saleWrap').before($(this).next())
+                clearInterval(sid)
+            })
+            $('.saleList > li > a').mouseleave(function(){
+                $('.aside-fixed > .cell').hide()
+                $(this).after($('.aside-fixed > .cell'))
+                if($('.saleList').is(':animated')==false){
+                    sid=setInterval(auto,2000,'next')
+                }
+            })
+
+
+
+            function auto(dis){
+                if(dis == 'prev'){
+                    $('.saleList').prepend($('.saleList > li:last'));
+                    $('.saleList').css('top','-150px');
+                    $('.saleList').animate({
+                        'top':'0px'
+                    },600)
+                }else{
+                    $('.saleList').animate({
+                        'top':'-150px'
+                    },600,function(){
+                        $('.saleList').append($('.saleList > li:first'));
+                        $('.saleList').css('top','0px');
+                    })
+                }
+            }
+
+            var sid;
+            sid=setInterval(auto,2000,'next')
+            $('.nextBtn').on('click',function(e){
+                e.preventDefault();
+                if($('.saleList').is(':animated')==false){
+                    $('.saleList').animate({
+                        'top':'-150px'
+                    },600,function(){
+                        $('.saleList').append($('.saleList > li:first'));
+                        $('.saleList').css('top','0px');
+                    })
+                    clearInterval(sid)
+                    sid=setInterval(auto,2000,'next')
+                }
+            })
+            $('.prevBtn').on('click',function(e){
+                e.preventDefault();
+                if($('.saleList').is(':animated')==false){
+                    $('.saleList').prepend($('.saleList > li:last'));
+                    $('.saleList').css('top','-150px');
+                    $('.saleList').animate({
+                        'top':'0px'
+                    },600)
+                    clearInterval(sid)
+                    sid=setInterval(auto,2000,'prev')
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="aside-fixed">
+        <h2><img src="ex45/tit_special.gif" alt=""></h2>
+        <div class="choiceBtn">
+            <a href="" class="nextBtn"><img src="ex45/btn_next01.png" alt=""></a>
+            <a href="" class="prevBtn"><img src="ex45/btn_prev01.png" alt=""></a>
+        </div>
+        <div class="saleWrap">
+            <ul class="saleList">
+                <li class="sale">
+                    <a href="">
+                        <img src="ex45/636038617348081895.jpg" alt="" width="100px" height="80px" class="saleImg">
+                        <span class="con">코타키나발루 항공권 5일</span>
+                        <span class="point">466,000원</span>
+                    </a>
+                    <ul class="cell" style="display: none;">
+                        <li>
+                            <img src="ex45/636038617348081895.jpg" alt="">
+                            <span class="tit">8월 7,8,9 특가!</span>
+                            <span class="con">코타키나발루 항공권 5일</span>
+                            <span class="price">466,000원</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sale">
+                    <a href="">
+                        <img src="ex45/636047190135869990.jpg" alt="" width="100px" height="80px" class="saleImg">
+                        <span class="con">코타키나발루 항공권 5일</span>
+                        <span class="point">466,000원</span>
+                    </a>
+                    <ul class="cell" style="display: none;">
+                        <li>
+                            <img src="ex45/636047190135869990.jpg" alt="">
+                            <span class="tit">8월 7,8,9 특가!</span>
+                            <span class="con">코타키나발루 항공권 5일</span>
+                            <span class="price">466,000원</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sale">
+                    <a href="">
+                        <img src="ex45/636047841477835359.jpg" alt="" width="100px" height="80px" class="saleImg">
+                        <span class="con">코타키나발루 항공권 5일</span>
+                        <span class="point">466,000원</span>
+                    </a>
+                    <ul class="cell" style="display: none;">
+                        <li>
+                            <img src="ex45/636047841477835359.jpg" alt="">
+                            <span class="tit">8월 7,8,9 특가!</span>
+                            <span class="con">코타키나발루 항공권 5일</span>
+                            <span class="price">466,000원</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sale">
+                    <a href="">
+                        <img src="ex45/636052302968808216.jpg" alt="" width="100px" height="80px" class="saleImg">
+                        <span class="con">코타키나발루 항공권 5일</span>
+                        <span class="point">466,000원</span>
+                    </a>
+                    <ul class="cell" style="display: none;">
+                        <li>
+                            <img src="ex45/636052302968808216.jpg" alt="">
+                            <span class="tit">8월 7,8,9 특가!</span>
+                            <span class="con">코타키나발루 항공권 5일</span>
+                            <span class="price">466,000원</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sale">
+                    <a href="">
+                        <img src="ex45/636053250322611177.jpg" alt="" width="100px" height="80px" class="saleImg">
+                        <span class="con">코타키나발루 항공권 5일</span>
+                        <span class="point">466,000원</span>
+                    </a>
+                    <ul class="cell" style="display: none;">
+                        <li>
+                            <img src="ex45/636053250322611177.jpg" alt="">
+                            <span class="tit">8월 7,8,9 특가!</span>
+                            <span class="con">코타키나발루 항공권 5일</span>
+                            <span class="price">466,000원</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

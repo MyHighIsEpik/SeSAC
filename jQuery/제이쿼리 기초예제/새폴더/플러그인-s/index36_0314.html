@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="topBtn/css/ui.totop.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="topBtn/js/easing.js"></script>
+    <script type="text/javascript" src="topBtn/js/jquery.ui.totop.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $().UItoTop({
+                easingType:'easeOutQuart',
+                scrollSpeed:1000,
+                containerID:'toTop',
+                containerHoverID:'toTopHover'
+            })
+        })
+    </script>
+</head>
+<body>
+    <img src="topBtn/images/main.gif" alt="">
+    <!-- toTop 플러그인 -->
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="Generator" content="EditPlus®">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<script type="text/javascript" src="js/jquery-1.9.0.js"></script>
+	<script language="javascript" type="text/javascript">
+
+		var st;
+		$(document).ready(function(){
+			$('.prev').on('click',function(e){
+				e.preventDefault();
+				$('.list ul').prepend($('.list ul li:last'));
+			})
+			$('.bxpause').on('click',function(e){
+				e.preventDefault();
+				$(this).css('display','none')
+				clearInterval(st)
+				$('.play').css('display','inline-block')
+			})
+
+			$('.play').on('click',function(e){
+				e.preventDefault();
+				st=setInterval(auto,1000)
+				$('.bxpause').css('display','inline-block')
+				$(this).css('display','none')
+			})
+
+			$('.next').on('click',function(e){
+				e.preventDefault();
+				$('.list ul').append($('.list ul li:first'));
+			})
+
+
+			st=setInterval(auto,1000)
+		})
+		function auto(){
+			if($('.list ul').is(':animated')==false){
+				$('.list ul').animate({
+					top:'-20px'
+				},1000,function(){
+					$('.list ul').append($('.list ul li:first'));
+					$('.list ul').css('top','0px')
+				})
+			}
+		}
+	</script>
+
+
+<!-- 날짜-->
+	<script>
+		function date(){
+		var d = new Date();
+		var n = d.getDate();
+		document.getElementById("dlf").innerHTML = n;
+		var mm = d.getMonth();
+		document.getElementById("dnjf").innerHTML = mm+1;
+		var days = ["일","월","화","수","목","금","토"];
+		document.getElementById("dydlf").innerHTML = days[d.getDay()];
+		}
+		window.onload=date;
+	</script>
+	<link href="css/layout.css" rel="stylesheet" type="text/css" />
+	<title>Document</title>
+
+</head>
+<body>
+	<div class="bn_top_right">
+		<div class="process_info">
+			<dl>
+				<dt>
+					<strong class="title">노랑풍선 자유여행 마감</strong>
+					<div class="date_box" >
+						<span id="dnjf"><span class="hd">월</span></span>
+						<span id="dlf"><span class="hd">일</span></span>
+						<span id="dydlf"><span class="hd">요일</span></span>
+					</div>
+				</dt>
+				<dd class="list">
+					<ul class="bxv">
+						<li>레오누치와그예전의정</li>
+						<li>버스도 택시도 배이다</li>
+						<li>골목꽃도 피우고 잠시잠시</li>
+						<li>내일도 오늘이 되었으면 </li>
+						<li>지난 사람 생각을 하다</li> 
+					</ul>
+					<div class="btnG">
+						<button class="prev"><img src="images/btn_process_prev2.png" alt="" /></button>
+						<button class="bxpause"><img src="images/btn_process_pause.png" alt="" /></button>
+						<button class="play"><img src="images/btn_process_play.png" alt="" /></button>
+						<button class="next"><img src="images/btn_process_next2.png" alt="" /></button>
+					</div>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</body>
+</html>

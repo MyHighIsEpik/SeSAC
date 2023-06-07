@@ -1,0 +1,126 @@
+@charset "utf-8";
+header, header_{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.75);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
+    background: #fff;
+    position: relative;
+}
+header .inner{
+    height: 80px;
+}
+header .menu-group{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+header .logo{
+    margin-right: 10px;
+}
+header .logo a{
+    background: url(../img/logo.svg) no-repeat;
+    width: 32px;
+    height: 32px;
+    display: block;
+    text-indent: -9999rem;
+}
+header .logo a:hover{
+    background: url(../img/logo_on.svg) no-repeat;
+}
+header .main-menu{
+    display: flex;
+}
+header .main-menu li a{
+    display: block;
+    padding: 10px;
+    color: #3c4146;
+}
+header .main-menu li a:hover{
+    color: #4078c0;
+}
+header .sign-group{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+header .btn-group{
+    display: flex;
+    order: 2;
+}
+header .btn-group .sign-in{margin-right: 4px;}
+header .btn-group .active{
+    color: #fff;
+}
+#search-form{
+    order: 1;
+}
+header .sub-menu{
+    display: flex;
+}
+header .sub-menu li{padding:  8px; color: #3c4146; font-size: 1rem;
+    display: block;}
+.toggle-btn{
+    background: url(../img/toggle-btn.svg);
+    width: 18px;
+    height: 24px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    text-indent: -9999rem;
+    display: none;
+}
+
+@media all and (max-width:1024px){
+    header .inner{
+        max-width: none;
+        /* width: 100% */
+        margin: 0 auto;
+        height: auto;
+        padding: 0 20px;
+        background: #fff;
+    }
+    header .menu-group,
+    header .sign-group{
+        float: none;
+    }
+    header .logo{
+        padding: 12px 0;
+    }
+    header .menu-group,
+    header .main-menu,
+    header .sign-group,
+    header .btn-group{
+        display: block;
+    }
+    header .main-menu{
+        margin-top: 10px;
+    }
+    header .main-menu li{
+        border-top: 1px solid #e5e5e5;
+    }
+    header .main-menu li a{
+        padding: 15px 0;
+    }
+    header .sign-group{
+        padding: 10px 0 20px;
+    }
+    #search-form{
+        margin-top: 10px;
+    }
+    header .inner--text{
+        width: 100%;
+        height: 42px;
+        text-align: center;
+    }
+    header .btn-group .btn{
+        margin-top: 10px;
+    }
+    header .sub-menu{
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .toggle-btn{
+        display: block;
+    }
+    header .toggle{display: none;}
+    header .toggle.on{display: block;}
+}

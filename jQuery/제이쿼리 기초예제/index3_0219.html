@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body, div, ul, li, a, img, p, dl, dt, dd{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{text-decoration: none;}
+        img{
+            border: none;
+            vertical-align: middle;
+        }
+
+        .faq{
+            width: 700px;
+            margin: 50px auto;
+        }
+        p{border: 1px solid #d9d9d9;
+            padding: 10px;
+            margin: 20px auto;
+            font-size: 12px;
+        }
+        .faqList{
+            border-top: 1px solid #c3c3c3;
+        }
+        dt{
+            padding: 10px 0 10px 15px;
+            border-bottom: 1px solid #c3c3c3;
+            font-weight: 700;
+            cursor: pointer;
+            background: url(ex27/arrow-sprite.png) no-repeat 5px 12px #f1f1f1;
+            font-size: 12px;
+        }
+        dt.open{
+            background-position: 5px -43px;
+        }
+        dt:hover{
+            background-position: 5px -14px
+        }
+        dt.open:hover{
+            background-position: 5px -67px;
+        }
+        dd{
+            padding: 10px 0 10px 20px;
+            background: #fff;
+            line-height: 2;
+            border-bottom: 1px solid #c3c3c3;
+            font-size: 12px;
+        }
+
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('dd:not(:eq(0))').hide();
+            $('dt').on('click',function(){
+                $(this).toggleClass('open').next().slideToggle(500)
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="faq">
+        <h3>FAQ(자주 묻는 질문)</h3>
+        <p>자주 질문하시는 민원 사항을 정리하여, 원하시는 정보를 해당페이지에서 빠르게 찾으실 수 있습니다. 별도의 로그인 없이
+            원하는 정보를 이용하실 수 있으며, 첨부파일 또한 다운로드가 가능합니다.
+        </p>
+        <dl class="faqList">
+            <dt class="open">서초2동 자치회관 프로그램 환불규정을 알고싶어요?</dt>
+            <dd>아파트지구는 아파트의 집단적인 건설의 필요성으로 인해 과거 도시계획법에서 지정된 용도지구이며,
+
+                주택용지, 주구중심, 분구중심, 주택용지 등에 따라 입지할수 있는 용도가 나누어져 있습니다.
+                
+                서울시 도시계획 조례와는 별도의 용적률, 용도제한 내용을 담고 있사오니 아래 첨부파일 6. 건축규제계획을 참고하시기 바랍니다.</dd>
+            
+            <dt>주민등록증 신규발급 및 재발급</dt>
+            <dd>○ 내국인간의 혼인 신고의 경우 혼인신고서와 신고인 모두의 신분증명서 필요(한 사람만 방문할 경우에도 배우자의 신분증명서와 도장 지참)
+
+                ○ 혼인당사자가 외국인으로서 한국방식에 의한 혼인의 경우 혼인신고서, 외국인의 혼인성립요건구비증명서</dd>
+            
+            <dt>전입신고는 어떻게 하나요?</dt>
+            <dd>1. 내력벽을 증설 또는 해체하거나 그 벽면적을 30제곱미터 이상 수선 또는 변경하는 것
+
+                2. 기둥을 증설 또는 해체하거나 세 개 이상 수선 또는 변경하는 것
+                
+                3. 보를 증설 또는 해체 하거나 세 개 이상 수선 또는 변경하는 것</dd>
+        </dl>
+    </div>
+</body>
+</html>

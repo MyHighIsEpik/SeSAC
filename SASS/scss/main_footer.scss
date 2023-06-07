@@ -1,0 +1,26 @@
+.footer{
+    width: 100%;
+    height: 120px;
+    background-color: #333;
+
+    .footer_wrap{
+        width: 1400px;
+        margin: 0 auto;
+        padding-top: 20px;
+
+        .footer_menu{
+            overflow: hidden;
+
+            li{
+                color: #fff;
+                float: left;
+                margin-right: 20px;
+            }
+        }
+        .copy{
+            margin-top: 20px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+    }
+}

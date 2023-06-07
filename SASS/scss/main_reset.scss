@@ -1,0 +1,35 @@
+$resetNum:0px;
+$color:#222;
+
+body, div, section, header,
+nav, h1, h2, h3, ul, li, span,
+p, a, img{
+    font : {
+        size:14px;
+        family:sans-serif;
+    }
+    margin: $resetNum;
+    padding: $resetNum;
+    color:$color;
+}
+a:link,
+a:visited{
+    text: {
+        decoration:none;
+    }
+    color:$color;
+}
+a:hover,
+a:active,
+a:focus{
+    text: {
+        decoration: underline;
+    }
+    color:  $color;
+}
+img{
+    border:none;
+}
+ul{
+    list-style: none;
+}

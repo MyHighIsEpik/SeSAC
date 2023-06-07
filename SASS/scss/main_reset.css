@@ -1,0 +1,31 @@
+body, div, section, header,
+nav, h1, h2, h3, ul, li, span,
+p, a, img {
+  font-size: 14px;
+  font-family: sans-serif;
+  margin: 0px;
+  padding: 0px;
+  color: #222;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #222;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+  color: #222;
+}
+
+img {
+  border: none;
+}
+
+ul {
+  list-style: none;
+}
+/*# sourceMappingURL=main_reset.css.map */

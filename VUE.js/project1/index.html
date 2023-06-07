@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app" class="app">
+        <div class="head">
+            <h1 class="title">메모앱</h1>
+            <span class="listBtn" v-if="mode !=='list'" v-on:click="mode = 'list'">&lt;</span>
+        </div>
+        <div class="body">
+            <div v-if="mode === 'list'">
+                <ul>
+                    <li v-for="m in memos" v-on:click="open(m.id)">{{m.content}}</li>
+                </ul>
+            </div>
+            <div v-else class="write">
+                <textarea v-model="memo.content"></textarea>
+                <button type="button" class="saveBtn" v-on:click="save()" v-bind:class="{'full':mode==='write'}">저장</button>
+                <button type="button" class="cancelBtn" v-on:click="cancel()" v-bind:class="{'full':mode==='write'}">취소</button>
+                <button type="button" class="removeBtn" v-on:click="remove()" v-if="mode === 'edit'">삭제</button>
+            </div>
+            <button type="button" class="addBtn" v-on:click="write()" v-if="mode === 'list'">+</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script src="js/vue.js"></script>
+</body>
+</html>
+
+<!-- 
+    요구분석
+    1.쓰기버튼을 클릭하면 작성페이지로 이동
+    2.작성페이지에서 버튼은 저장과 삭제 버튼
+    ...
+-->

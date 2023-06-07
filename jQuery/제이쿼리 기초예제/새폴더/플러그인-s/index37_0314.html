@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="youtube/css/colorbox.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="youtube/js/jquery.colorbox-min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $('.youtube').colorbox({
+                iframe:true,
+                innerWidth:500,
+                innerHeight:400
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="photo">
+        <img src="youtube/images/main.gif" alt="" usemap="#imgmap">
+
+        <map id="imgmap" name="imgmap">
+            <area shape="rect" alt="" title="" coords="780,48,1147,275" href="https://www.youtube.com/embed/oPVR-Bg-V5Y" target="_blank" class="youtube" />
+        </map>
+
+    </div>
+</body>
+</html>

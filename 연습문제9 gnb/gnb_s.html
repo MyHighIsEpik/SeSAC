@@ -1,0 +1,133 @@
+  <!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+    <style type="text/css">
+      body,div, ul, li,a, img, h1{margin:0; padding:0}
+      ul{list-style-type:none;}
+      img{border:none
+      }
+      a{text-decoration:none;
+        color:#fff;}
+      .header{width:100%;
+              position:relative;
+              background:#ff8601;}
+        .nav{width:1200px;
+            margin:0 auto;
+            height:100px;
+            position:relative;
+            }
+        h1{padding:33px  0 0 0;}
+        .gnb{overflow:hidden;
+            position:absolute;
+            top:0;
+            left:130px;
+            height:100px;
+              line-height:100px;}
+          .gnb li{float:left;
+              margin-left:50px;
+              font-size:20px;
+              color:#fff;
+              font-family:"나눔고딕",sans-serif;
+              font-weight:600;
+              }
+            .allmenu{background:url(images/allmenu_icon.gif) no-repeat 0 4px; 
+                  padding-left:30px;
+                  position:absolute;
+                  right:20px;
+                  top:22px;
+                  font-size:20px;
+                    color:#fff;
+                    font-family:"나눔고딕",sans-serif;
+                    font-weight:600;
+                  } 
+
+            .submenu{width:100%;
+                      background:#fff;
+                      border-bottom:1px solid #ff8601;
+                      }
+            
+            .submenu ul{width:1200px;
+                        margin:0 auto;}
+              .submenu ul li{display:none;
+                }
+              .submenu ul li.on{display:block;
+              }
+            .gnb li.over a{background:#fff;
+                          border-radius:3px;
+                          color:#ff8601;
+                          padding:10px;
+                          }
+    </style>
+    
+    <script>
+      var gnblist;
+      var imglist;
+      var currentNum=0;
+      var menuNum=0;
+
+      function init(){
+        gnblist=document.getElementById('gnb').getElementsByTagName('li')
+        imglist=document.getElementById('imglist').getElementsByTagName('li')
+        console.log(gnblist)
+        console.log(imglist)
+        for(var i=0; i<gnblist.length; i++){
+          gnblist[i].num=i;
+          gnblist[i].onmouseover=function(){
+            menuNum=this.num;
+            selectMenu(menuNum)
+          }
+        }
+      }
+      
+      function selectMenu(num){
+        if(currentNum!=num){
+          var gnb1=gnblist[currentNum];
+          gnb1.className="";
+          var img1=imglist[currentNum];
+          img1.className="";
+
+          var gnb2=gnblist[num];
+          gnb2.className="over";
+          var img2=imglist[num];
+          img2.className="on";
+
+          currentNum=num
+        }
+    }
+
+      window.onload=init;
+    </script>
+  </head>
+  <body>
+    <div class="header" id="header">
+      <div class="nav">
+        <h1><a href="#"><img src="images/h1.gif"  alt=""/></a></h1>
+        <ul class="gnb" id="gnb">
+          <li class="over"><a href="#">기업소개</a></li>
+          <li><a href="#">제품정보</a></li>
+          <li><a href="#">투자정보</a></li>
+          <li><a href="#">지속가능경영</a></li>
+          <li><a href="#">홍보센터</a></li>
+          <li><a href="#">인재채용</a></li>
+        </ul>
+        <p class="allmenu"><a href="#">전체보기</a></p>
+      </div>
+      <div class="submenu" id="submenu">
+        <ul class="" id="imglist">
+          <li class="on"><a href="#"><img src="images/sub1.gif"  alt=""/></a></li>
+          <li><a href="#"><img src="images/sub2.gif"  alt=""/></a></li>
+          <li><a href="#"><img src="images/sub3.gif"  alt=""/></a></li>
+          <li><a href="#"><img src="images/sub4.gif"  alt=""/></a></li>
+          <li><a href="#"><img src="images/sub5.gif"  alt=""/></a></li>
+          <li><a href="#"><img src="images/sub6.gif"  alt=""/></a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

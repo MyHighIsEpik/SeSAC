@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO SCROLL DOWN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+        body, div, h2, a, span{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12px;
+            color: #222;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+
+        #container{
+            width: 100%;
+            position: relative;
+        }
+        #container > div{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            color: #fff;
+        }
+        #container > div > h2{
+            font-size: 80px;
+            font-weight: 300;
+        }
+        .scroll{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            display: inline-block;
+            transform: translateX(-50%);
+            transition: opacity 0.3s ease;
+            color: #fff;
+        }
+        .scroll:hover{
+            opacity: 0.6;
+        }
+
+        .section1 a{
+            padding-top: 60px;
+        }
+        .section1 a span{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            box-sizing: border-box;
+            border: 1px solid #fff;
+            margin-left: -25px;
+        }
+        .section1 a span::after{
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            transform: rotate(-45deg);
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -15px 0 0 -10px;
+            animation: span1 1s ease infinite;
+        }
+
+        @keyframes span1{
+            0%{
+                top: 18px;
+            }
+            50%{
+                top: 22px;
+            }
+            100%{
+                top: 18px;
+            }
+        }
+
+        .section2 a{
+            padding-top: 60px;
+        }
+        .section2 a span{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            box-sizing: border-box;
+            border: 1px solid #fff;
+            margin-left: -25px;
+        }
+        .section2 a span::after{
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            transform: rotate(-45deg);
+            box-sizing: border-box;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -15px 0 0 -10px;
+        }
+        .section2 a span::before{
+            content: '';
+            width: 50px;
+            height: 50px;
+            box-shadow: 0, 0, 0, 0, rgba(255, 255, 255, .3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 100%;
+            animation: span2 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes span2{
+            0%{
+                opacity: 0;
+            }
+            30%{
+                opacity: 1;
+            }
+            60%{
+                opacity: 0;
+                box-shadow: 0 0 0 30px rgba(255, 255, 255, .3);
+            }
+            100%{
+                opacity: 0;
+            }
+        }
+
+        .section3 a{
+            padding-top: 70px;
+        }
+        .section3 a span{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            box-sizing: border-box;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            margin-left: -12px;
+            transform: rotate(-45deg);
+            animation: span3 1.5s ease infinite;
+        }
+
+        @keyframes span3{
+            0%{
+                opacity: 0;
+                transform: rotate(-45deg) translate(0, 0);
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+                transform: rotate(-45deg) translate(-20px, 20px);
+            }
+        }
+        
+        .section4 a{
+            padding-top: 70px;
+        }
+        .section4 a span{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            box-sizing: border-box;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            margin-left: -12px;
+            transform: rotateZ(-45deg);
+            animation: span4 1.5s ease infinite;
+        }
+
+        @keyframes span4{
+            0%{
+                opacity: 0;
+                transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+                transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
+            }
+        }
+                
+        .section5 a{
+            padding-top: 80px;
+        }
+        .section5 a span{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 24px;
+            height: 24px;
+            box-sizing: border-box;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+            margin-left: -12px;
+            transform: rotate(-45deg);
+            animation: span5 1.5s ease infinite;
+            opacity: 0;
+        }
+
+        .section5 a span:nth-of-type(1){
+            animation-delay: 0s;
+            top: 0;
+        }
+        .section5 a span:nth-of-type(2){
+            animation-delay: .15s;
+            top: 16px;
+        }
+        .section5 a span:nth-of-type(3){
+            animation-delay: .3s;
+            top: 32px;
+        }
+
+        @keyframes span5{
+            0%{
+                opacity: 0;
+                transform: rotateY(0) rotateZ(-45deg) translate(0, 0);
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+                transform: rotateY(720deg) rotateZ(-45deg) translate(-20px, 20px);
+            }
+        }
+
+        .section1{background-color: #f2606f;}
+        .section2{background-color: #5ea52f;}
+        .section3{background-color: #0e9696;}
+        .section4{background-color: #7b2abe;}
+        .section5{background-color: #bdb43f;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="section1" id="section1">
+            <div class="contents">
+                <h2>PROTFOLIO #1</h2>
+                <a href="#section2" class="scroll"><span></span>Down</a>
+            </div>
+        </div>
+        
+        <div class="section2" id="section2">
+            <div class="contents">
+                <h2>PROTFOLIO #2</h2>
+                <a href="#section3" class="scroll"><span></span>Down</a>
+            </div>
+        </div>
+        
+        <div class="section3" id="section3">
+            <div class="contents">
+                <h2>PROTFOLIO #3</h2>
+                <a href="#section4" class="scroll"><span></span>Down</a>
+            </div>
+        </div>
+        
+        <div class="section4" id="section4">
+            <div class="contents">
+                <h2>PROTFOLIO #4</h2>
+                <a href="#section5" class="scroll"><span></span>Down</a>
+            </div>
+        </div>
+        
+        <div class="section5" id="section5">
+            <div class="contents">
+                <h2>PROTFOLIO #5</h2>
+                <a href="#section1" class="scroll"><span></span><span></span><span></span>Up</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('a[href^="#"]').on('click',function(e){
+                e.preventDefault();
+                var target=$($(this).attr('href'));
+                console.log(target.length);
+                if(target.length){
+                    $('html,body').animate({
+                        scrollTop:target.offset().top
+                    },400)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

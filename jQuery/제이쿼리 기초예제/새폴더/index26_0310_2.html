@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body, div, nav, ul, li, h1, h2, strong, a{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        #wrapper{
+            width: 100%;
+            position: relative;
+        }
+        #nav{
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        #nav.on{
+            left:0;
+        }
+        #nav h1{
+            padding: 60px 20px 40px 20px;
+            color: #fff;
+            font-size: 40px;
+            text-align: center;
+            text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+        }
+        #nav ul li{
+            line-height: 40px;
+            font-size: 20px;
+            text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        #nav ul li a{
+            color: #fff;
+            padding: 0 0 0 20px;
+            width: 100%;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        #contents{
+            text-align: center;
+            color: #fff;
+        }
+        #contents div{
+            height: 100vh;
+            line-height: 100vh;;
+        }
+        #contents div h2{
+            font-size: 90px;
+            font-weight: 100;
+        }
+
+        #nav ul li.active a{
+            background-color: rgba(0, 0, 0, 0.3);
+            border-left: 5px solid #fff;
+            box-sizing: border-box;
+        }
+
+        .openBtn{
+            position: absolute;
+            right: -100px;
+            top: 10px;
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            background-color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            font-weight: 800;
+        }
+        .section1{background-color: #f2606f;}
+        .section2{background-color: #2cb86b;}
+        .section3{background-color: #2e82b3;}
+        .section4{background-color: #a0b42b;}
+        .section5{background-color: #a52f9f;}
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="nav">
+            <h1>jquery</h1>
+            <ul>
+                <li class="active"><a href="">PORTFOLIO1</a></li>
+                <li><a href="">PORTFOLIO2</a></li>
+                <li><a href="">PORTFOLIO3</a></li>
+                <li><a href="">PORTFOLIO4</a></li>
+                <li><a href="">PORTFOLIO5</a></li>
+            </ul>
+            <a href="" class="openBtn">OPEN</a>
+        </nav>
+        <div id="contents">
+            <div class="section1">
+                <h2>
+                    PORTFOLIO <strong>HTML4</strong>
+                </h2>
+            </div>
+            <div class="section2">
+                <h2>
+                    PORTFOLIO <strong>HTML5</strong>
+                </h2>
+            </div>
+            <div class="section3">
+                <h2>
+                    PORTFOLIO <strong>MOBILE DESIGN</strong>
+                </h2>
+            </div>
+            <div class="section4">
+                <h2>
+                    PORTFOLIO <strong>RESPONSIVE WEB DESIGN</strong>
+                </h2>
+            </div>
+            <div class="section5">
+                <h2>
+                    PORTFOLIO <strong>BOOTSTRAP</strong>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.openBtn').on({
+                click:function(e){
+                    e.preventDefault();
+                    $('#nav').css('left','-300px')
+                    $('#nav').toggleClass('on')
+                    if($('#nav').hasClass("on")){
+                        $('#nav').animate({
+                            'left':'0'
+                        },200)
+                        $('.openBtn').text('Close')
+                    }else{
+                        $('#nav').css('left','0px')
+                        $('#nav').animate({
+                            'left':'-300'
+                        },200)
+                        $('.openBtn').text('Open')
+                    }
+                }
+            })
+
+            $('#nav ul li').on({
+                click:function(e){
+                    e.preventDefault();
+                    var pageNum=$(this).index()
+                    //console.log(pageNum)
+                    var section=$('#contents > div').eq(pageNum)
+                    //console.log(section)
+                    var offset=section.offset().top;
+                    //console.log(offset)
+                    $('html, body').animate({
+                        scrollTop:offset
+                    },600, 'easeInOutExpo')
+                }
+            })
+
+            var nav=$('#nav ul li');
+            var cont=$('#contents > div');
+            $(window).scroll(function(){
+                var wScroll=$(this).scrollTop();
+                //console.log(wScroll)
+                for(var i=0; i<cont.length; i++){
+                    if(wScroll>=cont.eq(i).offset().top){
+                        nav.removeClass('active');
+                        nav.eq(i).addClass('active');
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

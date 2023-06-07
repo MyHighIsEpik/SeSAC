@@ -1,0 +1,25 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+        $(document).ready(
+            function(){
+                var controller = new ScrollMagic.Controller();
+
+
+		new ScrollMagic
+                .Scene({offset: 300})
+                .on("start", function () {
+                    var direction = controller.info("scrollDirection");
+                    if(direction == "FORWARD"){
+                        $("#mainNav").addClass("navbar-shrink");
+                    }else{
+                        $("#mainNav").removeClass("navbar-shrink");
+                    }
+                }).addTo(controller);
+
+
+
+            }       
+        );
+    //]]>   
+    </script>

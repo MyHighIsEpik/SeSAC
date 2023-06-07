@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+    <style type="text/css">
+        body,
+        ul,
+        li,
+        a,
+        img,
+        div {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-size: 12px;
+            color: #333;
+            font-family: "돋움", dotum;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        img {
+            border: none;
+            vertical-align: middle
+        }
+
+        a:link,
+        a:visited {
+            text-decoration: none;
+            color: #333;
+        }
+
+        a:hover,
+        a:active {
+            text-decoration: underline;
+            color: #333;
+        }
+
+        .red {
+            background: #806a5f;
+        }
+
+        .green {
+            background: #5e7628;
+        }
+
+        .white {
+            background: #fff;
+        }
+
+        #gnb {
+            position: relative;
+            width: 850px;
+            margin: 50px auto 0 auto;
+        }
+
+        #gnb li {
+            float: left;
+        }
+
+        #gnb li ul {
+            position: absolute;
+            top: 35px;
+            height: 200px;
+            display: none;
+        }
+
+        #gnb li ul li {
+            float: none;
+            line-height: 28px;
+            width: 132px;
+            padding: 0 0 0 38px;
+        }
+
+    </style>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var timeout;
+            $('#gnb > ul').mouseenter(function(){
+                clearTimeout(timeout)
+                $(this).find('ul').slideDown(300);
+            })
+            $('#gnb > ul').mouseleave(function(){
+                timeout=setTimeout(function(){
+                    $('#gnb > ul ').find('ul').slideUp(300);
+                },2000)
+            })
+
+            $('#gnb > ul > li').mouseenter(function(){
+                $(this).find('ul').addClass('white')
+                $(this).find('img').attr(
+                    'src',
+                    $(this).find('img').attr('src').replace('_off.gif','_on.gif')
+                    )
+            })
+            $('#gnb > ul > li').mouseleave(function(){
+                $(this).find('ul').removeClass('white')
+                $(this).find('img').attr(
+                    'src',
+                    $(this).find('img').attr('src').replace('_on.gif','_off.gif')
+                    )
+            })
+        })
+    </script>
+
+</head>
+
+<body>
+    <div id="gnb">
+        <ul class="">
+            <li><a href="#"><img src="images/gnb_01_off.gif" alt="" /></a>
+                <ul class="red">
+                    <li><a href="#">병원소개1</a></li>
+                    <li><a href="#">병원소개2</a></li>
+                    <li><a href="#">병원소개3</a></li>
+                    <li><a href="#">병원소개4</a></li>
+                    <li><a href="#">병원소개5</a></li>
+                    <li><a href="#">병원소개6</a></li>
+                    <li><a href="#">병원소개7</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#"><img src="images/gnb_02_off.gif" alt="" /></a>
+                <ul class="red">
+                    <li><a href="#">진료안내1</a></li>
+                    <li><a href="#">진료안내2</a></li>
+                    <li><a href="#">진료안내3</a></li>
+                    <li><a href="#">진료안내4</a></li>
+                    <li><a href="#">진료안내5</a></li>
+                    <li><a href="#">진료안내6</a></li>
+                    <li><a href="#">진료안내7</a></li>
+                </ul>
+
+            </li>
+
+            <li><a href="#"><img src="images/gnb_03_off.gif" alt="" /></a>
+                <ul class="red">
+                    <li><a href="#">진료과목1</a></li>
+                    <li><a href="#">진료과목2</a></li>
+                    <li><a href="#">진료과목3</a></li>
+                    <li><a href="#">진료과목4</a></li>
+                    <li><a href="#">진료과목5</a></li>
+                    <li><a href="#">진료과목6</a></li>
+                    <li><a href="#">진료과목7</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#"><img src="images/gnb_04_off.gif" alt="" /></a>
+                <ul class="green">
+                    <li><a href="#">미용호텔용품1</a></li>
+                    <li><a href="#">미용호텔용품2</a></li>
+                    <li><a href="#">미용호텔용품3</a></li>
+                    <li><a href="#">미용호텔용품4</a></li>
+                    <li><a href="#">미용호텔용품5</a></li>
+                    <li><a href="#">미용호텔용품6</a></li>
+                    <li><a href="#">미용호텔용품7</a></li>
+                </ul>
+
+            </li>
+
+            <li><a href="#"><img src="images/gnb_05_off.gif" alt="" /></a>
+                <ul class="green">
+                    <li><a href="#">커뮤니티1</a></li>
+                    <li><a href="#">커뮤니티2</a></li>
+                    <li><a href="#">커뮤니티3</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

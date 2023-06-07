@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app1">
+        <!-- <button>컴포넌트 등록</button>
+        <my-component></my-component>
+        <my-local-component></my-local-component> -->
+        <my-comp></my-comp>
+    </div>
+    <script>
+        /*Vue.component('my-component',{
+            template:'<div class="me">{{message}}</div>',
+            data:function(){
+                return{
+                    message:'안녕하세요'
+                }
+            }
+        })*/
+        const myComp={
+            template:'<div class="me">{{message}}</div>',
+            data:function(){
+                return{
+                    message:'안녕하세요'
+                }
+            }
+        }
+        const vm1 = new Vue({
+            el:'#app1',
+            components:{
+                'my-comp':myComp
+            }
+        })
+        const vm2 = new Vue({
+            el:'#app2',
+            components:{
+                'my-comp':myComp
+            }
+        })
+        
+        
+        
+        /*Vue.component('my-component',{
+            template:'<div>전역 컴포넌트입니다.</div>'
+        })
+        new Vue({
+            el:'#app'
+        })
+        const cmp={
+            template:'<div>지역 컴포넌트 등록</div>'
+        }
+        new Vue({
+            el:'#app',
+            components:{
+                'my-local-component':cmp
+            }
+        })*/
+    </script>
+</body>
+</html>
+    <!-- 
+        전역 컴포넌트 : 한 번 등록하면 어느 인스턴스에서든지 사용 가능
+
+        Vue.component('컴포넌트 이름',{
+            컴포넌트 내용
+        })
+    -->
+    <!-- 
+        지역 컴포넌트 : 인스턴스에 components 속성을 추가하고 등록할 컴포넌트 이름과 내용을 정의
+                    새인스턴스를 생성할 때마다 등록을 해야함
+
+        new Vue({
+            components:{
+                '컴포넌트이름':컴포넌트내용
+            }
+        })
+    -->

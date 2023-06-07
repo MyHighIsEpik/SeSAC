@@ -1,0 +1,34 @@
+#wrap {
+  width: 100%;
+  position: relative;
+  min-width: 1400px;
+}
+
+.header {
+  width: 1400px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+h1 {
+  float: left;
+  padding-top: 40px;
+  padding-right: 80px;
+  padding-left: 80px;
+}
+
+.gnb {
+  float: left;
+  margin-top: 40px;
+}
+
+.gnb li {
+  float: left;
+  width: 200px;
+}
+
+.gnb a {
+  font-size: 18px;
+  font-weight: 600;
+}
+/*# sourceMappingURL=main_header.css.map */

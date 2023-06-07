@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,div,h3,input,img,dl,dt,dd{margin: 0;padding: 0;}
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: "Courier New", Courier, monospace;
+        }
+        h3{background-color: #d9d9d9; padding: 5px 0 5px 10px;}
+
+        input[type="button"]{
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #07c;
+            color: #fff;
+            border: none;
+        }
+        img{
+            width: 100%;
+        }
+        .wrap{width: 500px; margin: 50px auto; border: 1px solid #d9d9d9; padding: 1px;}
+        .btn{margin: 10px auto;}
+    </style>
+    
+    <!-- script태그 뒤에 type="text/javascript" 가 생략됨-->
+    <script>
+        function btn1(){
+            console.log(true)
+            var x=document.getElementsByTagName('h3')[0];
+            console.log(x)
+            x.style.backgroundColor="#07c";
+            x.style.color="#fff";
+            x.style.padding="10px";
+        }
+        function btn2(){
+            for(var i=0; i<3; i++){
+                var x=document.getElementsByTagName('dt');
+                x[i].style.fontWeight="bold";
+            }
+        }
+        function btn3(){
+            var x=document.getElementsByTagName('span')[0].style.backgroundColor="#07c";
+            var x=document.getElementsByTagName('strong')[0].style.backgroundColor="#07c";
+        }
+        function btn4(){
+            for(var i=0; i<6; i=i+2){
+                var x=document.getElementsByTagName('dd');
+                x[i].style.marginTop="20px";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box1">
+            <h3>NEW 새로워진 한줌 견과</h3>
+            <dl id="title1">
+                <dt>01.견과류도 산화가 된다.</dt>
+                <dd>
+                    기존 많은 중량의 견과류도 개봉한 뒤 맛이 떨어진 적이 있으시면 이젠 <span>하루한줌 </span>견과를 선택하세요.
+                </dd>
+                <dd>
+                    <img src="ex1/imgs1.png" alt="">
+                </dd>
+            </dl>
+            <dl id="title2">
+                <dt>02.1봉씩 낱개 포장</dt>
+                <dd>
+                    고소함을 씹으면 건강이 쑥쑥! <strong>하루필수영양소</strong>로 건강을 챙기세요.
+                </dd>
+                <dd>
+                    <img src="ex1/imgs2.png" alt="">
+                </dd>
+            </dl>
+            <dl id="title3">
+                <dt>03.한줌 견과 이렇게 드심면 좋아요.</dt>
+                <dd>
+                    <img src="ex1/imgs3.png" alt="">
+                </dd>
+            </dl>
+        </div>
+        <div class="btn">
+            <input type="button" value="h3" onclick="btn1()"/>
+            <input type="button" value="dt" onclick="btn2()" />
+            <input type="button" value="span/strong" onclick="btn3()">
+            <input type="button" value="dd" onclick="btn4()"/>
+        </div>
+    </div>
+</body>
+</html>

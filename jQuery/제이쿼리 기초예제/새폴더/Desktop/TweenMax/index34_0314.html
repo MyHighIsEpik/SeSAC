@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/TweenMax.js"></script>
+    <title>Document</title>
+    <style>
+        body, h2, div{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            margin: 10px;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+        .orange{
+            background-color: orange;
+        }
+        .gray{
+            background-color: gray;
+        }
+        .green{
+            background-color: green;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            /*
+                TweenMax.to(대상오브젝트, 시간, 속성)
+            */
+            TweenMax.to('h2.title',1,{
+                opacity:.3
+            })
+            TweenMax.to('.box',3,{
+                width:300
+            })
+            TweenMax.to('.green',3,{
+                opacity:.5,
+                rotation:360
+            })
+            TweenMax.to('.orange',3,{
+                width:500,
+                scale:.5
+            })
+            TweenMax.to('.gray',3,{
+                x:100,
+                y:100,
+                scale:2,
+                skewX:45,
+                rotation:180
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2 class="title">TweenMax.to()</h2>
+    <div class="box orange"></div>
+    <div class="box gray"></div>
+    <div class="box green"></div>
+</body>
+
+</html>

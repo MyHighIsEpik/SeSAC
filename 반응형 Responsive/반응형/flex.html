@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex 익히기</title>
+    <style>
+        @media all and (min-width:1200px){
+            .container{
+                height: 600px;
+                border: 2px solid #07c;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                align-items: stretch;
+                /*justify-content: space-between;*/
+                /*flex-direction: row;*/
+                /*flex-wrap: wrap-reverse;*/
+                /*align-items: stretch;*/
+            }
+            .container > div{
+                flex: 1;
+                border: 2px solid #333;
+                border-radius: 10px;
+
+                /*텍스트 중앙정렬*/
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        @media all and (min-width:780px) and (max-width:1200px){
+            .container{
+                height: 600px;
+                border: 2px solid red;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .container > div{
+                width: 350px;
+                border: 2px solid #333;
+                border-radius: 10px;
+
+                /*텍스트 중앙정렬*/
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        @media all and (min-width:360px) and (max-width:799px){
+            .container{
+                height: 600px;
+                border: 2px solid rgb(61, 184, 112);
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .container > div{
+                width: 90%;
+                margin: 10px;
+                border: 2px solid #333;
+                border-radius: 10px;
+
+                /*텍스트 중앙정렬*/
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .container .item:nth-of-type(1){
+
+            }
+
+            .container .item:nth-of-type(2){
+                order: 2;
+            }
+
+            .container .item:nth-of-type(3){
+                order: 0;
+            }
+
+            .container .item:nth-of-type(4){
+                order: 1;
+            }
+
+            .container .item:nth-of-type(5){
+                order: 3;
+            }
+
+            .container .item:nth-of-type(6){
+                order: 3;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- parent(container) : display, flex-flow(flex-direction, flex-wrap), justify-content, align-content, align-item -->
+    <!-- child(item) : order, flex(flex-grow, flex-shrink, flex-basis), align-self:center, stretch, flex-end, flex-start, baseline:문자 기준선으로 정렬,  -->
+    <div class="container">
+        <div class="item1">box1</div>
+        <div class="item2">box2</div>
+        <div class="item3">box3</div>
+        <div class="item4">box4</div>
+        <div class="item5">box5</div>
+        <div class="item6">box6</div>
+    </div>
+</body>
+</html>

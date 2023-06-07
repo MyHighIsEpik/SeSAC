@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body, div, h1, h2, h3, h4, ul, li, a, img, form, fieldset,
+legend, label, input, span, p, address
+{margin:0; padding:0;}
+
+img, fieldset{border:none;}
+
+a:link, a:visited
+{text-decoration:none;
+color:#333;}
+
+a:hover, a:active
+{text-decoration:underline;
+color:#333;}
+
+ul{list-style:none;}
+
+legend, .skip, label, caption
+{width:1px;
+height:1px;
+overflow:hidden;
+font-size:0;
+line-height:0;
+position:absolute;
+left:-999px;}
+#headerWrap
+{width:100%;
+position:relative;
+z-index:999;
+border-bottom:1px solid #e0dfdf}
+
+#headerBg
+{width:100%;
+background-color:#1a1a1a;
+height:45px;}
+
+#header
+{width:1200px;
+margin:0 auto;
+padding:5px 0;
+overflow:hidden;}
+
+#header h1{float:left;}
+
+
+.info_right
+{float:right;
+padding-top:8px;
+width:440px;}
+
+.user_info ul li
+{padding-right:20px;
+float:left;}
+
+.user_info ul li a
+{color:#fff;
+font-size:14px;}
+
+.infoimg
+{float:left;
+padding-right:20px;}
+
+
+
+/*gnb*/
+#gnb
+{width:1200px;
+margin:0 auto;
+overflow:hidden;}
+
+#gnb ul li
+{float:left;
+width:200px;
+padding:20px 0;
+text-align:center;
+background:url(../images/gnb_bar.gif) no-repeat 0 20px;}
+
+#gnb ul li:first-child
+{background:none;} 
+
+#gnb ul li a
+{font-size:18px;
+display:block;
+text-decoration:none;}
+
+
+
+#subWrap
+{width:100%;
+border:1px solid #e0dfdf;
+position:absolute;          /*position:absolute를 쓰면 아래처럼 위치의 값을 써줘야 합니다 left:0;   top:100px;  추가 */
+left:0;
+top:100px;
+background-color:#fff;
+display:none;}
+
+.ulWrap
+{width:1200px;
+margin:0 auto;
+overflow:hidden;
+height:280px;}
+
+.ulWrap ul
+{float:left;
+border-left:1px solid #c3c3c3;
+width:199.1px;
+height:280px;
+text-align:center;}
+
+.ulWrap ul li a
+{font-size:14px;
+display:block;
+padding:8px 0;}
+
+.ulWrap ul:first-child{border:none;}
+
+.on a{background:#f90;
+       display:block;
+       color:#fff;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

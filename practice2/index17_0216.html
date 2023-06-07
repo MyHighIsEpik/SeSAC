@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, h3, span, input, a, img, ul, li, p{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+        input, img{
+            vertical-align: middle;
+        }
+
+        .wrap{
+            width: 697px;
+            height: 326px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .wrap p{
+            position: absolute;
+            top: 45%;
+            z-index: 10;
+        }
+        .wrap .leftBtn{
+            left: 0;
+        }
+        .wrap .rightBtn{
+            right: 0;
+        }
+        .slide{
+            width: 4000px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .slide li{
+            float: left;
+        }
+        .btn{
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 697px;
+        }
+    </style>
+    <script>
+        var imgwidth=697;
+        var isnum=0;
+        var st;
+
+        st=setInterval(rolling, 2000)
+
+        function leftBtn(){
+            isnum--;
+            if(isnum<0){
+                isnum=4;
+            }
+            document.getElementById('slide').style.left=-(imgwidth * isnum)+'px'
+        }
+        function rightBtn(){
+            slide()
+        }
+
+        function rolling(){
+            slide()
+        }
+
+        function slide(){
+            isnum++;
+            if(isnum>4){
+                isnum=0;
+            }
+            document.getElementById('slide').style.left=-(imgwidth * isnum)+'px'
+        }
+        function stopBtn(){
+            clearInterval(st)
+        }
+        function playBtn(){
+            st=setInterval(rolling, 2000)
+        }
+
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <p class="leftBtn">
+            <a href="" onclick="leftBtn(); return false;"><img src="ex4/leftBtn.jpg" alt=""></a>
+        </p>
+        <ul class="slide" id="slide">
+            <li><a href=""><img src="ex4/img1.jpg" alt="" id="img"></a></li>
+            <li><a href=""><img src="ex4/img2.jpg" alt=""></a></li>
+            <li><a href=""><img src="ex4/img3.jpg" alt=""></a></li>
+            <li><a href=""><img src="ex4/img4.jpg" alt=""></a></li>
+            <li><a href=""><img src="ex4/img5.jpg" alt=""></a></li>
+        </ul>
+        <p class="rightBtn">
+            <a href="" onclick="rightBtn(); return false;"><img src="ex4/rightBtn.jpg" alt=""></a>
+        </p>
+        <div class="btn">
+            <a href="" onclick="stopBtn(); return false;"><img src="ex4/pause.png" alt=""></a>
+            <a href="" onclick="playBtn(); return false;"><img src="ex4/play-button.png" alt=""></a>
+        </div>
+    </div>
+</body>
+</html>

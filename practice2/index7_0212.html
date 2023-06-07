@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,div,h3,ul,li,a,form,input,button,table,thead,tfoot,tbody,tr,td,th,colgroup,col{
+            margin: 0;
+            padding: 0;
+        }
+        body,input,button{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        img{border: none;}
+        a{
+            text-decoration: none;
+            counter-reset: #222;
+        }
+        ul{
+            list-style: none;
+        }
+        input,img,button{vertical-align: middle;}
+
+        .boxwrap{
+            width: 600px;
+            margin: 50px auto;
+        }
+        .menuZone{
+            margin-bottom: 20px;
+        }
+        h3{text-align: center;
+            margin: 10px 0;
+        }
+        .menu{
+            overflow: hidden;
+        }
+        .menu li{
+            width: 150px;
+            float: left;
+        }
+        .menu li img{
+            width: 150px;
+        }
+        .menu li span{
+            display: block;
+            text-align: center;
+        }
+
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        thead th,
+        tfoot th{
+            background-color: rgb(126, 201, 255);
+            color: #fff;
+            border-top: 1px solid rgb(146, 146, 146);
+            height: 36px;
+        }
+        tbody th,
+        tbody td{
+            height: 28px;
+            border-top: 1px solid rgb(146, 146, 146);
+        }
+        tfoot th,
+        tfoot td{
+            border-top: 1px solid rgb(146, 146, 146);
+            border-bottom: 1px solid rgb(146, 146, 146);
+        }
+        td{
+            text-align: center;
+        }
+        button{
+            width: 100%;
+            background-color: #07c;
+            color: #fff;
+            border: none;
+            height: 26px;
+        }
+    </style>
+
+    <script>
+        function menu(){
+            var basic_menu=Number(document.getElementById('total').defaultValue);
+            for(var i=1; i<=4; i++){
+                var chkobj = document.getElementById('opt'+i);
+                if(chkobj.checked) basic_menu+=Number(chkobj.value);
+                document.getElementById('total').value=(basic_menu.toLocaleString());
+            }
+        }
+
+        function clear(){
+            document.getElementById('total').value=0
+        }
+    </script>
+</head>
+<body>
+    <div id="box" class="boxwrap">
+        <h3>할인가구</h3>
+        <div class="menuZone">
+            <ul class="menu">
+                <li><a href=""><img src="ex3/m_0000318737.jpg" alt=""><br/><span>슬라이딩 원목침대</span></a></li>
+                <li><a href=""><img src="ex3/m_0000320368.jpg" alt=""><br/><span>주니어 원목침대</span></a></li>
+                <li><a href=""><img src="ex3/m_0000320623.jpg" alt=""><br/><span>주니어 평상형침대</span></a></li>
+                <li><a href=""><img src="ex3/m_0000320626.jpg" alt=""><br/><span>포프트 원목침대</span></a></li>
+            </ul>
+        </div>
+        <form action="" method="post" name="frm">
+            <table>
+                <colgroup>
+                    <col width="50%">
+                    <col width="20%">
+                    <col width="30%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col">제품</th>
+                        <th scope="col">가격</th>
+                        <th scope="col">선택</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">합계</th>
+                        <td>
+                            <input type="text" name="total" id="total" value="0" readonly="readonly" class="total">원
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <th><label for="opt1">[무료배송]슬라이딩 원목침대</label></th>
+                        <td>194,000</td>
+                        <td><input type="checkbox" name="opt1" id="opt1" value="194000" onclick="menu(); return true;"/></td>
+                    </tr>
+                    <tr>
+                        <th><label for="opt2">[무료배송]주니어 원목침대</label></th>
+                        <td>248,000</td>
+                        <td><input type="checkbox" name="opt1" id="opt2" value="248000" onclick="menu(); return true;"/></td>
+                    </tr>
+                    <tr>
+                        <th><label for="opt3">[무료배송]주니어 평상형침대</label></th>
+                        <td>360,000</td>
+                        <td><input type="checkbox" name="opt1" id="opt3" value="360000" onclick="menu(); return true;"/></td>
+                    </tr>
+                    <tr>
+                        <th><label for="opt4">[무료배송]포프트 원목침대</label></th>
+                        <td>156,000</td>
+                        <td><input type="checkbox" name="opt1" id="opt4" value="156000" onclick="menu(); return true;"/></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="reset">다시선택</button>
+        </form>
+    </div>
+</body>
+</html>

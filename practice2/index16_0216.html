@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, h3, span, input, a, img, ul, li, p{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+        input, img{
+            vertical-align: middle;
+        }
+
+        .bannerWrap{
+            width: 1050px;
+            border: 1px solid #d9d9d9;
+            margin: 50px auto;
+            position: relative;
+        }
+        .btn{
+            /*margin: 0 5px 5px 0;
+            text-align: right;*/
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+    <script>
+        var st;
+        var num=1;
+        function set(){
+
+            st=setInterval(rolling, 3000)
+
+            var btnStop=document.getElementById('stop');
+            var btnPlay=document.getElementById('play');
+
+            btnStop.onclick=function(){
+                clearInterval(st);
+                return false;
+            }
+            btnPlay.onclick=function(){
+                st=setInterval(rolling, 3000)
+                return false;
+            }
+            /* 이미지 위에 마우스를 올리거나 내림으로써 제어할 때
+            var pic=document.getElementById('pic');
+            pic.onmouseover=function(){
+                clearInterval(st);
+                return false;
+            }
+            pic.onmouseout=function(){
+                st=setInterval(rolling, 1000)
+            }
+            */
+        }
+        function rolling(){
+            num++;
+            var pic=document.getElementById('pic')
+            if(num>5){num=1}
+            pic.src="ex4/mainbig" + num +"_mall.jpg"
+        }
+        window.onload=set;
+    </script>
+</head>
+<body>
+    <div class="bannerWrap">
+        <p class="btn">
+            <a href="" id="stop"><img src="ex4/btn_pause.gif" alt=""></a>
+            <a href="" id="play"><img src="ex4/btn_start.gif" alt=""></a>
+        </p>
+        <div class="panel">
+            <img src="ex4/mainbig1_mall.jpg" alt="" id="pic">
+        </div>
+    </div>
+</body>
+</html>

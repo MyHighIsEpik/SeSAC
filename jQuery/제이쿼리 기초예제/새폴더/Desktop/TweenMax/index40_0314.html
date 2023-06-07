@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*body{
+            background-color: #333;
+            color: #fff;
+        }
+        div{
+            text-align: center;
+            font-size: 30px
+        }*/
+        body, ul, li{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #000;
+        }
+        .text{
+            list-style: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .text li{
+            display: inline-block;
+            margin-right: 30px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 36px;
+            color: #fff;
+            font-weight: 600;
+            opacity: 1;
+            transition: all 2.5s ease;
+        }
+        .text.hidden{
+            opacity: 0;
+        }
+        .text li:last-child{
+            margin-right: 0;
+        }
+
+        .text.hidden li:nth-child(1){
+            transform: translateX(-200px) translateY(-200px);
+        }
+        .text.hidden li:nth-child(2){
+            transform: translateX(-20px) translateY(100px);
+        }
+        .text.hidden li:nth-child(3){
+            transform: translateX(-150px) translateY(80px);
+        }
+        .text.hidden li:nth-child(4){
+            transform: translateX(30px) translateY(200px);
+        }
+        .text.hidden li:nth-child(5){
+            transform: translateX(240px) translateY(-250px);
+        }
+        .text.hidden li:nth-child(6){
+            transform: translateX(300px) translateY(200px);
+        }
+        .text.hidden li:nth-child(7){
+            transform: translateX(-250px) translateY(-250px);
+        }
+        .text.hidden li:nth-child(8){
+            transform: translateX(400px) translateY(0px);
+        }
+        .text.hidden li:nth-child(9){
+            transform: translateX(500px) translateY(0px);
+        }
+    </style>
+</head>
+<body>
+    <!--<div id="text"></div>
+    <script>
+        var i=0;
+        var txt="인터넷의 새로운 시작! 네이버 웨일로 차원이 다른 웹서핑을 경험하세요"
+        function typeWriter(){
+            if(i<txt.length){
+                document.getElementById("text").innerHTML+=txt.charAt(i)
+                i++;
+                setTimeout(typeWriter,200)
+            }
+        }
+        window.onload=typeWriter;
+    </script>-->
+    <ul class="text hidden">
+        <li>W</li>
+        <li>E</li>
+        <li>L</li>
+        <li>C</li>
+        <li>O</li>
+        <li>M</li>
+        <li>E</li>
+        <li>!</li>
+        <li>!</li>
+    </ul>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('.text').removeClass('hidden')
+            },500)
+        })
+    </script>
+</body>
+
+</html>

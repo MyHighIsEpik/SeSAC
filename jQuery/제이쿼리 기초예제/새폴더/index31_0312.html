@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body, div, ul, li, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+        .wrap{
+            width: 1600px;
+            height: 700px;
+            background-color: #f1f1f1;
+            position: relative;
+            box-sizing: border-box;
+            margin: 50px auto;
+            padding-top: 30px;
+            overflow: hidden;
+        }
+        .btn{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            border-top: 1px solid #222;
+            border-left: 1px solid #222;
+            position: absolute;
+            top: 50%;
+            z-index: 999;
+        }
+        .btn a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-indent: -999em;
+        }
+        .leftBtn{
+            left: 50px;
+            margin-top: -50px;
+            transform: rotate(-45deg);
+            display: none;
+        }
+        .rightBtn{
+            right: 50px;
+            margin-top: -50px;
+            transform: rotate(135deg);
+            display: none;
+        }
+        .product_list{
+            width: 1260px;
+            position: relative;
+            margin: 50px auto 0 auto;
+        }
+        .product_list li{
+            width: 315px;
+            float: left;
+            font-size: 16px;
+            border: 1px solid #242323;
+            padding: 10px 0;
+            text-align: center;
+            border-left: none;
+            border-bottom: none;
+            box-sizing: border-box;
+        }
+        .product_list li:first-child{
+            border-left: 1px solid #242323;
+        }
+        .product{
+            width: 1260px;
+            height: 495px;
+            position: absolute;
+            top: 60px;
+            left: 0;
+        }
+        
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.product_list li:first a').css('color','#d90879')
+            $('.product_list li:not(:eq(0)) > .product').hide();
+
+            $('.wrap').on({
+                mouseenter:function(){
+                    $('.product').mousemove(function(event){
+                        var pageCode=event.pageX-$('.product').offset().left;
+                        if(pageCode>630){
+                            $('.rightBtn').css('display','block')
+                            $('.leftBtn').css('display','none')
+                        }else{
+                            $('.rightBtn').css('display','none')
+                            $('.leftBtn').css('display','block')
+                        }
+                    })
+                },
+                mouseleave:function(){
+                    $('.rightBtn').css('display','none')
+                    $('.leftBtn').css('display','none')
+                }
+            })
+
+            var indexNum=0;
+            $('.product_list li a').on({
+                click:function(e){
+                    e.preventDefault();
+                    indexNum=$(this).parent().index();
+                    $('.product').hide();
+                    //$('.product_list li').eq(indexNum).find('.product').show()
+                    $(this).next('.product').show()
+                    $('.product_list  > li > a').css('color','#222')
+                    $(this).css('color','#d90879')
+                },
+                mouseenter:function(){
+                    $('.rightBtn').css('display','none')
+                    $('.leftBtn').css('display','none')
+                }
+            })
+
+            $('.leftBtn').on({
+                click:function(e){
+                    e.preventDefault();
+                    var temp=indexNum-1;
+                    if(temp<0){
+                        temp=3
+                    }
+                    $('.product_list > li > a').eq(temp).trigger('click');
+                }
+            })
+            
+            $('.rightBtn').on({
+                click:function(){
+                    e.preventDefault();
+                    var temp=indexNum+1;
+                    if(temp>3){
+                        temp=0
+                    }
+                    $('.product_list > li > a').eq(temp).trigger('click');
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="product_list">
+            <li><a href="">자녀손수</a>
+                <div class="product">
+                    <img src="offset_img/product1.png" alt="">
+                </div>
+            </li>
+            <li><a href="">반려동물</a>
+                <div class="product">
+                    <img src="offset_img/product2.png" alt="">
+                </div>
+            </li>
+            <li><a href="">건강운동</a>
+                <div class="product">
+                    <img src="offset_img/product3.png" alt="">
+                </div>
+            </li>
+            <li><a href="">나만의공간</a>
+                <div class="product">
+                    <img src="offset_img/product4.png" alt="">
+                </div>
+            </li>
+        </ul>
+        <span class="leftBtn btn"><a href="">왼쪽</a></span>
+        <span class="rightBtn btn"><a href="">오른쪽</a></span>
+    </div>
+</body>
+</html>

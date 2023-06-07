@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach</title>
+    <style>
+        body, div, h3, ul, li, a, img, h1, p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+        img{border: none;}
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+        html{
+            font-size: 12px;
+        }
+
+        .cont{
+            width: 400px;
+            margin: 50px auto;
+            position: relative;
+        }
+        .tab > li{
+            float: left;
+            width: 130px;
+            height: 30px;
+            background-color: #222;
+            line-height: 30px;
+        }
+        .tab > li > a{
+            color: #fff;
+            display: block;
+            text-align: center;
+        }
+        .tab > li:nth-of-type(1){
+            border-radius: 5px 0 0 5px;
+        }
+        .tab > li:nth-of-type(2){
+            border-radius: 0px 5px 5px 0;
+        }
+        .tab .select{
+            background-color: #07c;
+        }
+        .tabMenu{
+            position: absolute;
+            top: 35px;
+            left: 0;
+            display: none;
+        }
+        .tab > li:first-child > ul{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <article class="cont">
+        <ul class="tab">
+            <li class="select"><a href="" onclick="return false;">gallery</a>
+            <ul class="tabMenu">
+                <li><a href="">javascript 입니다</a></li>
+                <li><a href="">javascript 입니다</a></li>
+                <li><a href="">javascript 입니다</a></li>
+                <li><a href="">javascript 입니다</a></li>
+                <li><a href="">javascript 입니다</a></li>
+            </ul>
+            </li>
+
+            <li ><a href="" onclick="return false;">jquery</a>
+                <ul class="tabMenu">
+                    <li><a href="">jquery 입니다</a></li>
+                    <li><a href="">jquery 입니다</a></li>
+                    <li><a href="">jquery 입니다</a></li>
+                    <li><a href="">jquery 입니다</a></li>
+                    <li><a href="">jquery 입니다</a></li>
+                </ul>
+                </li>
+        </ul>
+    </article>
+    <script>
+        const tabBtn=document.querySelectorAll('.tab>li');
+        const tabMenu=document.querySelectorAll('.tabMenu');
+        const tabChange=function(){
+            const selector=this;
+            tabBtn.forEach(function(elem, index){
+                if(elem == selector){
+                    elem.classList.add('select');
+                    tabMenu[index].style.display="block";
+                }else{
+                    elem.classList.remove('select');
+                    tabMenu[index].style.display="none";
+                }
+            })
+
+        }
+
+        for(const btn of tabBtn){
+            btn.addEventListener('click', tabChange);
+        }
+    </script>
+</body>
+</html>

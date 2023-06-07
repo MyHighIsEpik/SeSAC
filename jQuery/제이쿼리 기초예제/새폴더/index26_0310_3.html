@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오/스크롤내리면 나타나는효과</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body, div, nav, ul, li, h1, h2, strong, a{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        #wrapper{
+            width: 100%;
+            position: relative;
+        }
+        #nav{
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            z-index: 10;
+            transform: translateY(-50%);
+        }
+        #nav li{
+            position: relative;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            margin: 10px;
+            transition: box-shadow 03.s ease;
+        }
+        #nav li a{
+            background-color: rgba(255, 255, 255, 0.7);
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: background-color 0.3s ease;
+            text-indent: -999em;
+            border-radius: 100%;
+        }
+        #nav li.active a{
+            transform: scale(0.4);
+        }
+
+
+        #contents{
+            text-align: center;
+            color: #fff;
+        }
+        #contents div{
+            height: 100vh;
+            line-height: 100vh;;
+        }
+        #contents div h2{
+            font-size: 90px;
+            font-weight: 100;
+            transition: all 0.6s ease-in-out;
+        }
+        .section1 h2{opacity: 0; transform: translate(0,0);}
+        .section2 h2{opacity: 0; transform: translate(0,-30%);}
+        .section3 h2{opacity: 0; transform: translate(-30%,0);}
+        .section4 h2{opacity: 0; transform: translate(30%,0);}
+        .section5 h2{opacity: 0; transform: rotate(45deg);}
+        
+        #contents div.show h2{transform: none;}
+        .section1.show h2{opacity: 1;}
+        .section2.show h2{opacity: 1;}
+        .section3.show h2{opacity: 1;}
+        .section4.show h2{opacity: 1;}
+        .section5.show h2{opacity: 1;}
+
+        .section1{background-color: #f2606f;}
+        .section2{background-color: #2cb86b;}
+        .section3{background-color: #2e82b3;}
+        .section4{background-color: #a0b42b;}
+        .section5{background-color: #a52f9f;}
+        
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav id="nav">
+            <ul>
+                <li class="active"><a href="">PORTFOLIO1</a></li>
+                <li><a href="">PORTFOLIO2</a></li>
+                <li><a href="">PORTFOLIO3</a></li>
+                <li><a href="">PORTFOLIO4</a></li>
+                <li><a href="">PORTFOLIO5</a></li>
+            </ul>
+        </nav>
+        <div id="contents">
+            <div class="section1">
+                <h2>
+                    PORTFOLIO <strong>HTML4</strong>
+                </h2>
+            </div>
+            <div class="section2">
+                <h2>
+                    PORTFOLIO <strong>HTML5</strong>
+                </h2>
+            </div>
+            <div class="section3">
+                <h2>
+                    PORTFOLIO <strong>MOBILE DESIGN</strong>
+                </h2>
+            </div>
+            <div class="section4">
+                <h2>
+                    PORTFOLIO <strong>RESPONSIVE WEB DESIGN</strong>
+                </h2>
+            </div>
+            <div class="section5">
+                <h2>
+                    PORTFOLIO <strong>BOOTSTRAP</strong>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function(){
+            var nav=$('#nav ul li');
+            var cont=$('#contents > div');
+
+            nav.click(function(e){
+                e.preventDefault();
+                var target=$(this);
+                var index=target.index();
+
+                //console.log(index)
+                var section=cont.eq(index);
+                var offset=section.offset().top;
+                $('html, body').animate({
+                    scrollTop:offset
+                },600,'easeInOutExpo')
+            })
+
+            $(window).scroll(function(){
+                var wScroll=$(this).scrollTop();
+                //console.log(wScroll)
+                for(var i=0; i<cont.length; i++){
+                    if(wScroll>=cont.eq(i).offset().top){
+                        nav.removeClass('active');
+                        nav.eq(i).addClass('active');
+                    }
+                }
+
+                for(var i=0; i<cont.length; i++){
+                    if(wScroll>=cont.eq(i).offset().top -$(window).height()/3){
+                        cont.eq(i).addClass('show')
+                    }else{
+                        cont.eq(i).removeClass('show')
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>

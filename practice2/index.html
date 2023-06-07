@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,div,h3,input,img{margin: 0;padding: 0;}
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: "Courier New", Courier, monospace;
+        }
+        h3{background-color: #d9d9d9; padding: 5px 0 5px 10px;}
+
+        input[type="button"]{
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #07c;
+            color: #fff;
+            border: none;
+        }
+
+        .wrap{width: 500px; margin: 50px auto; border: 1px solid #d9d9d9; padding: 1px;}
+        .text{
+            background-color: #fff;
+            border: 1px solid #d9d9d9;
+            margin: 10px 3px;
+            padding: 5px 5px;
+        }
+    </style>
+    <!-- script태그 뒤에 type="text/javascript" 가 생략됨-->
+    <script>
+        function moviPic(num){
+            document.getElementById('pic').src="ex1/movie"+num+".jpg"
+        }
+        function commentAlign(value, background){
+            document.getElementById('comment').style.backgroundColor=background;
+            document.getElementById('comment').align=value;
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <h3>도둑들</h3>
+        <div>
+            <img src="ex1/movie1.jpg" alt="" width="500" height="400" id="pic"/>
+        </div>
+        <input type="button" value="영화1" onclick="moviPic(1)"/>
+        <input type="button" value="영화2" onclick="moviPic(2)"/>
+        <input type="button" value="영화3" onclick="moviPic(3)"/>
+        <div class="text" id="comment">
+            한 팀으로 활동 중인 한국의 도둑 뽀빠이와 예니콜, 씹던껌, 잠파노. 미술관을 터는데 멋지게 성공한 이들은 뽀빠이의 과거 파트너였던 마카오박이 제안한 홍콩에서의 새로운 계획을 듣게 된다. 여기에 마카오박이 초대하지 않은 손님, 감옥에서 막 출소한 금고털이 팹시가 합류하고 5명은 각자 인생 최고의 반전을 꿈꾸며 홍콩으로 향한다.
+        </div>
+        <input type="button" value="left" onclick="commentAlign('left', '#fcf');"/>
+        <input type="button" value="center" onclick="commentAlign('center', '#0cf')"/>
+        <input type="button" value="right" onclick="commentAlign('right', '#0c6')"/>
+    </div>
+</body>
+</html>

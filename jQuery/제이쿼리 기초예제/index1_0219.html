@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body, div, ul, li, a, img, p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{text-decoration: none;}
+        img{
+            border: none;
+            vertical-align: middle;
+        }
+        div, ul, li, span, strong, em{
+            padding: 10px;
+            border: 1px solid #d9d9d9;
+            display: block;
+        }
+
+        .slide{
+            width: 300px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            $('li').parent().css({
+                'border': '2px solid red'
+            })
+            $('span').next().css({
+                'border':'2px solid green'
+            })
+            $('span').prev().css({
+                'border':'2px solid orange'
+            })
+            $('li').children().css({
+                'color':'blue'
+            })
+            $('div').find('.span').css({
+                'background':'green'
+            })
+
+            $('.textBtn').on('click',function(){
+                $('.text').text('반갑습니다')
+            })
+
+            $('.htmlBtn').on('click',function(){
+                $('.html').html('<strong>확인했습니다</strong>')
+            })
+
+            $('.valBtn').on('click',function(){
+                $('.it').val('잘못된 번호 입니다.')
+            })
+
+            $('.appendBtn').on('click', function(){
+                $('ol').append($('li:first'))
+            })
+            
+            $('.prependBtn').on('click', function(){
+                $('ol').prepend($('li:last'))
+            })
+            
+            $('.afterBtn').on('click', function(){
+                $('ol').after($('<p>ol의 이후에 삽입됩니다</p>'))
+            })
+            
+            $('.beforeBtn').on('click', function(){
+                $('ol').before($('<p>ol의 이전에 삽입됩니다</p>'))
+            })
+
+            $('.slideUp').on('click', function(){
+                $('.slide').slideUp(2000)
+            })
+
+            $('.slideDown').on('click', function(){
+                $('.slide').slideDown(2000)
+            })
+
+            $('.slideToggle').on('click', function(){
+                $('.slide').slideToggle(2000)
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- find(): 특정 문서 객체의 하위에 위치하는 문서 객체를 선택(후손) 
+        parent(): 선택한 요소의 부모요소를 선택
+        parents(): 선택한 요소의 조상요소를 선택
+        next(): 선택한 요소의 다음요소를 선택
+        prev(): 선택한 요소의 이전 요소를 선택
+        children(): 선택한 요소의 자식요소를 선택
+
+        text(): 선택한 요소에 포함하는 텍스트를 반환하거나 새 텍스트로 변환
+        html(): 선택한 요소의 하위요소를 반환하거나 새 요소로 변환
+        val(): 일치하는 요소의 value 속성값을 리턴하거나 값을 설정
+
+        append(): 마지막에 자식 노드로 추가
+        prepend(): 시작에 자식 노드로 추가
+        after(): 뒤에 추가
+        before(): 앞에 추가
+
+        slideUp(): 슬라이딩 하여 사라지게
+        slideDown(): 슬라이딩 하여 나타나게
+        slideToggle(): slideUp + slideDown
+    -->
+
+    <div> parents
+        <ul> parent
+            <li>
+                <strong>li의 자식요소</strong>
+                <span class="span">li의 자식요소</span>
+                <em>li의 자식요소</em>
+            </li>
+        </ul>
+        <br/><br/>
+        <p class="text">1.안녕하세요</p>
+        <p class="html">2.버튼을 누르세요</p>
+        <input type="text" class="it" value="인증번호를 입력하세요">
+        <br/><br/>
+        <button class="textBtn">text()</button>
+        <button class="htmlBtn">html()</button>
+        <button class="valBtn">val()</button>
+
+        <ol>
+            <li class="liList">첫번째 요소</li>
+            <li class="liList">두번째 요소</li>
+            <li class="liList">세번째 요소</li>
+        </ol>
+        <button class="appendBtn">append</button>
+        <button class="prependBtn">prepend</button>
+        <button class="afterBtn">after</button>
+        <button class="beforeBtn">before</button>
+    </div>
+    
+    <div class="slide">
+    </div>
+    <button class="slideUp">slideUp</button>
+    <button class="slideDown">slideDown</button>
+    <button class="slideToggle">slideToggle</button>
+</body>
+</html>

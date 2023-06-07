@@ -1,0 +1,274 @@
+$wrapWidth:100% !global;
+$contWidth:1400px !global;
+$rel:relative !global;
+$fl:left !global;
+.container{
+    position: $rel;
+    width: $wrapWidth;
+}
+.visual_wrap{
+    position: $rel;
+    width: $wrapWidth;
+    background: linear-gradient(180deg, rgba(209,208,208,1) 0%, rgba(227,227,227,1) 100%);
+}
+.visual{
+    position: $rel;
+    width: $contWidth;
+    height: 700px;
+    margin: 0 auto;
+}
+$slides : (slider1, slider2, slider3);
+.visual_ul {
+    li {
+        width: 1920px;
+        height: 700px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    @each $slide in $slides {
+        $index: index($slides, $slide);
+        li:nth-child(#{$index}){
+            background: url(../images/#{$slide}.jpg) 0 0 no-repeat;
+        }
+    }
+}
+
+@mixin v-text {
+    position: absolute;
+    top: 100px;
+    left: 330px;
+    .tit {
+        margin: {
+            bottom: 30px
+        };
+        font: {
+            size: 60px;
+            weight: 800;
+            family : sans-serif;
+        }
+    }
+    & span{
+        font: {
+            weight: 300;
+            size: 60px;
+        }
+        color: #333;
+    }
+    .txt {
+        font: {
+            size: 20px;
+            weight: 200;
+        }
+        margin: {
+            bottom: 150px;
+        };
+    }
+    .btn {
+        border: 1px solid rgb(78, 78, 78);
+        padding: 15px;
+        text: {
+            align: center;
+        }
+        font: {
+            size: 20px
+        }
+    }
+}
+.visual_text{
+    @include v-text;
+}
+.page {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    //text-indent: -9999rem;
+    transform: translateX(-50%);
+
+    a{
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        border: 2px solid #fff;
+        display: inline-block;
+        margin-right: 15px;
+        text-indent: -9999rem;
+    }
+    .on{
+        background-color: #fff;
+    }
+}
+
+@mixin brand_box($w, $h, $p:relative) {
+    width: if(unitless($w),#{$w}px, $w);
+    height: if(unitless($h),#{$h}px, $h);
+    $p:position;
+    float: left;
+    margin: 0 50px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+}
+.section1{
+    position: $rel;
+    width: $wrapWidth;
+    padding: 100px 0;
+    background-color: rgba(240, 240, 240, 1);
+
+    .section_list{
+        position: $rel;
+        width: $contWidth;
+        margin: 0 auto;
+        
+        .brand{
+            margin-bottom: 50px;
+            overflow: hidden;
+
+            .brand_box{
+                @include brand_box(600, 250, relative);
+                .mcontent{
+                    float: left;
+                    margin-right: 10px;
+                }
+                .brand_tit{
+                    font-size: 24px;
+                    margin: 30px 0;
+                    position: relative;
+                }
+                .brand_tit::after{
+                    content: '';
+                    position: absolute;
+                    left: 280px;
+                    top: 40px;
+                    width: 50px;
+                    height: 2px;
+                    background-color: rgb(117, 117, 117);
+                }
+                .brnad_txt{
+                    color: #999;
+                    line-height: 1.5;
+                    margin: 30px 0 50px;
+                }
+                .brand_btn{
+                    float: right;
+                    margin-right: 30px;
+                    border: 1px solid rgb(204, 204, 204);
+                    padding: 5px 10px;
+                }
+            }
+        }
+    }
+}
+
+.prmovie{
+    background: url(../images/bg_movie.jpg) no-repeat center center/ cover;
+    height: 277px;
+    position: relative;
+    text-align: center;
+    padding-top: 60px;
+    box-sizing: border-box;
+
+    &::after{
+        content: '';
+        background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+}
+
+@mixin notice_box($w, $h, $p:relative) {
+    width: if(unitless($w),#{$w}px, $w);
+    height: if(unitless($h),#{$h}px, $h);
+    $p:position;
+    float: left;
+    background-color: #fff;
+
+    h3{
+        font: {
+            size: 24px;
+            weight: 500;
+        }
+        margin-bottom: 15px;
+    }
+}
+
+.notice{
+    position: relative;
+    margin: 50px auto;
+    width: $contWidth;
+    overflow: hidden;
+
+    .noticeBox{
+        @include notice_box(700, 300, relative)
+    }
+    .news_list{
+        width: 500px;
+        li{
+            line-height: 50px;
+            height: 50px;
+            border-bottom: 1px solid #d9d9d9;
+
+            .date{
+                float: right;
+            }
+        }
+    }
+    .customer{
+        text-align: center;
+        .call{
+            font: {
+                size: 40px;
+            }
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 20px;
+
+            &::after{
+                content: '';
+                display: block;
+                width: 50px;
+                height: 1px;
+                background-color: #999;
+                position: absolute;
+                left: 50%;
+                bottom: 10px;
+                transform: translateX(-50%);
+            }
+        }
+        .cus_btn{
+            border: 1px solid #d9d9d9;
+            width: 300px;
+            height: 40px;
+            line-height: 40px;
+            margin: 30px auto;
+
+            a{
+                display: block;
+            }
+        }
+
+        $icons: (icon1, icon2, icon3, icon4);
+        .icon {
+            li {
+                width: 26px;
+                height: 26px;
+                display: inline-block;
+                margin-right: 10px;
+                a{
+                    text-indent: -999rem;
+                    display: inline-block;
+                }
+            }
+            @each $icon in $icons{
+                $index:index($icons, $icon);
+                li:nth-child(#{$index}){
+                    background: url(../images/#{$icon}.jpg) 0 0 no-repeat;
+                }
+            }
+        }
+    }
+}

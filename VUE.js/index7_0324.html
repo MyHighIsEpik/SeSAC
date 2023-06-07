@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        .parent{
+            width: 200px;
+            height: 200px;
+            background-color: #07c;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <!-- 이벤트 버블링 : 자식요소를 선택했을 때 부모와 자식을 동시에 호출 -->
+    <div id="app">
+        <div class="parent" @click="clickHandler">
+            <div class="child" @click="clickHandler"></div>
+        </div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            methods:{
+                clickHandler(event){
+                    console.log(event.currentTarget.className)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

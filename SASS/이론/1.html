@@ -1,0 +1,21 @@
+css -> 웹에서 동작
+sass(scss).less.stylus ->전처리기 
+
+컴파일러가 필요(Koala, vc부가기능)
+
+sass
+{} ; 없음
+
+mixins 기능이 아닌 단축구문으로 구현
+=border-radius($radius)
+.box
++border-radius(10px)
+
+
+
+
+scss
+{} ; 있음
+mixins 구문으로 구현
+@mixin border-radius($radius)
+.box(@include border-radius(10px))

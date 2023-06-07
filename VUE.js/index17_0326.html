@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@4.0.5/dist/vue-router.global.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+
+    <title>뷰라우터</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+            margin-right: 30px;
+        }
+        a:hover{
+            text-decoration: underline;
+            color: #07c;
+        }
+        .page{
+            text-align: center;
+            font-size: 40px;
+            margin-top: 50px;
+        }
+        .wrap{
+            width: 1200px;
+            margin: 50px auto;
+        }
+        .btn{
+            padding: 20px;
+            background-color: tomato;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 뷰라우터
+        SPA: 페이지를 이용할 때마다 서버에 웹페이지를 요청하는 것이 아니고 미리 해당 페이지를 받아놓고 페이지 이동 시에 클라이언트
+            라우팅을 이용하여 화면을 갱신하는 패턴을 적용한 애플리케이션(AJAX) -> 화면 간 전환이 매끄럽고 빠르게 조작할 수 있다.
+        라우팅: 웹페이지 간의 이동 방법
+        뷰라우터:
+            <router-link to="url 값"> : 페이지 이동태그, 화면에서 a 표시되면 클릭
+            <router-view> : 페이지 표시 태그
+    -->
+    <div id="app">
+        <div class="wrap">
+            <router-link to="/main" class="btn">mainPage로 이동</router-link>
+            <router-link to="/sub" class="btn">subPage로 이동</router-link>
+        </div>
+        <router-view></router-view>
+    </div>
+
+    <script>
+        const main={
+            template:'<div class="page">main-page입니다.</div>'
+        }
+        const sub={
+            template:'<div class="page">sub-page입니다.</div>'
+        }
+        const routes=[
+            {
+                path:'/main',
+                component:main
+            },
+            {
+                path:'/sub',
+                component:sub
+            }
+        ]
+        const router=new VueRouter({
+            routes
+        })
+        new Vue({
+            router
+        }).$mount('#app')
+    </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, h3, span, input, a, img, ul, li, p{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+        input, img{
+            vertical-align: middle;
+        }
+
+        .wrap{
+            width: 697px;
+            height: 326px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .wrap p{
+            position: absolute;
+            top: 45%;
+            z-index: 10;
+        }
+        .wrap .leftBtn{
+            left: 0;
+        }
+        .wrap .rightBtn{
+            right: 0;
+        }
+        .slide{
+            width: 4000px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .slide li{
+            float: left;
+        }
+        .btn{
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 697px;
+        }
+        .pageNum{
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 3px 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var imgwidth=697;
+            var isnum=1;
+            var st;
+
+            var leftBtn=document.getElementsByClassName('leftBtn')[0].getElementsByTagName('a')[0]
+            var rightBtn=document.getElementsByClassName('rightBtn')[0].getElementsByTagName('a')[0]
+            var stopBtn=document.getElementsByClassName('stopBtn')[0]
+            var playBtn=document.getElementsByClassName('playBtn')[0]
+
+            leftBtn.onclick=function(){
+                clearInterval(st)
+                isnum--;
+                if(isnum<1){
+                    isnum=5;
+                }
+                photo(isnum)
+                return false;
+            }
+            rightBtn.onclick=function(){
+                clearInterval(st)
+                isnum++;
+                if(isnum>5){
+                    isnum=1;
+                }
+                photo(isnum)
+                return false;
+            }
+            stopBtn.onclick=function(){
+                clearInterval(st)
+                return false;
+            }
+            playBtn.onclick=function(){
+                clearInterval(st)
+                st=setInterval(rolling, 2000)
+                return false;
+            }
+
+            function photo(num){
+                var pic=document.getElementById('slide')
+                pic.src="ex4/img" + num + ".jpg";
+
+                var page=document.getElementsByClassName('pageNum')[0];
+                page.getElementsByClassName('num')[0].innerHTML=num;
+            }
+            function rolling(){
+                isnum++;
+                if(isnum>5){
+                    isnum=1;
+                }
+                photo(isnum)
+            }
+            st=setInterval(rolling, 2000)
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <p class="leftBtn">
+            <a href=""><img src="ex4/leftBtn.jpg" alt=""></a>
+        </p>
+        <ul class="slide">
+            <li><a href=""><img src="ex4/img1.jpg" alt="" id="slide"></a></li>
+        </ul>
+        <p class="rightBtn">
+            <a href=""><img src="ex4/rightBtn.jpg" alt=""></a>
+        </p>
+        <div class="btn">
+            <a href="" class="stopBtn"><img src="ex4/pause.png" alt=""></a>
+            <a href="" class="playBtn"><img src="ex4/play-button.png" alt=""></a>
+            <span class="pageNum"><span class="num">1</span>/5</span>
+        </div>
+    </div>
+</body>
+</html>

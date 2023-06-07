@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면을 덮는 팝업창 띄우기</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pop.css">
+    <script>
+        $(document).ready(function(){
+            $('.popupBtn').on('click',function(e){
+                e.preventDefault();
+                $('body').append('<div id="shadow"></div>')
+                $('#shadow').css({
+                    width:'100%',
+                    height:'100%',
+                    position:'fixed',
+                    left:'0',
+                    top:'0',
+                    background:'url(img/modal-bg.png)',
+                    opacity:'50%'
+                })
+                $('#shadow').on('click',function(e){
+                    e.preventDefault();
+                    $('#closeBtn').trigger('click');
+                })
+
+                $('#layerPop').css({
+                    position:'fixed',
+                    top:'50px',
+                    left:'50%',
+                    marginLeft:'-20px'
+                })
+                $('#layerPop').show();
+            })
+            $('#closeBtn').on('click',function(e){
+                e.preventDefault();
+                $('#layerPop').hide();
+                $('#shadow').remove();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <a href="" class="popupBtn">
+            <img src="img/main.jpg" alt="">
+        </a>
+    </div>
+    <div class="layerPop" id="layerPop">
+        <p class="title">
+            <img src="img/tit_popup02.gif" alt="">
+        </p>
+        <div class="popContent">
+            동의하십니까?
+            <p class="popBtnShort">
+                <a href="" class="btn_default01">Yes</a>
+                <a href="" class="btn_default02">No</a>
+            </p>
+            <a href="" class="closeBtn" id="closeBtn">
+                <img src="img/btn_layerClose.png" alt="">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

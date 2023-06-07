@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>로그인/패스워드</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <user-login></user-login>
+    </div>
+
+    <script type="text/x-template" id="login-template">
+        <div id="login-template">
+            <div>
+                <input type="text" placeholder="로그인ID" v-model="userId">
+            </div>
+            <div>
+                <input type="password" placeholder="패스워드" v-model="password">
+            </div>
+            <button @click="login">로그인</button>
+        </div>
+    </script>
+
+    <script>
+        Vue.component('user-login',{
+            template:'#login-template',
+            data(){
+                return{
+                    userId:'',
+                    password:''
+                }
+            },
+            methods:{
+                login(){
+                    auth.login(this.userId,this.password)
+                }
+            }
+        })
+        const auth={
+            login(id,pass){
+                window.alert('usderId:' + id + '\n' + 'password:'+ pass)
+            }
+        }
+        new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>

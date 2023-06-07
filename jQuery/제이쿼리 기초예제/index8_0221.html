@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body, div, form, fieldset, label, legend, ul, li, p, select, input, h3, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        body, select, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        ul{
+            list-style: none;
+        }
+        select, input{
+            vertical-align: middle;
+        }
+        a{text-decoration: none;}
+        img, fieldset{border: none;}
+
+        .wrap{
+            position: relative;
+            width: 720px;
+            margin: 50px 0 0 100px;
+        }
+
+        .rolling{
+            position: relative;
+            width: 720px;
+            height: 340px;
+        }
+        .rolling ul{
+            width: 4000px;
+            position: absolute;
+            height: 340px;
+        }
+        .rolling li{
+            float: left;
+            width: 720px;
+            height: 340px;
+        }
+        .btn{
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        var st;
+        var si;
+        $(document).ready(function(){
+            $('.btn1').on('click', function(e){
+                e.preventDefault();
+                $('ul').animate({
+                    left:'-720px'
+                },1000, function(){
+                    $('ul').append($('ul li:first'))
+                    $('ul').css('left','0px')
+                })
+            })
+            
+            
+            $('.btn2').on('click', function(e){
+                e.preventDefault();
+                st=setInterval(myset, 1000)
+            })
+
+            
+            $('.btn3').on('click', function(e){
+                e.preventDefault();
+                si=setTimeout(myset, 3000)
+            })
+
+            
+            $('.btn4').on('click', function(e){
+                e.preventDefault();
+                clearInterval(st)
+            })
+
+            
+            $('.btn5').on('click', function(e){
+                e.preventDefault();
+                clearTimeout(si)
+            })
+
+            function myset(){
+                $('ul').animate({
+                    left:'-720px'
+                },1000, function(){
+                    $('ul').append($('ul li:first'))
+                    $('ul').css('left','0px')
+                })
+            }
+        })
+    </script>
+</head>
+<body>
+    <!-- show,hide, toggle, addClass, removeClass, toggleClass, fadeIn, fadeOut, fadeToggle, slideup, slidedown, slidetoggle,
+        remove, html, val, text, clone, append, before, prepend, after, next, prev, parent, parents, find, not, eq, index, each, first-child,
+        first, last, last-child, fadeTo -->
+    <!-- is(): 상태 확인 메소드, hasclass(), animate(properties, duration, easing, callback, setInterval, setTimeout, clearInterval clearTimeout-->
+
+    <div class="wrap">
+        <div class="rolling">
+            <ul>
+                <li><img src="ex41/s4-1-2off.png" alt=""></li>
+                <li><img src="ex41/s4-1-3off.png" alt=""></li>
+                <li><img src="ex41/s4-1-4off.png" alt=""></li>
+                <li><img src="ex41/s4-1-5off.png" alt=""></li>
+                <li><img src="ex41/s4-1-6off.png" alt=""></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <button class="btn1">animate</button>
+            <button class="btn2">setInterval</button>
+            <button class="btn3">setTimeout</button>
+            <button class="btn4">clearInterval</button>
+            <button class="btn5">clearTimeout</button>
+        </div>
+    </div>
+</body>
+</html>

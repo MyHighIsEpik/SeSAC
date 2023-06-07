@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+    <title>공 가져오기</title>
+    <style>
+        @keyframes ball {
+            10%{margin-top: 40px;}
+            20%{margin-top: 10px;}
+            30%{margin-top: 30px;}
+            40%{margin-top: 5px;}
+            100%{margin-top: none;}
+        }
+        .wrap{
+            width: 500px;
+            margin: 50px auto;
+        }
+        span{
+            font-size: 50px;
+        }
+        .mySlide{
+            transform: translateX(200px);
+        }
+        .go{
+            animation: ball 0.5s linear 4;
+            transition: all 2s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="wrap">
+        <button @click="ballCall=true">공가져오기</button>
+        <transition enter-class="mySlide" enter-active-class="go">
+            <p v-if="ballCall"><span>⚽</span></p>
+        </transition>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                ballCall:false
+            }
+        })
+    </script>
+</body>
+</html>

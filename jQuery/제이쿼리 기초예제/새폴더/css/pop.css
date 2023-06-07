@@ -1,0 +1,53 @@
+body,div,p,span,a,img{
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    border: none;
+}
+
+.layerPop{
+    width: 420px;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 999;
+    position: relative;
+    display: none;
+}
+.title{
+    background-color: #0b4da2;
+    padding: 15px 10px 15px 15px;
+}
+.popContent{
+    padding: 30px 20px 15px;
+    color: #0b4da2;
+    font-size: 14px;
+    text-align: center;
+    background: #fff;
+    line-height: 18px;
+    font-weight: 800;
+}
+.popBtnShort{}
+.popBtnShort a{
+    width: 100px;
+    margin: 20px 5px 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    padding: 9px 0;
+    border-radius: 5px;
+}
+.btn_default01{
+    background-color: #00a5e3;
+}
+.btn_default02{
+    background-color: #333;
+}
+.closeBtn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

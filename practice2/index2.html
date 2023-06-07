@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사진과 텍스트 교체</title>
+    <style>
+        body,div,h3,input,img,dl,dt,dd,ul,li,a{margin: 0;padding: 0;}
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: "Courier New", Courier, monospace;
+        }
+        ul{
+            list-style: none;
+        }
+        img{border: none;}
+        a{text-decoration: none;}
+
+        .wrap{width: 700px; 
+            margin: 50px auto; 
+            border: 2px solid #d9d9d9; 
+            padding: 20px;}
+        .typeBox{
+            width: 280px;
+            margin: 0 auto 10px auto;
+        }
+        .typeBox ul{
+            overflow: hidden;
+        }
+        .typeBox li{
+            float: left;
+            margin-right: 50px;
+        }
+        img, input{
+            vertical-align: middle;
+        }
+        .info{
+            text-align: center;
+            font-size: 14px;
+        }
+        .okBtn{
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+
+    <script>
+        function showIpin(){
+            var txt='아이핀 인증으로 실명확인을 진행하려면 <br/> 아래<span>"아이핀 인증받기"</span>를 클릭해주세요.';
+            document.getElementById('txtContainer').innerHTML=txt;
+            var btn='<a href=""><img src="ex1/ipinOkBtn.jpg" alt="아이핀 인증받기"></a>'
+            document.getElementById('btnContainer').innerHTML=btn;
+        }
+        function showCellPhone(){
+            var txt='소지하고 계신 핸드폰 번호를 입력해서 인증받는 방법입니다.<br/>';
+            txt+='아래<span>"휴대폰 인증받기"</span>를 클릭해주세요.';
+            document.getElementById('txtContainer').innerHTML=txt;
+            var btn='<a href=""><img src="ex1/celPhoneOkBtn.jpg" alt="휴대폰 인증받기"></a>'
+            document.getElementById('btnContainer').innerHTML=btn;
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="typeBox">
+            <ul>
+                <li>
+                    <input type="radio" name="selectType" checked="checked" id="celIp" onclick="showIpin()"/>
+                    <label for="celIp"><img src="ex1/ipinTxt.jpg" alt=""></label>
+                </li>
+                <li>
+                    <input type="radio" name="selectType" id="celPhone" onclick="showCellPhone()"/>
+                    <label for="celPhone"><img src="ex1/celPhoneTxt.jpg" alt=""></label>
+                </li>
+            </ul>
+        </div>
+        <div class="info" id="txtContainer">
+            아이핀 인증으로 실명확인을 진행하려면 아래<span>'아이핀' 인증받기'</span>를 클릭해주세요.
+        </div>
+        <div class="okBtn" id="btnContainer">
+            <a href="">
+                <img src="ex1/ipinOkBtn.jpg" alt="아이핀 인증받기">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+@charset "UTF-8";
+@import url("http://fonts.googleapis.com/css?family=Droid+sans");
+.container .item {
+  width: 100px;
+  height: 100px;
+  background-color: tomato;
+}
+
+/**/
+.section {
+  width: 100%;
+}
+
+.section .list {
+  padding: 20px;
+}
+
+.section .list li {
+  float: left;
+  width: 300px;
+}
+
+.content {
+  border: 1px solid red;
+}
+
+.content .inner {
+  font-size: 24px;
+  background-color: #07c;
+}
+
+.btn_blue {
+  background-color: blue;
+  color: #fff;
+}
+
+.btn_red {
+  background-color: red;
+  color: #fff;
+}
+
+.btn_green {
+  background-color: green;
+  color: #fff;
+}
+
+.list li {
+  width: 100px;
+  width: 100px;
+  background-color: tomato;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: tomato;
+}
+
+.attr {
+  font-size: 24px;
+  font-weight: 900;
+  font-family: sans-serif;
+  margin-top: 10px;
+  margin-right: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+.gallery {
+  width: 350px;
+  height: 300px;
+  margin-left: 350px;
+  background: url("../img/img.png") no-repeat center center #07c;
+}
+
+.box1 {
+  background-color: #07c;
+}
+
+.box3 {
+  color: #00f;
+  background-color: #f00;
+}
+
+.box4 {
+  background-color: #f00;
+}
+
+.box5 {
+  background-color: #f00;
+}
+
+.box6 {
+  background-color: #07c;
+}
+
+.box7 {
+  background-color: #000;
+  color: #fff;
+}
+
+/*
+@import는 파일을 가져올 때, 컴파일 4가지 상황
+-파일확장자 .css
+-파일이름이 htt://로 시작
+-url()이 붙었을 때
+-미디어쿼리가 있는 경우
+-여러 개의 파일을 가져올 때
+*/
+.box1 {
+  color: red;
+}
+
+.box1 {
+  background-color: #999;
+}
+
+/*
+    산술연산자
+    비교연산자
+    논리연산자
+    불린연산자
+*/
+div {
+  width: 40px;
+  height: 30px;
+  font-size: 20px;
+  margin: 15px;
+  width: 100px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=color.css.map */

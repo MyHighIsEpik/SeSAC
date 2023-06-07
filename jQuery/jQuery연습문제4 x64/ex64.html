@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="Generator" content="EditPlus®">
+   <meta name="Author" content="">
+   <meta name="Keywords" content="">
+   <meta name="Description" content="">
+   <title>Document</title>
+   <style type="text/css">
+      body,
+      div,
+      span,
+      ul,
+      li,
+      a,
+      img,
+      p {
+         margin: 0;
+         padding: 0
+      }
+
+      ul {
+         list-style-type: none;
+      }
+
+      img {
+         border: none
+      }
+
+      a {
+         text-decoration: none;
+         color: #333
+      }
+
+      .left_num,
+      .right_num {
+         color: #f00;
+         margin-bottom: 5px;
+      }
+
+      .banner {
+         width: 342px;
+         height: 190px;
+         overflow: hidden;
+         margin: 50px auto;
+         position: relative;
+         border: 1px solid #d9d9d9;
+         padding: 20px;
+      }
+      
+      .left {
+         position: absolute;
+         top: 40%;
+         left: 0;
+         border: 1px solid #d9d9d9;
+         padding: 15px 10px 10px 10px;
+         background: #fff;
+      }
+
+      .left span.leftBtn {
+         background: url(images/arrow_left.png) no-repeat left 0px;
+         width: 8px;
+         height: 11px;
+         display: inline-block;
+         padding-bottom: 5px;
+      }
+
+      .left .leftBtn,
+      .right .rightBtn {
+         text-indent: -999px;
+         display: block;
+         float: left;
+         margin-right: 10px;
+      }
+
+      .right span.rightBtn {
+         background: url(images/arrow_right.png) no-repeat right 0px;
+         width: 8px;
+         height: 11px;
+         display: inline-block;
+         padding-bottom: 5px;
+      }
+
+      .left:hover .leftBtn {
+         background-position: left -16px;
+      }
+
+      .right:hover .rightBtn {
+         background-position: right -16px;
+      }
+
+      .right {
+         position: absolute;
+         top: 40%;
+         right: 0;
+         border: 1px solid #d9d9d9;
+         padding: 15px 10px 10px 10px;
+         background: #fff;
+      }
+
+      p {
+         display: inline;
+      }
+
+      .on {
+         display: none;
+         float: left;
+      }
+   </style>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+   <script language="javascript" type="text/javascript">
+      var count=1;
+      $(document).ready(function(){
+         var sid=setInterval(mysid, 2000,'right')
+         $('.left').on({         //이벤트를 on 안에 나란히 쓸 수 있음
+            mouseenter:function(){
+               clearInterval(sid)
+               $(this).find('p').removeClass('on')
+            },
+            mouseleave:function(){
+               clearInterval(sid)
+               sid=setInterval(mysid,2000,'left')
+               $(this).find('p').addClass('on')
+            },
+            click:function(){
+               clearInterval(sid)
+               mysid('left')
+            }
+         })
+
+         $('.right').on({
+            mouseenter:function(){
+               clearInterval(sid)
+               $(this).find('p').removeClass('on')
+            },
+            mouseleave:function(){
+               clearInterval(sid)
+               sid=setInterval(mysid,2000,'right')
+               $(this).find('p').addClass('on')
+            },
+            click:function(){
+               clearInterval(sid)
+               mysid('right')
+            }
+         })
+
+         function mysid(dis){
+            if(dis=='right'){
+               $('.banner_list').prepend($('li:last'))
+               count++;
+               if(count>5)count=1;
+               $('.pageNum').text(count);
+            }else{
+               $('.banner_list').append($('li:first'))
+               count--;
+               if(count<1)count=5;
+               $('.pageNum').text(count);
+            }
+         }
+         /* 내가 짠 코드 var count=1;
+         $('.right').on('mouseenter', function(){
+            $('.right').animate({
+               width:'50px'
+            },500,function(){
+               $('.right p').css('display', 'block')
+            })
+         })
+         $('.right').on('mouseleave', function(){
+            $('.right').animate({
+               width:'20px'
+            },500,function(){
+               $('.right p').css('display', 'none')
+            })
+         })
+         $('.right').on('click',function(e){
+            e.preventDefault();
+            $('.banner_list').append($('.banner_list li:first'))
+            count++;
+            if(count>5)count=1;
+            $('.pageNum').text(count);
+         })
+
+
+         $('.left').on('mouseenter', function(){
+            $('.left').animate({
+               width:'50px'
+            },500,function(){
+               $('.left p').css('display', 'block')
+            })
+         })
+         $('.left').on('mouseleave', function(){
+            $('.left').animate({
+               width:'20px'
+            },500,function(){
+               $('.left p').css('display', 'none')
+            })
+         })
+         $('.left').on('click',function(e){
+            e.preventDefault();
+            $('.banner_list').prepend($('.banner_list li:last'))
+            count--;
+            if(count<1)count=5;
+            $('.pageNum').text(count);
+         })
+         */
+      })
+      
+   </script>
+</head>
+
+<body>
+   <div class="banner">
+      <div class="left">
+         <span class="leftBtn">왼쪽이동</span>
+         <p class="on"><span class="pageNum">1</span>/5</p>
+      </div>
+      <ul class="banner_list">
+         <li><a href="#"><img src="images/02_01_170410.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="images/02_02_170410.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="images/02_03_170410.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="images/02_04_170410.jpg" alt="" /></a></li>
+         <li><a href="#"><img src="images/02_05_170410.jpg" alt="" /></a></li>
+      </ul>
+      <div class="right">
+         <p class="on"><span class="pageNum">1</span>/5</p>
+         <span class="rightBtn">오른쪽</span>
+      </div>
+   </div>
+</body>
+
+</html>

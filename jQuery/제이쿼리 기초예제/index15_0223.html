@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> <!--jQuery CDN ui, easing-->
+
+    <style>
+        body, div, form, fieldset, label, legend, ul, li, a, img, span, p, select, input, table, form,
+        thead, tbody, tr, td{
+            margin: 0;
+            padding: 0;
+        }
+        body, select, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;
+            color: #222;
+        }
+        img,
+        select,
+        input{
+            vertical-align: middle;
+        }
+
+        img,
+        fieldset{border: 0 none;}
+
+        .wrap{
+            width: 800px;
+            margin: 50px auto;
+        }
+        form{
+            border: 1px solid #ccc;
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+        }
+        input[type="text"]{
+            margin-right: 10px;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+        }
+        thead th{
+            font-size: 13px;
+            padding: 8px;
+            background-color: #eee;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+        tbody td{
+            padding: 8px;
+            border-bottom: 1px dashed #ccc;
+            text-align: center;
+        }
+        caption{
+            width: 1px;
+            height: 1px;
+            line-height: 0;
+            text-indent: -9999em;
+        }
+    </style>
+    <script>
+        function infoAdd(){
+            var userName=$.trim($('#mem_name').val());
+            //console.log(userName)
+            if(userName==""){
+                alert("이름을 입력하세요")
+                $('#mem_name').focus();
+                return;
+            }
+            
+            var userPhone=$.trim($('#mem_phone').val());
+            if(userPhone==""){
+                alert("전화번호를 입력하세요")
+                $('#mem_phone').focus();
+                return;
+            }
+
+            if($('#addressList').hasClass('noData')==true){
+                $('#addressList').removeClass('noData');
+                $('#addressList tbody tr').remove();
+            }
+
+            var html="<tr>"
+                html+="<td>"+ userName +"</td>"
+                html+="<td>"+ userPhone +"</td>"
+                html+="<td>"
+                html+='<a href="" onclick="deleteBtn(this);return false;"><img src="ex56/images/btn_del.gif" alt=""></a>' /*안과밖 다른 따옴표를 쓰거나 안쪽 따옴표들 앞에 \ 사용*/
+                html+="</td>"
+                html+="</tr>"
+                $('#addressList tbody').append(html)
+                $('#mem_phone, #mem_name').val("")
+            //console.log(html)
+            
+            $('#mem_name').focus();
+        }
+        function deleteBtn(obj){
+            $(obj).parent().parent().remove();
+            if($('#addressList tbody tr').length==0){
+                $('#addressList').addClass('noData')
+                $('#addressList tbody').append("<tr><td colspan='3'>등록된 내용이 없습니다</td></tr>")
+            }
+        }
+
+        $(document).ready(function(){
+            $('.addBtn').on('click',function(e){
+                e.preventDefault();
+                infoAdd()
+            })
+            
+            $('#mem_phone').keyup(function(e){
+                if(e.which==13){
+                    infoAdd()
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <!--
+        substring, lt(), gt()
+        lt(1): 1보다 작은 인덱스가 참조하는 요소를 찾는다.
+        gt(1): 1보다 큰 인덱스가 참조하는 요소를 찾는다.
+    -->
+    <div class="wrap">
+        <form action="" method="post" name="frm">
+            <label for="mem_name">이름(필수)</label>
+            <input type="text" id="mem_name" name="userName" maxlength="10" size="15" />
+            <label for="mem_phone">전화번호</label>
+            <input type="text" id="mem_phone" name="userPhone" maxlength="11" size="20" />
+            <a href="" class="addBtn"><img src="ex56/images/btn_add.gif" alt=""></a>
+        </form>
+        <table id="addressList" class="noData">
+            <caption>전화번호부</caption>
+            <colgroup>
+                <col width="40%">
+                <col width="40%">
+                <col width="20%">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">이름</th>
+                    <th scope="col">전화번호</th>
+                    <th scope="col">삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3">등록된 내용이 없습니다</td>
+                </tr>
+            <!--
+                <tr>
+                    <td>홍길동</td>
+                    <td>010-1234-5678</td>
+                    <td>
+                        <a href=""><img src="ex56/images/btn_del.gif" alt=""></a>
+                    </td>
+                </tr>
+            -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

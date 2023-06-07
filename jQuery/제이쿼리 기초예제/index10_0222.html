@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body, div, form, fieldset, label, legend, ul, li, p, select, input, h3, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        body, select, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        ul{
+            list-style: none;
+        }
+        select, input{
+            vertical-align: middle;
+        }
+        a{text-decoration: none;
+            color: #222;
+        }
+        img, fieldset{border: none;}
+
+        .sub_menu_wrap{
+            width: 220px;
+            margin: 50px auto;
+        }
+        li{
+            line-height: 24px;
+            background: url(ex30/images/left_icon.gif) no-repeat 20px 10px;
+            padding-left: 30px;
+            border-bottom: 1px dotted #c3c3c3;
+        }
+        li:hover{
+            background: url(ex30/images/left_icon_o.gif) no-repeat 20px 10px;
+        }
+    </style>
+    <script>
+        
+        var st;
+        $(document).ready(function(){
+            
+            $('.title:eq(0)').addClass('on');
+            $('.sub:not(:eq(0))').hide();
+            $('.title').on('click',function(){
+                if($(this).hasClass('on')==false){
+                    $('.sub').stop().slideUp(400);
+                    var outImg=$('.title.on').find('img')
+                    outImg.prop('src',outImg.prop('src').replace('.gif', '_o.gif'))
+
+                    $('.title.on').removeClass('on')
+                    $(this).addClass('on');
+                    var outImg=$('.title.on').find('img')
+                    outImg.prop('src',outImg.prop('src').replace('_o.gif', '.gif'))
+                    $(this).next().stop().slideDown(400);
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="sub_menu_wrap">
+        <h3><img src="ex30/images/left_title01.gif" alt=""></h3>
+
+        <dl class="sub_left_navi">
+            <dt class="title"><img src="ex30/images/left_title01_01.gif" alt=""></dt>
+            <dd class="sub">
+                <ul>
+                    <li><a href="">연수원 소개</a></li>
+                    <li><a href="">연수원 소개</a></li>
+                    <li><a href="">연수원 소개</a></li>
+                </ul>
+            </dd>
+            
+            <dt class="title"><img src="ex30/images/left_title01_02_o.gif" alt=""></dt>
+            <dd class="sub">
+                <ul>
+                    <li><a href="">연수원 소개</a></li>
+                    <li><a href="">연수원 소개</a></li>
+                    <li><a href="">연수원 소개</a></li>
+                </ul>
+            </dd>
+            
+            <dt class="title"><img src="ex30/images/left_title01_03_o.gif" alt=""></dt>
+            <dd class="sub">
+                <ul>
+                    <li><a href="">연수원 소개</a></li>
+                    <li><a href="">연수원 소개</a></li>
+                    <li><a href="">연수원 소개</a></li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+</body>
+</html>

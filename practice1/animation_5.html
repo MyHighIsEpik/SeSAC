@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        ul,li,a,span,em{margin: 0; padding: 0;}
+        em{font-size: normal;}
+        ul{list-style: none;}
+        a{
+            text-decoration: none;
+            color: #222;
+            
+        }
+        
+
+        .card_wrap{
+            width: 250px;
+            height: 320px;
+            margin: 50px auto;
+        }
+        .card{
+            width: 250px;
+            height: 320px;
+            border-radius: 7px;
+            padding: 10px;
+            box-sizing: border-box;
+            color: #fff;
+            position: absolute;
+            backface-visibility: hidden;
+            transition: transform 0.5s linear 0s;
+        }
+        .card h3{
+            margin-bottom: 20px;
+        }
+        .back{
+            background-color: #07c;
+            transform: perspective(600px) rotateY(180deg);
+
+        }
+        .front{
+            background-color: #ffa500;
+            transform: perspective(600px) rotateY(0deg);
+        }
+
+        /*hover*/
+        .card_wrap:hover .back{
+            transform: perspective(600px) rotateY(0deg);
+        }
+        .card_wrap:hover .front{
+            transform: perspective(600px) rotateY(-180deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="card_wrap">
+        <div class="back card">
+            <h3>청춘예찬</h3>
+            <p>든 못할 너의 이상이 새 것은 하는 것이다. 목숨이 구하지 꾸며 놀이 그들의 돋고, 피에 보라.
+                커다란 피가 못할 뼈 별과 이것이다. 있을 인류의 그들의 그리하였는가?</p>
+        </div>
+        <div class="front card">
+            <h3>별헤는 밤</h3>
+            <p>추억과 멀리 밤이 못 봅니다. 벌레는 이름과, 이름자를 하나에 부끄러운 있습니다.
+                아무 아직 하나에 이름을 잠, 별 있습니다. 내일 덮어 차 사랑과 헤는 강아지, 때 라이너 못 봅니다. 벌써 하나의 소학교 덮어 버리었습니다.</p>
+        </div>
+    </div>
+</body>
+</html>

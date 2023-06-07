@@ -1,0 +1,263 @@
+@charset "UTF-8";
+div::after {
+  content: "helloworld";
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse wrap;
+          flex-flow: row-reverse wrap;
+}
+
+div {
+  color: #468ace;
+  background-color: rgba(60, 30, 180, 0.5);
+}
+
+p {
+  color: rgba(10, 20, 40, 0.8);
+  background-color: rgba(10, 20, 40, 0.3);
+}
+
+div {
+  height: 300px;
+}
+
+.box1 {
+  width: 100px;
+  height: 200px;
+}
+
+.box2 {
+  width: 200px;
+  height: 200px;
+}
+
+.box3 {
+  width: 300px;
+  height: 200px;
+}
+
+.box1 {
+  width: 100px;
+  height: 100px;
+}
+
+.box2 {
+  width: 150px;
+  height: 130px;
+}
+
+.box3 {
+  width: 100px;
+  height: 300px;
+}
+
+.box1,
+.box2 {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: orange;
+}
+
+.box1::after,
+.box2::after {
+  content: "!!";
+}
+
+/*
+@mixin 믹스인이름 ($매개변수) {
+    스타일
+}
+@include 믹스인이름(인수);
+*/
+.box1 {
+  border: 1px dashed red;
+}
+
+/*
+    키워드인수
+    @mixin 믹스인이름($매개변수A:기본값, $매개변수B:기본값{
+        스타일
+    }
+    @include 믹스인일름($매개변수B:인수)
+*/
+.box1 {
+  border: 1px dashed color;
+}
+
+.box2 {
+  border: blue dashed color;
+}
+
+/*
+    @mixin 믹스인이름 ($매개변수...){
+        스타일
+    }
+    @include 믹스인이름(인수A,인수B,인수C)
+*/
+.box {
+  width: 1;
+  height: 2;
+  background: 3, 4, 5, 6;
+}
+
+div {
+  font-style: italio;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+
+span {
+  font-style: italio;
+  font-weight: normal;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+a {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  font-family: dotum;
+}
+
+/* @content 해당하는 부분에 원하는 스타일을 전달*/
+.box1::after {
+  content: "images/icon.png";
+}
+
+.box2::after {
+  content: "images/icon.png";
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+.btn, .btn-danger {
+  padding: 10px;
+  margin: 10px;
+  background-color: blue;
+}
+
+.btn-danger {
+  background-color: red;
+}
+
+/*
+    @function 함수이름 ($매개변수) {
+        @return 값
+    }
+    함수이름(인수)
+
+    @mixin 믹스인이름 ($매개변수) {
+        스타일 ;
+    }
+    
+    @include 믹스인이름(인수)
+*/
+.container {
+  width: 1200px;
+}
+
+.container .item:nth-child(1) {
+  width: 100px;
+}
+
+.container .item:nth-child(2) {
+  width: 960px;
+}
+
+.container .item:nth-child(3) {
+  width: 900px;
+}
+
+div {
+  width: true;
+}
+
+div {
+  background-color: red;
+}
+
+div {
+  color: green;
+}
+
+div {
+  width: 200px;
+  height: 800px;
+}
+
+.box1 {
+  width: 10px;
+  height: 20px;
+  position: absolute;
+}
+
+.box2 {
+  width: 10px;
+  height: 20px;
+  position: fixed;
+}
+
+.box3 {
+  width: 100px;
+  height: 200px;
+  position: relative;
+}
+
+.through:nth-child(1) {
+  width: 20px;
+}
+
+.through:nth-child(2) {
+  width: 40px;
+}
+
+.through:nth-child(3) {
+  width: 60px;
+}
+
+.to:nth-child(1) {
+  width: 20px;
+}
+
+.to:nth-child(2) {
+  width: 40px;
+}
+
+.fruits li:nth-child(1) {
+  left: 50px;
+}
+
+.fruits li:nth-child(2) {
+  left: 100px;
+}
+
+.fruits li:nth-child(3) {
+  left: 150px;
+}
+
+.fruits li:nth-child(4) {
+  left: 200px;
+}
+
+/*
+    @while 조건{
+        내용
+    }
+*/
+.item-6 {
+  width: 12px;
+}
+
+.item-4 {
+  width: 8px;
+}
+
+.item-2 {
+  width: 4px;
+}
+/*# sourceMappingURL=ex.css.map */

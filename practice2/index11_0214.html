@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, img, ul, li, a, span{
+            margin: 0;
+            padding: 0;
+        }
+        ul{list-style-type: none;}
+        a{text-decoration: none;
+            color: #333;
+        }
+        img{border: none;}
+        body{font-size: 12px;
+            color: #333;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .book_wrap{
+            width: 350px;
+            height: 540px;
+            margin: 50px auto;
+            position: relative;
+        }
+        .book_wrap h2{
+            padding: 0 0 5px 10px;
+        }
+
+        .btn_left{position:absolute; left: 0; width: 23px; height: 41px; overflow: hidden;
+            display: block; top: 180px;
+        }
+        .btn_left a.on{margin-left: -23px;}
+        .btn_right{position:absolute; right: 0; width: 23px; height: 41px; overflow: hidden;
+            display: block; top: 180px;
+        }
+        .btn_right a.on{margin-left: -23px;}
+
+        .bookList{width: 270px; margin: 0 auto;}
+        .displayNone{display: none;}
+
+        .iconList{text-align: center;}
+        .iconList li{display: inline-block; padding: 0 0 0 5px;}
+    </style>
+    <script>
+        var iconlist;
+        var booklist;
+        var currentNum=0;
+        var menuNum=0;
+
+        function init(){
+            iconlist=document.getElementById('iconList').getElementsByTagName('li')
+            booklist=document.getElementById('bookList').getElementsByTagName('span')
+            //console.log(iconlist)
+            for(var i=0; i<iconlist.length; i++){
+                iconlist[i].getElementsByTagName('a')[0].num=i;
+                iconlist[i].getElementsByTagName('a')[0].onmouseover=function(){
+                    menuNum=this.num;
+                    selectMenu(menuNum)
+                }
+                
+            }
+            document.getElementById('btn_left').onmouseover=function(){
+                this.className="on"
+            }
+            document.getElementById('btn_left').onmouseout=function(){
+                this.className=""
+            }
+            document.getElementById('btn_right').onmouseover=function(){
+                this.className="on"
+            }
+            document.getElementById('btn_right').onmouseout=function(){
+                this.className=""
+            }
+        }
+        function selectMenu(num){
+            if(currentNum!=num){
+                var btn1=iconlist[currentNum].getElementsByTagName('img')[0]
+                btn1.src=btn1.src.replace('_on.gif', '_off.gif')
+                booklist[currentNum].className="displayNone";
+                
+                var btn2=iconlist[num].getElementsByTagName('img')[0]
+                btn2.src=btn2.src.replace('_off.gif', '_on.gif')
+                booklist[num].className="";
+
+                currentNum=num
+            }
+        }
+
+        function prevBtn(){
+            menuNum--;
+            if(menuNum<0){
+                menuNum=iconlist.length-1;
+            }
+            selectMenu(menuNum);
+        }
+        
+        function nextBtn(){
+            menuNum++;
+            if(menuNum>iconlist.length-1){
+                menuNum=0;
+            }
+            selectMenu(menuNum);
+        }
+
+        window.onload=init;
+    </script>
+</head>
+<body>
+    <div class="book_wrap">
+        <h2>
+            <img src="ex3/tit_interpark_recom.gif" alt="">
+            <a href="">
+                <img src="ex3/btn_more.gif" alt="">
+            </a>
+        </h2>
+        <div class="btn">
+            <span class="btn_left">
+                <a href="" id="btn_left" onclick="prevBtn(); return false;"><img src="ex3/btn_i_left.png" alt=""></a>
+            </span>
+            <span class="btn_right">
+                <a href="" id="btn_right" onclick="nextBtn(); return false;"><img src="ex3/btn_i_right.png" alt=""></a>
+            </span>
+        </div>
+
+        <div class="bookList" id="bookList">
+            <span>
+                <a href="">
+                    <img src="ex3/book1.jpg" alt="">
+                </a>
+            </span>
+            <span class="displayNone">
+                <a href="">
+                    <img src="ex3/book2.jpg" alt="">
+                </a>
+            </span>
+            <span class="displayNone">
+                <a href="">
+                    <img src="ex3/book3.jpg" alt="">
+                </a>
+            </span>
+            <span class="displayNone">
+                <a href="">
+                    <img src="ex3/book4.jpg" alt="">
+                </a>
+            </span>
+        </div>
+
+        <ul class="iconList" id="iconList">
+            <li>
+                <a href=""><img src="ex3/i_on.gif" alt=""></a>
+            </li>
+            <li>
+                <a href=""><img src="ex3/i_off.gif" alt=""></a>
+            </li>
+            <li>
+                <a href=""><img src="ex3/i_off.gif" alt=""></a>
+            </li>
+            <li>
+                <a href=""><img src="ex3/i_off.gif" alt=""></a>
+            </li>
+        </ul>
+    </div>
+</body>

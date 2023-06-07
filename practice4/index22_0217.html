@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        body, div, h3, ul, li, a, img, h1, p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+        img{border: none;}
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+        html{
+            font-size: 12px;
+        }
+
+        .openBtn{
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            margin: 50px 0 0 50px;
+        }
+        .modal-wrapper{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+        .modal{
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .close-wrapper{
+            text-align: right;
+        }
+        .closeBtn{
+            background-color: #07c;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <button class="openBtn" id="openBtn">열기</button>
+    <div class="modal-wrapper">
+        <div class="modal">
+            <p>안녕하세요</p>
+            <p>페이지 내용이 있습니다.</p>
+            <div class="close-wrapper">
+                <button class="closeBtn" id="closeBtn">닫기</button>
+            </div>
+        </div>
+    </div>  
+    <script>
+        const openBtn=document.getElementById('openBtn');
+        const closeBtn=document.getElementById('closeBtn');
+        const modal=document.querySelector('.modal-wrapper');
+
+        openBtn.onclick=()=>{
+            modal.style.display="flex"
+        }
+        closeBtn.onclick=()=>{
+            modal.style.display="none"
+        }
+    </script>
+</body>
+</html>

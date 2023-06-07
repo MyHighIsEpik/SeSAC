@@ -1,0 +1,113 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+
+<head>
+	<title> new document </title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/marquee.css" type="text/css" rel="stylesheet" media="screen" />
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			/*
+			var index=0;
+			var currentIndex=0;
+			$('.marquee_nav_item').on('click',function(){
+				//if($('.marquee_photos').is(":animated")==false){}
+				index = $(this).index()
+				if(currentIndex<index){
+					$('.marquee_photos').animate({
+						'left':-700*index+'px'
+					},600,function(){
+						$('.marquee_photos').append($('.marquee_photos > li:first'))
+						$('.marquee_photos').css('left','0px')
+					})
+				}else if(currentIndex>index){
+					$('.marquee_photos').animate({
+						'left':'0px'
+					},600,function(){
+						$('.marquee_photos').prepend($('.marquee_photos > li:last'))
+						$('.marquee_photos').css('left',700*index+'px')
+					})
+				}
+				console.log(index)
+			
+			})
+			*/
+			var menuWidth=700;
+			$('.marquee_nav_item').on('click',function(){
+				$('.marquee_nav_item').removeClass('selected');
+				$(this).addClass('selected');
+				var obj=$(this).index();
+				$('.marquee_photos').animate({
+					left:"-"+menuWidth+"px"
+				},600,function(){
+					$('.marquee_photos').append($('.marquee_photos > li:first'))
+					$('.marquee_photos').css('left','0')
+				})
+
+				$('.marquee_caption').animate({
+					top:'340px'
+				},500)
+				$('.marquee_caption .marquee_caption_content').addClass('displayno')
+				$('.marquee_caption .marquee_caption_content').eq(obj).removeClass('displayno')
+				$('.marquee_caption').animate({
+					top:'240px'
+				},500)
+			})
+		})
+	</script>
+</head>
+
+<body>
+	<div class="marquee_container">
+		<ul class="marquee_photos">
+			<li><a href="#"><img src="images/london.jpg" width="700" height="350" alt="London" /></a></li>
+			<li><a href="#"><img src="images/milan.jpg" width="700" height="350" alt="Milan" /></a></li>
+			<li><a href="#"><img src="images/staugustine.jpg" width="700" height="350" alt="Staugustine" /></a></li>
+			<li><a href="#"><img src="images/montreal.jpg" width="700" height="350" alt="Montreal" /></a></li>
+		</ul>
+		<div class="marquee_caption">
+			<div class="marquee_caption_content">
+				<img class="marquee_flag" src="images/flag_england.jpg" width="20" height="13" />
+				<h2>London</h2>
+				<p>Fusce neque dolor adipiscing sed consectetuer et lacinia sit amet quam. Suspendisse wisi quam
+					consectetuer in blandit sed suscipit eu eros.</p>
+				<p><a href="#">Check it out!</a></p>
+			</div>
+			<div class="marquee_caption_content displayno">
+				<img class="marquee_flag" src="images/flag_italy.jpg" width="20" height="13" />
+				<h2>Mil&aacute;n</h2>
+				<p>Fusce neque dolor adipiscing sed consectetuer et lacinia sit amet quam. Suspendisse wisi quam
+					consectetuer in blandit sed suscipit eu eros.</p>
+				<p><a href="#">Check it out!</a></p>
+			</div>
+			<div class="marquee_caption_content displayno">
+				<img class="marquee_flag" src="images/flag_usa.jpg" width="20" height="13" />
+				<h2>St. Augustine</h2>
+				<p>Fusce neque dolor adipiscing sed consectetuer et lacinia sit amet quam. Suspendisse wisi quam
+					consectetuer in blandit sed suscipit eu eros.</p>
+				<p><a href="#">Check it out!</a></p>
+			</div>
+			<div class="marquee_caption_content displayno">
+				<img class="marquee_flag" src="images/flag_canada.jpg" width="20" height="13" />
+				<h2>Montr&eacute;al</h2>
+				<p>Fusce neque dolor adipiscing sed consectetuer et lacinia sit amet quam. Suspendisse wisi quam
+					consectetuer in blandit sed suscipit eu eros.</p>
+				<p><a href="#">Check it out!</a></p>
+			</div>
+		</div>
+		<div class="marquee_nav">
+			<a class="marquee_nav_item selected"></a>
+			<a class="marquee_nav_item"></a>
+			<a class="marquee_nav_item"></a>
+			<a class="marquee_nav_item"></a>
+		</div>
+	</div>
+
+</body>
+
+</html>

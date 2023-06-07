@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<link rel="stylesheet" href="flexslider/css/flexslider.css">-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="gallery/js/jquery.colorbox-min.js"></script>
+    <link rel="stylesheet" href="gallery/css/colorbox.css">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $('a.photo').colorbox({
+                rel:'photo',
+                transition:'fade',
+                slideshow:true
+            })
+        })
+    </script>
+    <style>
+        body{background-color: #666;}
+        .gallery{
+            width: 800px;
+            margin: 50px auto;
+        }
+        .gallery a{
+            width: 160px;
+            box-sizing: border-box;
+            color: #fff;
+            font-size: 12px;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }
+        span{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <h3>포트폴리오</h3>
+        <div>
+            <a href="gallery/images/photo1_.png" class="photo" title="갤러리">
+                <img src="gallery/images/photo1.jpg" alt="">
+                <span>갤러리1</span>
+            </a>
+            
+            <a href="gallery/images/photo2_.png" class="photo" title="갤러리">
+                <img src="gallery/images/photo2.jpg" alt="">
+                <span>갤러리2</span>
+            </a>
+            
+            <a href="gallery/images/photo3_.png" class="photo" title="갤러리">
+                <img src="gallery/images/photo3.jpg" alt="">
+                <span>갤러리3</span>
+            </a>
+            
+            <a href="gallery/images/photo4_.png" class="photo" title="갤러리">
+                <img src="gallery/images/photo4.jpg" alt="">
+                <span>갤러리4</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addEventListener</title>
+    <style>
+        body, div, h3, ul, li, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+        img{border: none;}
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+
+        .gallery{
+            width: 600px;
+            height: 550px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .gallery_btn{
+            background-color: #07c;
+            padding: 5px 10px;
+            border: none;
+            color: #fff;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+        .btn{
+            background-color: rgb(204, 0, 143);
+            padding: 5px 10px;
+            border: none;
+            color: #fff;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        let gallery1, gallery2, galleryBtn
+
+        window.onload=function(){
+            gallery1=document.getElementsByClassName('imgbtn1')[0]
+            gallery2=document.getElementsByClassName('imgbtn2')[0]
+            galleryBtn=document.getElementsByClassName('btn')[0]
+
+            gallery1.addEventListener('mouseover', changeGallery1);
+            gallery2.addEventListener('mouseover', changeGallery2);
+            galleryBtn.addEventListener('click', selectGallery);
+
+            function changeGallery1(){
+                let gallery=document.getElementsByClassName('gallery_img')[0]
+                gallery.getElementsByTagName('img')[0].src="gallery_1.jpg"
+                gallery1.className="gallery_btn imgbtn1 on"
+                gallery2.className="gallery_btn imgbtn1 "
+            }
+            function changeGallery2(){
+                let gallery=document.getElementsByClassName('gallery_img')[0]
+                gallery.getElementsByTagName('img')[0].src="gallery_2.jpg"
+            }
+            function selectGallery(){
+                alert('선택하셨습니다.');
+                galleryBtn.removeEventListener('click', selectGallery)
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="gallery">
+        <button class="gallery_btn imgbtn1">인테리어1</button>
+        <button class="gallery_btn imgbtn2">인테리어2</button>
+        <div class="gallery_img">
+            <img src="addevent/gallery_1.jpg" alt="">
+        </div>
+        <button class="btn">선택</button>
+    </div>
+</body>
+</html>

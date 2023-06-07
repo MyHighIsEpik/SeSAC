@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="Generator" content="EditPlus®">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>Document</title>
+	<style>
+		body,
+		div,
+		ul,
+		li,
+		a,
+		img,
+		span {
+			margin: 0;
+			padding: 0
+		}
+
+		ul {
+			list-style: none
+		}
+
+		img {
+			border: none;
+			vertical-align: top;
+		}
+
+		a {
+			text-decoration: none;
+			color: #fff;
+		}
+
+		body {
+			font-size: 16px;
+			font-family: "나눔고딕", sans-serif;
+			color: #fff;
+		}
+
+		a:hovr,
+		a:active {
+			text-decoration: underline;
+			color: #fff;
+		}
+
+		.banner {
+			width: 1440px;
+			height: 460px;
+			margin: 50px auto;
+			position: relative;
+			/*overflow: hidden*/
+		}
+
+		.bannerzone {
+			width: 7200px;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		.bannerzone li {
+			float: left;
+			width: 1440px;
+		}
+
+		.t_wrap {
+			position: absolute;
+			bottom: 0px;
+			display: block;
+			width: 1440PX;
+			height: 40px;
+			line-height: 40px;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.t_wrap span {}
+
+		.prevbtn {
+			float: left;
+			margin-left: 50px;
+			background: url(right.png) no-repeat 2px 15px / 10px 15px;
+			padding-left: 22px;
+		}
+
+		.nextbtn {
+			float: right;
+			margin-right: 50px;
+			background: url(left.png) no-repeat right 15px / 10px 15px;
+			padding-right: 22px;
+		}
+
+		.pagenum {
+			width: 1200px;
+			text-align: center;
+			display: inline-block;
+		}
+	</style>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		var menuwidth=1440;
+		var sid;
+		var num=1;
+		function auto(dis){
+			if(dis=='prev'){
+				$('.bannerzone').prepend($('.bannerzone li:last'))
+				$('.bannerzone').css('left','-'+menuwidth+'px')
+				$('.bannerzone').animate({
+					left:'0'
+				},1000)
+				num--;
+				if(num<1)num=5;
+				$('.num').text('0'+num)
+			}else{
+				$('.bannerzone').animate({
+					left:'-'+menuwidth+'px'
+				},1000,function(){
+					$('.bannerzone').append($('.bannerzone li:first'))
+					$('.bannerzone').css('left','0px')
+					num++;
+					if(num>5)num=1;
+					$('.num').text('0'+num)
+				})
+			}
+		}
+		function cycleMenu(){
+			sid=setInterval(auto, 2000, 'next')
+			$('.prevbtn').on('click',function(e){
+				e.preventDefault();
+				clearInterval(sid)
+				sid=setInterval(auto,2000,'prev')
+			})
+			$('.nextbtn').on('click',function(e){
+				e.preventDefault();
+				clearInterval(sid)
+				sid=setInterval(auto,2000,'next')
+			})
+		}
+		$(document).ready(function(){
+			cycleMenu()
+		})
+	</script>
+</head>
+
+<body>
+	<div class="banner">
+		<ul class="bannerzone">
+			<li><a href="#"><img src="1_bnimg.png" alt="" /></a></li>
+			<li><a href="#"><img src="2_bnimg.jpg" alt="" /></a></li>
+			<li><a href="#"><img src="3_bnimg.png" alt="" /></a></li>
+			<li><a href="#"><img src="4_bnimg.png" alt="" /></a></li>
+			<li><a href="#"><img src="5_bnimg.jpg" alt="" /></a></li>
+		</ul>
+		<div class="t_wrap">
+			<span class="prevbtn"><a href="#">prev</a></span>
+			<span class="pagenum"><span class="num">01</span>/05</span>
+			<span class="nextbtn"><a href="#">next</a></span>
+		</div>
+	</div>
+</body>
+
+</html>

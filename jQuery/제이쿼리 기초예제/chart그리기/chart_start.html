@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Chart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript">
+      const CHART_COLORS = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(201, 203, 207)'
+      };
+      
+      const NAMED_COLORS = [
+        CHART_COLORS.red,
+        CHART_COLORS.orange,
+        CHART_COLORS.yellow,
+        CHART_COLORS.green,
+        CHART_COLORS.blue,
+        CHART_COLORS.purple,
+        CHART_COLORS.grey,
+      ];
+      
+      function namedColor(index) {
+        return NAMED_COLORS[index % NAMED_COLORS.length];
+      }
+      function getStockData(stockId){
+        if(stockId != ""){
+          $.ajax({
+            type:"GET",
+            url:"http://vlslrtm2751.dothome.co.kr/stock/search.php",
+            data:{
+              "stock":stockId
+            },  
+            dataType:"json",
+            success: function(data) {
+              //console.log(data);
+              if(data.result == 'Y'){
+                drawChart(data.datas)
+              }else{
+                alert('정보획득실패')
+              }
+            },
+            error: function(jqXHR,textStatus,errorThrown) {
+              alert(textStatus+", "+errorThrown);
+            }
+          });
+        }else{
+          if(myChart != null){
+            myChart.data.datasets=[];
+            myChart.clear();
+          }
+        }
+      }
+
+      let myChart = null;
+
+      function drawChart(datas){
+        if(myChart == null){
+          const labels = [];
+          const datasetData = [];
+          for(let data in datas){
+            //console.log(datas[data].date,datas[data].close);
+            labels.push(datas[data].date);
+            datasetData.push(datas[data].close);
+          }
+        
+          const data = {
+            labels: labels,
+            datasets: [{
+              label: $('#stockSelect option:selected').text(), //회사명
+              backgroundColor: namedColor($('#stockSelect').prop('selectedIndex')-1), //차트 원형
+              borderColor: namedColor($('#stockSelect').prop('selectedIndex')-1), //차트 라인색
+              data: [0, 10, 5, 2, 20, 30, 45], //y축
+            }]
+          };
+        
+          const config = {
+            type: 'line',
+            data: data,
+            options: {}
+          };
+  
+          myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+          );
+        }else{
+          //console.log('이미 생성됨')
+          //myChart.data.datasets.pop();
+          //console.log(myChart.data.datasets);
+          //myChart.update();
+          //myChart.clear();
+          let isDataCheck=false;
+          const datasets=myChart.data.datasets;
+          for(let data in datasets){
+            if(datasets[data].label==$('#stockSelect option:selected').text()){
+              isDataCheck=true;
+              break;
+            }
+          }
+          //console.log(isDataCheck);
+
+          if(isDataCheck==false){
+            const datasetData=[] //y축
+            for(let data in datas){
+              datasetData.push(datas[data].close);
+            }
+
+            const newDataset={
+              label: $('#stockSelect option:selected').text(), //회사명
+                  backgroundColor: namedColor($('#stockSelect').prop('selectedIndex')-1), //차트 원형
+                  borderColor: namedColor($('#stockSelect').prop('selectedIndex')-1), //차트 라인색
+                  data: datasetData, //y축
+            }
+
+            myChart.data.datasets.push(newDataset);
+            myChart.update();
+          }else{
+            alert('동일한 회사를 추가 할 수 없습니다.')
+          }
+
+          
+        }
+      }
+      $(document).ready(function(){
+        $('#stockSelect').on('change',function(){
+          //console.log($(this).val())
+          getStockData($(this).val())
+        })
+      })
+    </script>
+</head>
+<body>
+    <main role="main" class="container">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Chart</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <form id="search_form" action="#" class="form-inline">
+                  <select class="form-control" id="stockSelect">
+                    <option value="" selected>선택</option>
+                    <option value="skhynix">SK하이닉스</option>
+                    <option value="samsung">삼성전자</option>
+                    <option value="naver">네이버</option>
+                    <option value="kakao">카카오</option>
+                    <option value="hyundai">현대차</option>
+                  </select>
+              </form>
+            </div>
+          </div>
+          <div class="table-responsive">
+              <canvas id="myChart"></canvas>
+          </div>
+    </main>
+</body>
+</html>

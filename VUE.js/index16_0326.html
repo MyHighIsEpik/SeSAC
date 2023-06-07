@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>달력</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input-date-today></input-date-today>
+    </div>
+
+    <script>
+        //render 옵션 
+        Vue.component('input-date-today',{
+            render:function(createElement){
+                return createElement('input',{
+                    attrs:{
+                        type:'date',
+                        value:new Date().toISOString().substring(0,10)
+                    }
+                    //toISOString() : iso 표준을 사용하여 data 객체
+                    //substring(s,e) 문자열로 반환
+                })
+            }
+        })
+        new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>
+
+<!-- 
+    props{
+        부모로부터 전달받은 속성명 :{
+        type:string,Object
+        default:기본값
+        required:필수여부
+        validator:유효성검사함수
+        }
+    }
+    ..............template안에서 부모로부터 전달받은 속성사용
+    자식에서 부모로 전달 emit
+-->

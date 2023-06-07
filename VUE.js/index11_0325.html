@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <fruits-item-name v-for="fruit in fruitsItems" :key="fruit.name" :fruits-item="fruit"></fruits-item-name>
+        </ol>
+    </div>
+    <script>
+        //자식
+        Vue.component('fruits-item-name',{
+            props:{
+                fruitsItem:{
+                    type:Object,
+                    required:true
+                }
+            },
+            template:'<li>{{fruitsItem.name}}</li>'
+        })
+        //부모
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                fruitsItems:[
+                    {name:'사과'},
+                    {name:'딸기'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

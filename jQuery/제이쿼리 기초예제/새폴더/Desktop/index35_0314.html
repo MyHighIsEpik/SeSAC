@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <title>Document</title>
+    <style>
+        video, body, div, a{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url(videos/GSTAR_1920x1080.jpg) no-repeat center center fixed;
+        }
+        #video{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .btn{
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            z-index: 99;
+        }
+        .btn a{
+            color: #fff;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            background-color: darkorange;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $(document).ready(function(){
+                document.getElementById('video').play()
+                $('#play').on('click',function(e){
+                    e.preventDefault();
+                    document.getElementById('video').play()
+                })
+                $('#stop').on('click',function(e){
+                    e.preventDefault();
+                    document.getElementById('video').pause()
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <video width="700" id="video" autoplay="autoplay">
+        <source id="movice_src" type="video/mp4" src="videos/a.mp4">
+    </video>
+    <div class="btn">
+        <a href="" id="play">play</a>
+        <a href="" id="stop">stop</a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, h3, span, input, a, img, ul, li{
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+        input, img{
+            vertical-align: middle;
+        }
+        .todayCont{
+            width: 283px;
+            border: 1px solid #d9d9d9;
+            padding: 1px;
+            margin: 50px auto;
+            position: relative;
+            background-color: #f9f9f9;
+        }
+        .pageNum{
+            color: #07c;
+        }
+        h3{float: left;}
+        .page{
+            float: right;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        var img=["ex4/banner1.jpg", "ex4/banner2.jpg", "ex4/banner3.jpg", "ex4/banner4.jpg"] /*img[0]~img[3]*/
+        var productLink=["http://www.naver.com", "http://www.daum.net", "http://www.naver.com", "http://www.daum.net"]
+        var productNum=1;
+        function nextProduct(){
+            productNum++;
+            if(productNum>4){
+                productNum=1;
+            }
+            productView(productNum)
+        }
+        function prevProduct(){
+            productNum--;
+            if(productNum<1){
+                productNum=4;
+            }
+            productView(productNum)
+        }
+
+        function productView(productNum){
+            document.getElementById('pageNum').innerHTML=productNum;
+            document.getElementById('productImg').src=img[productNum-1];
+            document.getElementById('productLink').href=productLink[productNum-1];
+        }
+    </script>
+</head>
+<body>
+    <div class="todayCont">
+        <h3><img src="ex4/h3.png" alt=""></h3>
+        <div class="page">
+            <span><span class="pageNum" id="pageNum">1</span>/4</span>
+            <input type="image" class="prev" src="ex4/left.gif" title="이전" onclick="prevProduct();">
+            <input type="image" class="next" src="ex4/right.gif" title="다음" onclick="nextProduct();">
+        </div>
+        <div class="banner">
+            <a href="http://www.naver.com" id="productLink">
+                <img src="ex4/banner1.jpg" alt="" id="productImg">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

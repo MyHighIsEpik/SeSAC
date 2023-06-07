@@ -1,0 +1,29 @@
+@charset "utf-8";
+.footer{
+    width: 100%;
+    position: relative;
+    background-color: #575757;
+    color: #fff;
+    padding: 10px 0;
+}
+.footer_menu{
+    width: 98%;
+    display: flex;
+    margin: 0 auto 20px auto;
+}
+.footer_menu li{
+    margin-right: 1%;
+    background: url(../image/bl_footer_w.png) no-repeat 8px 6px;
+    padding-left: 15px;
+}
+.footer menu li a{
+    color: #fff;
+    font-size: 0.9rem;
+}
+.footer_add{
+    width: 98%;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    letter-spacing: -0.06rem;
+    list-style: 1.4;
+}

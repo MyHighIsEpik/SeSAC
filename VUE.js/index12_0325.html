@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>합계</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-for="fruit in fruits">
+            {{fruit.name}}:<counter-button v-on:increment="incrementCartStatus"></counter-button>
+        </div>
+        <div>합계 : {{total}}</div>
+    </div>
+    <script>
+        //자식
+        const counterButton=Vue.extend({
+            template:'<span>{{counter}}개 <button v-on:click="addToCat">추가</button></span>',
+            data:function(){
+                return{
+                    counter:0
+                }
+            },
+            methods:{
+                addToCat(){
+                    this.counter+=1
+                    this.$emit('increment')
+                }
+            }
+        })
+        //부모
+        new Vue({
+            el:'#app',
+            data:{
+                total:0,
+                fruits:[
+                    {name:'바나나'},
+                    {name:'수박'}
+                ]
+            },
+            methods:{
+                incrementCartStatus:function(){
+                    this.total+=1
+                }
+            },
+            components:{
+                'counter-button':counterButton
+            }
+        })
+    </script>
+</body>
+</html>

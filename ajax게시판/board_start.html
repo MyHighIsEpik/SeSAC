@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Board</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      function getList(){
+        $.ajax({
+          type:"GET",
+          url:"http://vlslrtm2751.dothome.co.kr/board/list.php",
+          data:"",
+          dataType:"json",
+          success: function(data) {
+            //alert(data);
+            //console.log(data.result);
+            $('#list tbody').empty();
+            var len=data.result.length;
+            if(len==0){
+              $('#list tbody').append("<tr><td colspan=\"4\" style=\"text-align:center;\">등록 된 내용이 없습니다.</td></tr>")
+            }else{
+              for(var i=0; i<len; i++){
+
+                var html="<tr>"
+                  html+="<td>"+data.result[i].id+"</td>"
+                  html+="<td>"+data.result[i].title+"</td>"
+                  html+="<td>"+data.result[i].date+"</td>"
+                  html+='<td><button type="button" class="btn btn-success">수정</button> <button type="button" class="btn btn-danger">삭제</button></td>'
+                  html+="</tr>"
+                  $('#list tbody').append(html)
+                  $('#list tbody tr:last button').data('id', data.result[i].id);
+                  //console.log(html)
+                  $('#list tbody tr:last button:eq(0)').on('click',function(e){
+                    e.preventDefault();
+                    //console.log('true')
+                    $('#list').hide();
+                    $('#board_form').show();
+                    modifyData($(this).data("id"))
+                    $('#writeBtn').off('click');
+                    $('#writeBtn').text('수정').on('click',function(e){
+                      e.preventDefault();
+                      modify($(this).data('id'))
+                    })
+                  })
+                  
+                  $('#list tbody tr:last button:eq(1)').on('click',function(e){
+                    e.preventDefault();
+                    //console.log('true')
+                    deleteData($(this).data('id'))
+                  })
+  
+              }
+            }
+            
+
+          },
+          error: function(jqXHR,textStatus,errorThrown) {
+            alert(textStatus+", "+errorThrown);
+          }
+        });
+      }
+
+      function deleteData(id){
+        $.ajax({
+          type:"GET",
+          url:"http://vlslrtm2751.dothome.co.kr/board/delete.php",
+          data:{"id":id},
+          dataType:"json",
+          success: function(data) {
+            //console.log(data.result[0])
+            if(data.result == "Y"){
+              alert("삭제성공")
+              getList();
+              $('#list').show();
+            }else{
+              alert("삭제실패")
+            }
+          },
+          error: function(jqXHR,textStatus,errorThrown) {
+            alert(textStatus+", "+errorThrown);
+          }
+        });
+      }
+
+      function modifyData(id){
+        $.ajax({
+          type:"GET",
+          url:"http://vlslrtm2751.dothome.co.kr/board/view.php",
+          data:"",
+          dataType:"json",
+          success: function(data) {
+            $('#board_form input[name="title"]').val(data.result[0].title);
+            $('#board_form textarea[name="content"]').val(data.result[0].content);
+            $('#writeBtn').data('id',id);
+          },
+          error: function(jqXHR,textStatus,errorThrown) {
+            alert(textStatus+", "+errorThrown);
+          }
+        });
+      }
+      function modify(id){
+        var title=$.trim($('#board_form input[name="title"]').val());
+        var content=$.trim($('#board_form textarea[name="content"]').val());
+        if(title == "" || content == ""){
+          alert("데이터 입력을 확인 해주세요")
+          return;
+        }
+        $.ajax({
+          type:"POST",
+          url:"http://vlslrtm2751.dothome.co.kr/board/update.php",
+          data:{
+            "id":id,
+            "title":title,
+            "content":content
+          },
+          dataType:"json",
+          success: function(data) {
+            if(data.result == "Y"){
+              alert("수정성공")
+              $('#board_form').hide();
+              getList();
+              $('#list').show();
+            }else{
+              alert("수정실패")
+            }
+          },
+          error: function(jqXHR,textStatus,errorThrown) {
+            alert(textStatus+", "+errorThrown);
+          }
+        });
+
+      }
+
+      function insertData(){
+        var title=$.trim($('#board_form input[name="title"]').val());
+        var content=$.trim($('#board_form textarea[name="content"]').val());
+        //console.log(title,content)
+        if(title == "" || content == ""){
+          alert("데이터 입력을 확인 해주세요")
+          return;
+        }
+
+        $.ajax({
+          type:"POST",
+          url:"http://vlslrtm2751.dothome.co.kr/board/insert.php",
+          data:{
+            "title":title,
+            "content":content
+          },
+          dataType:"json",
+          success: function(data) {
+            //console.log(data.result);
+            if(data.result == "Y"){
+              alert("입력성공");
+              $('#board_form').hide();
+              getList();
+              $('#list').show();
+            }else{
+              alert("입력실패");
+            }
+          },
+          error: function(jqXHR,textStatus,errorThrown) {
+            alert(textStatus+", "+errorThrown);
+          }
+        });
+      }
+      $(document).ready(function(){
+        getList();
+        $('#modalBtn').on('click',function(e){
+          e.preventDefault();
+          $('#list').hide();
+          $('#board_form').show();
+          $('#board_form')[0].reset();
+          
+        })
+        $('#writeBtn').text('저장').on('click',function(e){
+          e.preventDefault();
+          insertData();
+          $('#list').show();
+          $('#board_form').hide();
+        })
+
+        $('#listBtn').on('click',function(e){
+          e.preventDefault();
+          $('#list').show();
+          $('#board_form').hide();
+        })
+      })
+    </script>
+</head>
+<body>
+    <main role="main" class="container">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Board</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <form id="search_form" action="#" class="form-inline">
+                  <button type="button" class="btn btn-primary" id="modalBtn">등록</button>
+              </form>
+            </div>
+          </div>
+          <div class="table-responsive">
+              <table class="table" id="list">
+                <colgroup>
+                    <col width="15%" />
+                    <col width="*" />
+                    <col width="20%" />
+                    <col width="15%" />
+                </colgroup>
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">글번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">날짜</th>
+                    <th scope="col">-</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="4" style="text-align:center;">등록 된 내용이 없습니다.</td>
+                  </tr>
+                  <!--
+                  <tr>
+                    <td>5</td>
+                    <td>테스트 5</td>
+                    <td>2022-02-02 16:51:02</td>
+                    <td>
+                      <button type="button" class="btn btn-success">수정</button> <button type="button" class="btn btn-danger">삭제</button>
+                    </td>
+                  </tr>
+                  -->
+                </tbody>
+              </table>
+              <form id="board_form" action="#" method="post" style="display:none;">
+                  <table class="table">
+                    <colgroup>
+                        <col width="15%" />
+                        <col width="35%" />
+                        <col width="15%" />
+                        <col width="35%" />
+                    </colgroup>
+                    <tbody class="thead-dark">
+                      <tr>
+                          <th>제목</th>
+                          <td colspan="3"><input type="input" name="title" class="form-control" /></td>
+                      </tr>
+                      <tr>
+                          <th>내용</th>
+                          <td colspan="3">
+                              <textarea name="content" class="form-control"></textarea>
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div style="text-align:center;margin:20px 0;">
+                      <button type="button" id="writeBtn" class="btn btn-primary">저장</button>
+                      <button type="button" id="listBtn" class="btn btn-secondary">목록</button>
+                  </div>
+              </form>
+          </div>
+
+    </main>
+</body>
+</html>

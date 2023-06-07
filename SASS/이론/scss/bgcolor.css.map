@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAA;EAED,gBAAgB,EADP,IAAI;CAEhB",
+    "sources": [
+        "bgcolor.scss"
+    ],
+    "names": [],
+    "file": "bgcolor.css"
+}

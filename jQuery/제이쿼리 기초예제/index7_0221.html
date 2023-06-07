@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body, div, form, fieldset, label, legend, ul, li, p, select, input, h3, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        body, select, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        ul{
+            list-style: none;
+        }
+        select, input{
+            vertical-align: middle;
+        }
+        a{text-decoration: none;}
+        img, fieldset{border: none;}
+
+        .slider{
+            width: 617px;
+            height: 397px;
+            position: relative;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        .banner{
+            width: 1234px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .banner img{
+            float: left;
+        }
+        .btnGroup{
+            position: absolute;
+            bottom: 20px;
+            right: 50px;
+        }
+        .btnGroup li{
+            float: left;
+            margin-right: 10px;
+        }
+        .btnGroup li a{
+            background-color: #222;
+            color: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            display: block;
+            text-align: center;
+            line-height: 20px;
+        }
+        .btnGroup li a.on{
+            background-color: rgb(204, 75, 0);
+        }
+
+        .btn{
+            position: absolute;
+            top: 50%;
+            width: 617px;
+            margin-top: -26px;
+        }
+        .btn .prevBtn{
+            left: 0;
+            position: absolute;
+        }
+        .btn .nextBtn{
+            right: 0;
+            position: absolute;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var num=0;
+            $('.btnGroup a').on('click',function(e){
+                e.preventDefault();
+                if($('.banner').is(':animated')==false){
+                    $('.btnGroup a').removeClass('on')
+                    $(this).addClass('on')
+                    var num=$(this).parent().index();
+                    /*
+                    $('.banner').animate({
+                        left:-617*num
+                    }, 700)
+                    */
+                    $('.banner').append($('img:first'))
+                }
+            })
+            
+            $('.prevBtn').on('click',function(e){
+                e.preventDefault();
+                if($('.banner').is(':animated')==false){
+                    num--;
+                    if(num<0) num=1;
+                    animation(num)
+                }    
+            })
+            
+            $('.nextBtn').on('click',function(e){
+                e.preventDefault();
+                if($('.banner').is(':animated')==false){
+                    num++;
+                    if(num>1) num=0;
+                    animation(num)
+                }
+            })
+
+            function animation(num){
+                $('.btnGroup a').removeClass('on');
+                $('.btnGroup li:eq('+num+')').children('a').addClass('on')
+                /*$('.banner').animate({
+                    left:-617*num
+                }, 700)
+                */
+                $('.banner').append($('img:first'))
+            }
+        })
+    </script>
+</head>
+<body>
+    <!-- show,hide, toggle, addClass, removeClass, toggleClass, fadeIn, fadeOut, fadeToggle, slideup, slidedown, slidetoggle,
+        remove, html, val, text, clone, append, before, prepend, after, next, prev, parent, parents, find, not, eq, index, each, first-child,
+        first, last, last-child, fadeTo -->
+    <!-- is(): 상태 확인 메소드, hasclass(), animate(properties, duration, easing, callback, setInterval, setTimeout, clearInterval clearTimeout-->
+
+    <div class="slider">
+        <div class="banner">
+            <img src="ex17/main1.jpg" alt="">
+            <img src="ex17/main2.jpg" alt="">
+        </div>
+        <ul class="btnGroup">
+            <li><a href="" class="on">1</a></li>
+            <li><a href="">2</a></li>
+        </ul>
+        <div class="btn">
+            <span class="prevBtn"><a href=""><img src="ex17/left.jpg" alt=""></a></span>
+            <span class="nextBtn"><a href=""><img src="ex17/right.jpg" alt=""></a></span>
+        </div>
+    </div>
+</body>
+</html>

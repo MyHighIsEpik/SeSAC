@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상단 네비바 고정</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pop.css">
+    <style>
+        body, div, strong, h1, img, ul, li, a, span{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color:#222;
+        }
+        img{
+            border: none;
+        }
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body,html{
+            width: 100%;
+        }
+        .wrapper{
+            width: 100%;
+        }
+        .intro_header{
+            width: 1200px;
+            height: 100px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .intro_header .journal{
+            position: absolute;
+            left: 0;
+            top: 30px;
+        }
+        .intro_header .logotv{
+            position: absolute;
+            right: 0;
+            top: 30px;
+        }
+        h1{
+            text-align: center;
+            margin-top: 40px;
+        }
+        .gnb{
+            position: relative;
+            width: 100vw;
+            height: 80px;
+            background-color: #039;
+            z-index: 999;
+        }
+        .gnb ul{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .gnb ul li{
+            float: left;
+            line-height: 80px;
+            width: 200px;
+            text-align: center;
+        }
+        .gnb ul li a{
+            font-size: 18px;
+            color: #fff;
+        }
+        .container{
+            width: 100%;
+            position: relative;
+            height: 100vh;
+        }
+        .banner img{width: 100vw;
+            height: 100vh;
+        }
+        .banner span{
+            position: absolute;
+            top: 100px;
+            left: 10%;
+            font-size: 24px;
+            color: #fff;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+            transition: top 0.5s ease;
+            opacity: 0;
+        }
+        .banner span strong{
+            font-size: 50px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .fixed{
+            position: fixed;
+            top: 0;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var navOffset=$('.gnb').offset().top;
+            $(window).scroll(function(){
+                var scrollPos=$(window).scrollTop();
+                if(scrollPos>navOffset){
+                    $('.gnb').addClass('fixed')
+                    $('.gnb').css('background','rgba(0,0,128,0.6)')
+                    $('.banner > span').css({
+                        'top':'200px',
+                        'transition':'top 0.5s ease',
+                        'opacity':'1'
+                    })
+                }else{
+                    $('.gnb').removeClass('fixed')
+                    $('.gnb').css('background','rgba(0,0,128,1)')
+                    $('.banner > span').css({
+                        'opacity':'0'
+                    })
+                }
+            })
+        })
+    </script>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <div class="intro_header">
+            <strong class="journal"><a href=""><img src="img2/logo_journal.gif" alt=""></a></strong>
+            <h1><img src="img2/logo.gif" alt=""></h1>
+            <strong class="logotv"><a href=""><img src="img2/logo_tv.gif" alt=""></a></strong>
+        </div>
+        <div class="gnb">
+            <ul>
+                <li><a href="">그룹소개</a></li>
+                <li><a href="">그룹사</a></li>
+                <li><a href="">사회공헌</a></li>
+                <li><a href="">미디어센터</a></li>
+                <li><a href="">인재채용</a></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="banner">
+                <img src="img2/mm100-5745-223588.jpg" alt="">
+                <span>
+                    <strong>삶의 미래 가치를 위한 도전의 역사</strong><br/>
+                    긍정적인 사고와 도전정신으로<br/>
+                    미래 성장동력을 건설합니다.
+                </span>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body,div, ul, li, p, img, dl,dt, input, span, a{
+            margin: 0;
+            padding: 0;
+        }
+        body, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+        .wrap{
+            width: 630px;
+            margin: 50px auto;
+            position: relative;
+        }
+        .eventContainer{
+            border: 1px solid #999;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .title{
+            text-align: center;
+            font-weight: 600;
+            color: #07c;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .eventList{
+            height: 141px;
+        }
+        .menuContainer{
+            border: 1px solid #999;
+            padding: 10px 10px 5px 10px;
+        }
+        .list{
+            overflow: hidden;
+        }
+        .list dt{
+            float: left;
+            width: 115px;
+            font-size: 11px;
+            letter-spacing: -0.03em;
+            margin-bottom: 15px;
+            text-align: center;
+            margin-right: 5px;
+        }
+        .list dt:last-child{
+            margin-right: 0;
+        }
+        .list dt span{
+            display: block;
+            margin-bottom: 3px;
+        }
+        .eventList img{
+            display: block;
+            margin-bottom: 5px;
+        }
+        .delBtn{
+            border: none;
+            background-color: #e64a46;
+            color: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            font-size: 18px;
+        }
+        input, img{
+            vertical-align: middle;
+        }
+        .info .text1{
+            font-weight: 600;
+        }
+        .info .text2{
+            color: #999;
+        }
+
+        .list dt a{
+            width: 115px;
+            border: 1px solid #d9d9d9;
+            display: inline-block;
+            padding: 5px 0;
+        }
+        .list dt a:hover{
+            border: 1px solid #e64a46;
+        }
+        .list dt a.on{
+            border: 1px solid #e64a46;
+            background-color: #e64a46;
+            color: #999;
+        }
+
+        .info1{
+            padding-left: 10px;
+            background: url(/ex54/images/bl_on.gif) no-repeat 0 50%;
+        }
+        .info1 img{}
+        .info1 span{
+            font-weight: 600;
+            font-size: 11px;
+        }
+        .info1 .delBtn{}
+        .eventList{
+            overflow: hidden;
+        }
+        .eventList li{
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('dl dt a').on('click',function(e){
+                e.preventDefault();
+                if($(this).hasClass('on') == true){
+                    alert('이미 선택한 연극입니다.')
+                    return
+                }
+                if($('.eventList li').length>=3){
+                    alert('연극은 3개까지만 선택이 가능합니다.')
+                    return
+                }
+                $(this).addClass('on')
+
+                var html='<li>'
+                    html+= '<div class="info1">'
+                    html+= '<img src='+$(this).find('img').prop('src')+' alt="">'
+                    html+= '<span>'+$(this).find('.text1').text()+'</span>'
+                    html+= '<input type="button" value="x" class="delBtn">'
+                    html+= '</div>'
+                    html+= '</li>'
+                $('.eventList').append(html)
+
+                $('.eventList .delBtn:last').data('listObject', $(this)).on('click',function(){
+                    $(this).data('listObject').removeClass('on')
+                    $(this).parent().parent().remove()
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="eventContainer">
+            <p class="title">
+                보고싶은 뮤지컬 세개를 선택해서 이벤트에 응모해 주세요!
+            </p>
+            <ul class="eventList">
+                <!--
+                <li>
+                    <div class="info1">
+                        <img src="ex54/images/t1.gif" alt="">
+                        <span>코믹걸1&lt;드림걸즈&gt;</span>
+                        <input type="button" value="x" class="delBtn">
+                    </div>
+                </li>
+                -->
+            </ul>
+        </div>
+        <div class="menuContainer">
+            <dl class="list">
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t1.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸1&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유1</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t2.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸2&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유2</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t3.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸3&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유3</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t4.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸4&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유4</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t5.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸5&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유5</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t6.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸6&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유6</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t7.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸7&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유7</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t8.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸8&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유8</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t9.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸9&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유9</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+                <dt>
+                    <a href="">
+                        <div class="thumb">
+                            <img src="ex54/images/t10.gif" alt="">
+                        </div>
+                        <div class="info">
+                            <span class="text1">코믹걸10&lt;드림걸즈&gt;</span>
+                            <span class="text2">컬처스페이스 엔유10</span>
+                            <span class="text3">조기예매10%</span>
+                        </div>
+                    </a>
+                </dt>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>

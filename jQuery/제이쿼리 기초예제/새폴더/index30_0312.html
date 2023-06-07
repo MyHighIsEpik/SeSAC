@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스오버/드래그효과</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body, div, ul, li, img{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 900px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            left: -100px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        .listBox{
+            width: 700px;
+            height: 100px;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        li{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var position=0;
+            var distance=-100;
+
+            $('.listBox').on({
+                'mouseenter':function(e){
+                    position=e.pageX-$(this).offset().left;
+                    //console.log(position)
+                },
+                'mouseleave':function(e){
+                    position=0;
+                    distance=-100;
+                    $('.list').animate({
+                        left:distance+'px'
+                    },600)
+                },
+                'mousemove':function(e){
+                    var temp= e.pageX-$(this).offset().left;
+                    //console.log('temp:'+temp)
+                    //console.log('position:'+position)
+
+                    if(temp-position>0){
+                        distance++;
+                        if(distance>0){
+                            distance=0
+                        }
+                    }else{
+                        distance--;
+                        if(distance<-200){
+                            distance=-200
+                        }
+                    }
+
+                    $('.list').css({
+                        left:distance+'px'
+                    })
+                    position=temp;
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="listBox">
+        <ul class="list">
+            <li><img src="img3/1452062933.png" alt=""></li>
+            <li><img src="img3/1530775682.png" alt=""></li>
+            <li><img src="img3/1530775918.png" alt=""></li>
+            <li><img src="img3/1530776851.png" alt=""></li>
+            <li><img src="img3/1530777439.png" alt=""></li>
+            <li><img src="img3/1530779443.png" alt=""></li>
+            <li><img src="img3/1559982007.png" alt=""></li>
+            <li><img src="img3/1623256634.png" alt=""></li>
+            <li><img src="img3/1651592744.png" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

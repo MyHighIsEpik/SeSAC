@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, h3, ul, li, a, img, h1, p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;}
+        img{border: none;}
+        body{
+            font-size: 12px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #222;
+        }
+        html{
+            font-size: 12px;
+        }
+
+        .skewed{
+            position: relative;
+            width: 100%;
+            min-height: 55vw;
+            overflow: hidden;
+        }
+        .layer{
+            position: absolute;
+            width: 100vw;
+            min-height: 55vw;
+            overflow: hidden;
+        }
+        .layer .content-wrap{
+            position: absolute;
+            width: 100vw;
+            min-height: 55vw;
+        }
+        .layer .content-body{
+            width: 25%;
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            transform: translateY(-50%);
+        }
+        .layer img{
+            position: absolute;
+            width: 35%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .layer h1{
+            font-size: 2rem;;
+        }
+        .bottom{
+            background-color: #222;
+            z-index: 1;
+        }
+        .bottom .content-body{
+            color: #fff;
+            right: 5%;
+        }
+        .top{
+            background-color: #eee;
+            z-index: 2;
+            width: 50vw;
+        }
+        .top .content-body{
+            color: #222;
+            left:5%
+        }
+        .handle{
+            position: absolute;
+            height: 100%;
+            display: block;
+            background-color: #fdab00;
+            width: 5px;
+            top: 0;
+            left: 50%;
+            z-index: 3;
+        }
+        .skewed .handle{
+            top: 50%;
+            height: 200%;
+            transform: rotate(30deg) translateY(-50%);
+            transform-origin: top;
+        }
+        .skewed .top{
+            transform: skew(-30deg);
+            margin-left: -1000px;
+            width: calc(50vw + 1000px);
+        }
+        .skewed .top .content-wrap{
+            transform: skew(30deg);
+            margin-left: 1000px;
+        }
+    </style>
+    <script src="js/main.js">
+    </script>
+</head>
+<body>
+    <div id="wrapper" class="skewed">
+        <div class="layer bottom">
+            <div class="content-wrap">
+                <div class="content-body">
+                    <h1>GalaxyNote9</h1>
+                    <p>2011년 갤럭시 노트를 시작으로, 매해 하반기에 공개되는 삼성전자의 안드로이드 S펜 지원 특수목적 하이엔드 스마트폰 시리즈인 갤럭시 노트 시리즈의 2018년도 모델이자 여덟 번째 모델이다. 한국 시각으로 2018년 8월 10일 밤 0시에 삼성 갤럭시 언팩 2018에서 공개되었다.</p>
+                </div>
+                <img src="addevent/GalaxyNote9_1.png" alt="">
+            </div>
+        </div>
+
+        <div class="layer top">
+            <div class="content-wrap">
+                <div class="content-body">
+                    <h1>GalaxyNote8</h1>
+                    <p>2011년, 첫 번째 갤럭시 노트를 시작으로, 매해 하반기에 공개된 삼성전자의 안드로이드 S펜 지원 특수목적 하이엔드 스마트폰 시리즈인 갤럭시 노트 시리즈의 2017년형 모델이자 일곱 번째 모델[17]이다. 한국 시각으로 2017년 8월 24일 오전 12시에 삼성 갤럭시 언팩 2017에서 공개되었다.</p>
+                </div>
+                <img src="addevent/GalaxyNote8_1.png" alt="">
+            </div>
+        </div>
+
+        <div class="handle">
+        </div>
+        
+    </div>
+</body>
+</html>

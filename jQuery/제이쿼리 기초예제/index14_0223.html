@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> <!--jQuery CDN ui, easing-->
+
+    <style>
+        body, div, h3, ul, li, a, img, span, p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;
+            color: #222;
+        }
+        img,
+        fieldset{border: 0 none;}
+
+        .wrap{
+            width: 800px;
+            height: 190px;
+            margin: 50px auto;
+        }
+        .list > li{
+            width: 190px;
+            height: 190px;
+            float: left;
+            position: relative;
+            border: 1px solid #c3c3c3;
+            padding: 1px;
+            margin-right: 6px;
+        }
+        .btn_over{
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            overflow: hidden;
+            display: none;
+        }
+        .btn_over>li{
+            float: left;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.list > li').mouseenter(function(){
+                $(this).find('.btn_over').css('display','block')
+            })
+            $('.list > li').mouseleave(function(){
+                $(this).find('.btn_over').css('display','none')
+            })
+            $('.btn_over > li').hover(function(){
+                if($(this).find('img').attr('src').substring($(this).find('img').attr('src').length-7)!="_on.png"){
+                    $(this).find('img').attr('src',$(this).find('img').attr('src').replace('.png','_on.png'))
+                }else{
+                    $(this).find('img').attr('src',$(this).find('img').attr('src').replace('_on.png','.png'))
+                }
+                
+            })
+        })
+    </script>
+</head>
+<body>
+    <!--
+        substring, lt(), gt()
+        lt(1): 1보다 작은 인덱스가 참조하는 요소를 찾는다.
+        gt(1): 1보다 큰 인덱스가 참조하는 요소를 찾는다.
+    -->
+    <div class="wrap">
+        <ul class="list">
+            <li>
+                <a href=""><img src="ex48/images/ms_0000101353.jpg" alt=""></a>
+                <ul class="btn_over">
+                    <li><a href=""><img src="ex48/images/btn_buy.png" alt=""></a></li>
+                    <li><a href=""><img src="ex48/images/btn_cart.png" alt=""></a></li>
+                    <li><a href=""><img src="ex48/images/btn_wish.png" alt=""></a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href=""><img src="ex48/images/ms_0000380477.jpg" alt=""></a>
+                <ul class="btn_over">
+                    <li><a href=""><img src="ex48/images/btn_buy.png" alt=""></a></li>
+                    <li><a href=""><img src="ex48/images/btn_cart.png" alt=""></a></li>
+                    <li><a href=""><img src="ex48/images/btn_wish.png" alt=""></a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href=""><img src="ex48/images/ms_0000381677.jpg" alt=""></a>
+                <ul class="btn_over">
+                    <li><a href=""><img src="ex48/images/btn_buy.png" alt=""></a></li>
+                    <li><a href=""><img src="ex48/images/btn_cart.png" alt=""></a></li>
+                    <li><a href=""><img src="ex48/images/btn_wish.png" alt=""></a></li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href=""><img src="ex48/images/untitled.png" alt=""></a>
+                <ul class="btn_over">
+                    <li><a href=""><img src="ex48/images/btn_buy.png" alt=""></a></li>
+                    <li><a href=""><img src="ex48/images/btn_cart.png" alt=""></a></li>
+                    <li><a href=""><img src="ex48/images/btn_wish.png" alt=""></a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

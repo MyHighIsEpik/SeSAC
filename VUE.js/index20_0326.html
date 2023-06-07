@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+    <title>트랜지션</title>
+    <style>
+        body, ul, li, a, p, div{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        ul{
+            list-style-type: none;
+        }
+        div{
+            width: 150px;
+            margin: 50px auto ;
+        }
+        .menu{
+            width: 100%;
+            background-color: #07c;
+            display: block;
+            line-height: 40px;
+            height: 40px;
+            text-align: center;
+        }
+        .menu-item{
+            width: 100%;
+            background-color: rgb(129, 200, 250);
+            display: block;
+            line-height: 40px;
+            height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 트랜지션 : 애니메이션 처리되는 컴포넌트 
+        <transition>
+            애니메이션 실행
+        <transition>
+            v-enter: 초기상태, 요소가 삽입되기 전에 부여했다가 애니메이션이 시작될 때 제거
+            v-enter-to: 삽입, 애니메이션이 시작될 때 부여했다가 애니메이션이 끝난 후 제거
+            v-enter-active: 요소를 삽입하기 전부터 애니메이션이 끝날 때까지 (초기와 종료가 이어지는 설정)
+            v-leave: 삭제, 애니메이션이 시작되기 전에 부여했다가 애니메이션이 시작될 때 제거
+            v-leave-to: 삭제, 애니메이션이 시작되기 전에 부여했다가 애니메이션이 끝난 후 제거
+            v-leave-active: 삭제, 애니메이션이 시작되기 전부터 
+    -->
+    <div id="app">
+        <pull-down-menu></pull-down-menu>
+    </div>
+
+    <script>
+        const PullDownMenu={
+            data : function(){
+                return {
+                    isShow:false,
+                    name:'과일',
+                    items:[
+                        '사과',
+                        '딸기',
+                        '망고'
+                    ]
+                }
+            },
+            template :`
+                <div @mouseleave="isShow=false">
+                    <p @mouseover="isShow=true"><a href="#" class="menu">{{name}}</a></p>
+                    <transition @before-enter="beforeEnter" @enter="enter" @leave="leave" >
+                        <ul v-if="isShow">
+                            <li v-for="item in items" :key="item">
+                                <a href="#" class="menu-item">{{item}}</a>
+                            </li>
+                        </ul>
+                    </transition>
+                </div>
+            `,
+            methods:{
+                beforeEnter : function(el){
+                    el.style.height="0px";
+                    el.style.opacity=0;
+                },
+                enter : function(el,done){
+                    anime({
+                        targets:el,
+                        opacity:1,
+                        height:el.scrollHeight+'px',
+                        duration:3000,
+                        complete:done
+                    })
+                },
+                leave : function(el,done){
+                    anime({
+                        targets:el,
+                        opacity:0,
+                        height:'0px',
+                        duration:300,
+                        complete:done
+                    })
+                }
+            }
+        }
+        new Vue({
+            el:'#app',
+            components:{
+                PullDownMenu:PullDownMenu
+            }
+        })
+    </script>
+</body>
+</html>

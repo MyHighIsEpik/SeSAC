@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body, div, form, fieldset, label, legend, ul, li, p, select, input, h3, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        body, select, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        ul{
+            list-style: none;
+        }
+        select, input{
+            vertical-align: middle;
+        }
+        a{text-decoration: none;}
+        img, fieldset{border: none;}
+
+        .wrap{
+            position: relative;
+            width: 330px;
+            border: 1px solid #d9d9d9;
+            box-sizing: border-box;
+            height: 26px;
+            line-height: 26px;
+            background-color: #f4f4f4;
+            margin: 50px auto;
+            padding: 0 0 0 90px;
+            overflow: hidden;
+        }
+        h3{
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            font-size: 1em;
+            background: url(ex52/icon_special.gif) no-repeat 0 8px;
+            padding-left: 10px;
+        }
+
+        button{
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            width: 10px;
+            height: 10px;
+            border: none;
+            text-indent: -999em;
+            cursor: pointer;
+        }
+        .pause{background: url(ex52/icon_news_pause.gif) no-repeat center center;}
+        .play{background: url(ex52/bg_icon_news_play.gif) no-repeat center center;}
+
+        ul{
+            position: absolute;
+            top: 0;
+            left: 100px;
+        }
+        ul li a{
+            color: #222;
+        }
+    </style>
+    <script>
+        function auto(){
+            $('.wrap ul').animate({
+                top:'-26px'
+            }, 1000, function(){
+                $('.wrap ul').append($('.wrap ul li:first'));
+                $('.wrap ul').css('top', '0px');
+            })
+        }
+        var st;
+        $(document).ready(function(){
+            $('.wrap button').on('click',function(e){
+                e.preventDefault();
+                if($(this).hasClass('pause')==true){
+                    clearInterval(st)
+                    $(this).removeClass('pause').addClass('play')
+                }else{
+                    st=setInterval(auto, 1000)
+                    $(this).removeClass('play').addClass('pause')
+                }
+            })
+
+            st=setInterval(auto, 1000)
+        })
+    </script>
+</head>
+<body>
+    
+    <div class="wrap">
+        <h3>스페셜 영상</h3>
+        <ul>
+            <li><a href="">다시보기 이벤트 참여하기!</a></li>
+            <li><a href="">영화무료 다운로드</a></li>
+            <li><a href="">공부의배신 다시보기</a></li>
+            <li><a href="">고3수능 다운로드</a></li>
+        </ul>
+        <button class="pause">정지</button>
+    </div>
+</body>
+</html>

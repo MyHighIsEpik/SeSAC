@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> <!--jQuery CDN ui, easing-->
+
+    <style>
+        body, div, form, fieldset, label, legend, ul, li, a, img, span, p, select, input, table, form,
+        thead, tbody, tr, td, h3{
+            margin: 0;
+            padding: 0;
+        }
+        body, select, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;
+            color: #222;
+        }
+        img,
+        select,
+        input{
+            vertical-align: middle;
+        }
+
+        img,
+        fieldset{border: 0 none;}
+
+        .popup{
+            width: 450px;
+            height: 300px;
+            margin: 50px auto;
+            border: 1px solid #c3c3c3;
+            position: relative;
+        }
+        .popup h3{
+            font-size: 20px;
+            color: #222;
+            line-height: 34px;
+        }
+        .count_N{
+            position: absolute;
+            right: 200px;
+            top: 5px;
+            font-size: 16px;
+        }
+        .count_N .count{
+            color: #ff6347;
+        }
+        .count_N .popup_total{
+            color: #222;
+        }
+        .control{
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 0;
+            height: 34px;
+        }
+        .control a{
+            background: url(popup/bannerzone_control.gif) no-repeat 0 0;
+            width: 34px;
+            height: 34px;
+            display: inline-block;
+            border: 1px solid #cbcbcb;
+            box-sizing: border-box;
+            border-top: none;
+        }
+        .control a span{
+            width: 1px;
+            height: 1px;
+            line-height: 0;
+            text-indent: -9999em;
+            display: inline-block;
+            font-size: 12px;
+        }
+        .control a.btn_left{
+            background-position: 0 0;
+        }
+        .control a.play{
+            background-position: 0 -34px;
+            border-left: none;
+        }
+        .control a.pause{
+            background-position: 0 -68px;
+            border-left: none;
+        }
+        .control a.btn_right{
+            background-position: 0 -102px;
+            border-left: none;
+        }
+        .control a.btn_more{
+            background-position: 0 -136px;
+            border-left: none;
+            border-right: none;
+        }
+
+        .popup_list{
+            overflow: hidden;
+            width: 450px;
+            height: 263px;
+        }
+        .popup_list ul{
+            /*width: 2500px;*/
+            position: relative;
+        }
+        .popup_list ul li{
+            width: 450px;
+            height: 263px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script>
+        var num=1;
+        $(document).ready(function(){
+            $('.popup_list li:gt(0)').hide()
+            $('.btn_left').on('click',function(e){
+                e.preventDefault();
+                num--;
+                if(num<1) num=5;
+                move(num)
+            })
+            $('.btn_right').on('click',function(e){
+                e.preventDefault();
+                num++;
+                if(num>5) num=1;
+                move(num)
+
+            })
+            /*
+            $('.btn_stop').on('click',function(e){
+                e.preventDefault();
+                clearInterval(popupset)
+            })
+            $('.btn_play').on('click',function(e){
+                e.preventDefault();
+                popupset=setInterval(function(){
+                    set()
+                },2000)
+            })
+            */
+            $('.pause').on('click',function(e){
+                e.preventDefault();
+                if($(this).hasClass('pause')==true){
+                    clearInterval(popupset)
+                    $(this).removeClass('pause');
+                    $(this).addClass('play')
+                }else{
+                    popupset=setInterval(function(){set()},1000)
+                    $(this).removeClass('play');
+                    $(this).addClass('pause')
+                }
+            })
+            var popupset=setInterval(function(){
+                set()
+            },1000)
+        })
+
+        function move(num){
+            $('.count').text(num)
+            $('.popup_list li').hide();
+            $('.popup_list li:eq('+(num-1)+')').show();
+        }
+
+        function set(){
+            $('.btn_right').trigger('click')
+        }
+    </script>
+</head>
+<body>
+    <!--
+        substring, lt(), gt()
+        lt(1): 1보다 작은 인덱스가 참조하는 요소를 찾는다.
+        gt(1): 1보다 큰 인덱스가 참조하는 요소를 찾는다.
+    -->
+    <div class="popup">
+        <h3>팝업존</h3>
+        <div class="count_N">
+            <span class="count">1</span><span class="popup_total">/5</span>
+        </div>
+        <div class="control">
+            <a href="" class="btn_left"><span>알림판이전보기</span></a>
+            <!--<a href="" class="btn_play"><span>알림판재생</span></a>-->
+            <a href="" class="pause"><span>알림판정지</span></a>
+            <a href="" class="btn_right"><span>알림판다음보기</span></a>
+            <a href="" class="btn_more"><span>알림판더보기</span></a>
+        </div>
+        <div class="popup_list">
+            <ul>
+                <li class="on">
+                    <a href="">
+                        <img src="popup/banner1.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="popup/banner2.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="popup/banner3.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="popup/banner4.jpg" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="popup/banner5.jpg" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* 2017.01.24 */
+
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+/********************************************** Reset ***************************************************/
+
+* {
+    border: 0;
+    border: none;
+    margin: 0;
+    padding: 0;
+    /*font:inherit;vertical-align:baseline;*/
+    line-height: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+input,
+select,
+button,
+img,
+a {
+    vertical-align: top;
+}
+
+label {
+    vertical-align: middle;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+    cursor: pointer;
+}
+
+a,
+a:hover,
+a:active,
+a:focus {
+    color: inherit;
+    text-decoration: underline;
+    vertical-align: middle;
+}
+
+a:visited {
+    color: inherit;
+}
+
+input,
+select,
+button {
+    background: transparent;
+    color: #666;
+    vertical-align: middle;
+}
+
+::selection {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+/********************************************** Setup ***************************************************/
+
+body {
+    color: #666;
+    font-size: 13px;
+    line-height: 100%;
+    background: #fff;
+    font-family: '나눔고딕', 'Nanum Gothic', '맑은 고딕', 'Malgun Gothic';
+}
+
+body,
+a,
+select,
+input,
+button {
+    color: #666;
+    font-size: 13px;
+    line-height: 100%;
+    font-family: '나눔고딕', 'Nanum Gothic', '맑은 고딕', 'Malgun Gothic';
+}
+
+
+.bn_top_right {
+    margin: 50px auto;
+    width: 245px
+}
+
+.process_info {
+    position: relative;
+    width: 245px;
+    height: 66px;
+    border: 1px solid #ffc506;
+    border-radius: 5px;
+}
+
+.process_info dt {
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    height: 35px;
+    line-height: 33px;
+    border-bottom: 1px dashed #c5c5c5;
+    padding: 0 10px;
+    background: #ffc506;
+    border-radius: 5px 5px 0 0;
+}
+
+.process_info dt:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.process_info dt .title {
+    display: block;
+    float: left;
+    padding-left: 0px;
+    width: 120px;
+}
+
+.process_info dt .date_box {
+    float: right;
+}
+
+.process_info dt .date_box>span {
+    display: block;
+    float: left;
+    width: 12px;
+    text-align: center;
+    color: #fff;
+    background: url(../images/bg_process_date.png) 0 3px no-repeat;
+    width: 24px;
+    height: 27px;
+}
+
+.process_info dt .date_box .hd {
+    position: absolute;
+    text-indent: -999px;
+}
+
+.process_info dt .date_box span+span {
+    margin-left: 2px;
+}
+
+.process_info dd {
+    height: 20px;
+    padding: 0 10px;
+    position: absolute;
+    top: 40px;
+    width: 215px;
+    overflow: hidden;
+}
+
+.process_info .list ul {
+    position: absolute;
+    top: 0px;
+}
+
+.process_info .list ul li {
+    line-height: 20px;
+}
+
+.process_info dd li a {
+    display: inline-block;
+    margin-left: 3px;
+    width: 160px;
+    height: 15px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.process_info .btnG {
+    position: absolute;
+    right: 0px;
+    bottom: 2px;
+}
+
+.process_info .btnG .play {
+    display: none
+}

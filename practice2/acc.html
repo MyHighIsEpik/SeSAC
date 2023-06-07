@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,div,h3,ul,li,a,img{
+            margin: 0;padding: 0;
+        }
+        body{
+            font-size: 12px;
+            color: #333;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        a{
+            text-decoration: none;
+            color: #333;
+        }
+        img{
+            border: none;
+            vertical-align: middle;
+        }
+        ul{
+            list-style-type: none;
+        }
+        h3{
+            color: #fff;
+            text-align: center;
+            padding: 5px 0 0 0;
+            font-weight: 300;
+            letter-spacing: -0.05em;
+        }
+        ul li{
+            border-top: 1px solid #68a6eb;
+            position: relative;
+        }
+
+        .service{
+            width: 170px;
+            margin: 50px auto;
+            position: relative;
+            background: url(ex3/bg_service.gif) repeat-x 0 0;
+        }
+        .acc_trigger{
+            cursor: pointer;
+            height: 33px;
+            width: 170px;
+            overflow: hidden;
+        }
+        .on .acc_trigger img{
+            margin-top: -33px;
+        }
+        .acc_container{
+            display: none;
+        }
+        .on .acc_container{
+            display: block;
+        }
+
+    </style>
+
+    <script>
+        var currentNum=0;
+        var liList;
+        function init(){
+            liList=document.getElementById('serviceList').getElementsByTagName('li');
+            for(var i=0; i<liList.length; i++){
+                liList[i].num=i;
+                liList[i].onmouseover=function(){
+                    selectMenu(this.num)
+                }
+            }
+        }
+        function selectMenu(num){
+            if(currentNum!=num){
+                liList[currentNum].className='';
+                liList[num].className='on';
+                currentNum=num;
+            }
+        }
+
+        window.onload=init;
+    </script>
+</head>
+<body>
+    <div class="service">
+        <h3 class="title">기획상품 보고 쇼핑 GO~</h3>
+        <ul id="serviceList">
+            <li class="on">
+                <div class="acc_trigger">
+                    <a href="">
+                        <img src="ex3/m1_title.jpg" alt="">
+                    </a>
+                </div>
+                <div class="acc_container">
+                    <a href="">
+                        <img src="ex3/m1_content.jpg" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="acc_trigger">
+                    <a href="">
+                        <img src="ex3/m2_title.jpg" alt="">
+                    </a>
+                </div>
+                <div class="acc_container">
+                    <a href="">
+                        <img src="ex3/m2_content.jpg" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="acc_trigger">
+                    <a href="">
+                        <img src="ex3/m3_title.jpg" alt="">
+                    </a>
+                </div>
+                <div class="acc_container">
+                    <a href="">
+                        <img src="ex3/m3_content.jpg" alt="">
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

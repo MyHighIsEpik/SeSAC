@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body,div, ul, li, p, img, dl,dt, input, span, a{
+            margin: 0;
+            padding: 0;
+        }
+        body, input{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+        .wrap{
+            border: 1px solid #c3c3c3;
+            width: 550px;
+            height: 50px;
+            padding: 10px;
+            margin: 50px auto;
+            position: relative;
+        }
+        h3{
+            font-size: 12px;
+            float: left;
+            margin-right: 15px;
+        }
+        .bannerList{
+            position: relative;
+            width: 460px;
+            height: 48px;
+            overflow: hidden;
+        }
+        .bannerList .banner{
+            width: 1000px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .bannerList .banner li{
+            float: left;
+            padding: 0 1px;
+        }
+        .btn{
+            position: absolute;
+            left: 15px;
+            bottom: 10px;
+        }
+        .playBtn{
+            display: none;
+        }
+    </style>
+    <script>
+        var bannerwidth=113;
+        var sid;
+        function auto(dis){
+            //console.log(dis)
+            if(dis=='prev'){
+                $('.banner').prepend($('.banner li:last'));
+                $('.banner').css('left','-'+bannerwidth+'px')
+                $('.banner').animate({
+                    left:0
+                },600)
+            }else{
+                $('.banner').animate({
+                    left:'-'+bannerwidth+'px'
+                },600,function(){
+                    $('.banner').append($('.banner li:first'))
+                    $('.banner').css('left','0px')
+                })
+            }
+        }
+        function cycleMenu(){
+            $('.prevBtn').on('click',function(e){
+                e.preventDefault();
+                clearInterval(sid);
+                sid=setInterval(auto,1000,'prev')
+                if($('.playBtn').hasClass('on')==true){
+                    $('.playBtn').css('display','none')
+                    $('.stopBtn').css('display','inline-block');
+                }
+            })
+            $('.nextBtn').on('click',function(e){
+                e.preventDefault();
+                clearInterval(sid);
+                sid=setInterval(auto,1000,'next')
+                if($('.playBtn').hasClass('on')==true){
+                    $('.playBtn').css('display','none')
+                    $('.stopBtn').css('display','inline-block');
+                }
+            })
+            $('.playBtn').on('click',function(e){
+                e.preventDefault();
+                clearInterval(sid);
+                sid=setInterval(auto,1000,'next');
+                $(this).css('display','none');
+                $('.stopBtn').css('display','inline-block');
+            })
+            $('.stopBtn').on('click',function(e){
+                e.preventDefault();
+                clearInterval(sid);
+                $(this).css('display','none');
+                $('.playBtn').css('display','inline-block');
+                $('.playBtn').addClass('on');
+            })
+
+            sid=setInterval(auto,1000,'next');
+        }
+        $(document).ready(function(){
+            cycleMenu();
+        })
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <h3>배너모음</h3>
+        <div class="bannerList">
+            <ul class="banner">
+                <li><a href="" title="새창" target="_blank"><img src="ex39/ico_link1.jpg" alt=""></a></li>
+                <li><a href="" title="새창" target="_blank"><img src="ex39/ico_link2.jpg" alt=""></a></li>
+                <li><a href="" title="새창" target="_blank"><img src="ex39/ico_link3.jpg" alt=""></a></li>
+                <li><a href="" title="새창" target="_blank"><img src="ex39/ico_link4.jpg" alt=""></a></li>
+                <li><a href="" title="새창" target="_blank"><img src="ex39/ico_link5.jpg" alt=""></a></li>
+                <li><a href="" title="새창" target="_blank"><img src="ex39/ico_link6.jpg" alt=""></a></li>
+                <li><a href="" title="새창" target="_blank"><img src="ex39/ico_link7.jpg" alt=""></a></li>
+                <li><a href="" title="새창" target="_blank"><img src="ex39/ico_link8.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="btn">
+            <a href="" class="prevBtn"><img src="ex39/ico_left_s.gif" alt=""></a>
+            <a href="" class="nextBtn"><img src="ex39/ico_right_s.gif" alt=""></a>
+            <a href="" class="playBtn"><img src="ex39/ico_play_s.gif" alt=""></a>
+            <a href="" class="stopBtn"><img src="ex39/ico_stop_s.gif" alt=""></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 내리면 나타나는 컨텐츠</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/pop.css">
+    <style>
+        body, div, strong, h1, img, ul, li, a, span{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color:#222;
+        }
+        img{
+            border: none;
+        }
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body,html{
+            width: 100%;
+        }
+        .wrapper{
+            position: relative;
+        }
+        .header{
+            position: relative;
+            height: 100vh;
+            background: url(img2/pexels-photo-311012.jpeg) no-repeat;
+            background-size: cover;
+        }
+        .header span{
+            position: fixed;
+            left: 20%;
+            top: 200px;
+            color: #fff;
+            font-size: 6vw;
+            text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+            font-weight: 800;
+            transition: all 1s ease-in-out;
+            transform: translateX(-1200px);
+            opacity: 0;
+        }
+        .header > span > strong{
+            font-size: 4vw;
+        }
+
+        .container{
+            height: 100vh;
+            z-index: 10;
+            position: relative;
+            background: url(img2/bg1.png) no-repeat 0 bottom;
+            background-size: cover;
+        }
+        .container .nav{
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .container .nav .logo{
+            color: #fff;
+            font-size: 36px;
+            float: left;
+            margin: 15px 0 0 50px;
+        }
+        .container .nav ul{
+            width: 800px;
+            margin:20px auto 0 auto
+        }
+        .container .nav ul li{
+            display: inline-block;
+            width: 160px;
+            text-align: center;
+            font-size: 18px;
+            float: left;
+        }
+        .container .nav ul li a{
+            color: #fff;
+        }
+        .container .content_text{
+            position: absolute;
+            top: 250px;
+            left: 30%;
+            color: #fff;
+            line-height: 1.8;
+            font-size: 1.5em;
+            transition: all 2s ease;
+            text-shadow: 0px 0px 2px rgba(255,255,255,0.5);
+            opacity: 0;
+        }
+        .content_text span{ font-size: 1.5em;}
+        .content_text span strong{color: #ff6347;}
+        .content_text p{font-size: 1.1em;}
+
+        .main{
+            height: 100vh;
+            z-index: 10;
+            position: relative;
+            background: url(img2/bg2.png) no-repeat 0 0;
+            background-size: cover;
+            text-align: center;
+        }
+        .main span{
+            margin-top: 150px;
+            display: inline-block;
+            font-size: 20px;
+            color: #fff;
+            text-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+            opacity: 0;
+        }
+        .main span strong{color: #ff6347;}
+        .main p{
+            line-height: 1.5;
+            color: #fff;
+            margin-top: 20px;
+            opacity: 0;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            
+        })
+    </script>
+    
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <span>
+                <strong>차원이 다른</strong><br/><em>LG올레드 TV</em>
+            </span>
+        </div>
+        <div class="container">
+            <div class="nav">
+                <h1 class="logo">LG전자</h1>
+                <ul>
+                    <li>
+                        <a href="">LGThinQ</a>
+                    </li>
+                    <li>
+                        <a href="">LGThinQ</a>
+                    </li>
+                    <li>
+                        <a href="">LGThinQ</a>
+                    </li>
+                    <li>
+                        <a href="">LGThinQ</a>
+                    </li>
+                    <li>
+                        <a href="">LGThinQ</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="content_text">
+                <span class="">
+                    <strong>G ThingQ</strong>가 만드는 새로운 인공지능 세상
+                </span>
+                <p>
+                    G ThingQ는 매일 매일 당신에 맞춰 진화합니다.<br/>
+                    G ThingQ는 매일 매일 당신에 맞춰 진화합니다.<br/>
+                    G ThingQ는 매일 매일 당신에 맞춰 진화합니다.<br/>
+                    G ThingQ는 매일 매일 당신에 맞춰 진화합니다.<br/>
+                </p>
+            </div>
+        </div>
+        <div class="main">
+            <span>
+                <strong>인공지능 로봇청소의 시작</strong>LG 코드제로
+            </span>
+            <p>
+                당신의 사용습관과 생활패턴을 스스로 학습해 당신에게 맞게 최적화 됩니다.<br/>
+                당신의 사용습관과 생활패턴을 스스로 학습해 당신에게 맞게 최적화 됩니다.<br/>
+                당신의 사용습관과 생활패턴을 스스로 학습해 당신에게 맞게 최적화 됩니다.<br/>
+                당신의 사용습관과 생활패턴을 스스로 학습해 당신에게 맞게 최적화 됩니다.<br/>
+            </p>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            var parallasBg=$('.header > span').offset().top;
+            var navOffset=$('.nav').offset().top;
+            var cont1=$('.container').offset().top;
+            var main1=$('.main').offset().top;
+
+            $(window).scroll(function(){
+                var scrollTop=$(window).scrollTop();
+                //console.log(scrollTop)
+                //var a=$(window).height();
+                //var b=$('.header > span').offset().top - ($(window).height()/3);
+                if(scrollTop > scrollTop-($(window).height()/2)){
+                    $('.header > span').css({
+                        'transform':'translateX(200px)',
+                        'position':'absoulte',
+                        'opacity':'1'
+                    })
+                }
+
+                console.log(scrollTop)
+                console.log(navOffset)
+
+                if(scrollTop>=navOffset){
+                    $('.nav').css('position','fixed');
+                }else{
+                    $('.nav').css('position','absoulte');
+                }
+                if(scrollTop > cont1){
+                    $('.content_text').css({
+                        'opacity':'1',
+                        'transform':'translateY(200px)'
+                    })
+                }
+
+                if(scrollTop >=main1){
+                    $('.main > span').css({
+                        'opacity':'1',
+                        'position':'absoulte',
+                        'top':'400px',
+                        'transition':'all 0.3s ease',
+                        'transitionDelay':'0.2s'
+                    })
+                    $('.main > p').css({
+                        'opacity':'1',
+                        'position':'absoulte',
+                        'top':'600px',
+                        'transition':'all 0.3s ease',
+                        'transitionDelay':'0.8s',
+                        'right':'600px'
+                    })
+                }
+            })
+        })
+    </script>
+</body>
+</html>

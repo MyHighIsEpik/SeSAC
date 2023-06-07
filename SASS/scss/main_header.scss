@@ -1,0 +1,44 @@
+$wrapWidth:100% !global;
+$contWidth:1400px !global;
+$rel:relative !global;
+$height:100px;
+$fl:left !global;
+
+body{
+
+}
+#wrap{
+    width: $wrapWidth;
+    position: $rel;
+    min-width: $contWidth;
+}
+.header{
+    width: $contWidth;
+    height: $height;
+    margin: 0 auto;
+}
+h1{
+    float: $fl;
+    padding: {
+        top: 40px;
+        right: 80px;
+        left: 80px;
+    };
+}
+.gnb{
+    $lisize: 200px;
+    float: $fl;
+    margin: {
+        top:40px
+    };
+    & li{
+        float: $fl;
+        width: $lisize;
+    }
+    & a{
+        font: {
+            size: 18px;
+            weight: 600;
+        }
+    }
+}

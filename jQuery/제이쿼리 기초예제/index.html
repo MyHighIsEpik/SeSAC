@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- google cdn -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <!-- <script src="cdn/1.12.4/jquery.min.js"></script> -->
+
+    <style>
+        body, div, ul, li, a, img, p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{text-decoration: none;}
+        img{
+            border: none;
+            vertical-align: middle;
+        }
+        body{
+            background-color: rgb(1, 29, 49);
+        }
+        .wrap{
+            width: 600px;
+            margin: 50px auto;
+            border: 1px solid #d9d9d9;
+            overflow: hidden;
+            padding: 1px;
+        }
+
+        .thumbs{
+            float: left;
+            width: 90px;
+            margin: 0 10px 0 0;
+        }
+        .thumbs a{
+            border: 1px solid #fff;
+            display: block;
+            width: 90px;
+            height: 80px;
+            margin-bottom: 3px;
+        }
+        .thumbs a:hover{
+            border: 1px solid rgb(247, 182, 4);
+        }
+        .photo{
+            float: left;
+            width: 500px;
+        }
+        .photo img{
+            height: 340px;
+        }
+
+    </style>
+    
+    <script>
+        $(document).ready(function(){
+            /* for문으로 작업
+            $('.thumbs a').on('click',function(e){
+                e.preventDefault();
+                for(i=1;i<=4; i++){
+                    $('.btn'+i).on('click',function(e){
+                        e.preventDefault();
+
+                        //console.log($(this).index())
+                        $('.photo > img').prop({
+                            src:'ex4/pic'+($(this).index()+1)+'.jpg'
+                        })
+                    })
+                }
+                $('.photo > img').stop().fadeOut(200).fadeIn(1000)
+            })
+            */
+
+            // ==============each=======
+            $('.thumbs a').each(function(){
+                $(this).click(function(e){
+                    e.preventDefault();
+                    //console.log($(this).index())
+                    $('.photo > img').prop({
+                        src:'ex4/pic'+($(this).index()+1)+'.jpg'
+                    })
+                    $('.photo > img').stop().fadeOut(200).fadeIn(1000)
+                })
+            
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- show() / hide() -->
+    <!-- toggle -->
+    <!-- eq():선택한 요소의 인덱스 번호를 반환, index():요소의 나열 순서상 위치값, each():일치하는 각 요소를 호출-->
+    <!-- first():찾아진 문서 객체 그룹의 첫번째 문서 객체를 선택, last():찾아진 문서 객체 그룹의 마지막 문서 객체를 선택-->
+    <!-- not(): 특정한 조건을 제외한 태그를 지정 -->
+    <!-- fadeIn():숨겨져 있던 요소가 점점 선명해 지면서 노출,
+        fadeOut():노출되어 있던 요소가 점점 투명해지면서 숨김처리, 
+        faedToggle():fadeIn()+fadeOut()
+        fadeTo():~주어진 값까지 투명하게 처리 -->
+    <div class="wrap">
+        <div class="thumbs">
+            <a href="" class="btn1"><img src="ex4/th_pic1.jpg" alt=""></a>
+            <a href="" class="btn2"><img src="ex4/th_pic2.jpg" alt=""></a>
+            <a href="" class="btn3"><img src="ex4/th_pic3.jpg" alt=""></a>
+            <a href="" class="btn4"><img src="ex4/th_pic4.jpg" alt=""></a>
+        </div>
+        <div class="photo">
+            <img src="ex4/pic1.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <my-comp v-bind:my-msg="message" @my-event="updateMessage"></my-comp>
+    </div>
+    <script>
+        //자식에서 발생한 이벤트를 부모에게 영향을 줄 때 emit
+        //자식
+        Vue.component('my-comp',{
+            template:'<div @click="updateMsg">{{myMsg}}</div>',
+            props:{
+                myMsg:String
+            },
+            methods:{
+                updateMsg(){
+                    //this.myMsg="좋아요!!"
+                    this.$emit('my-event','좋아요')
+                }
+            }
+        })
+        const vm=new Vue({
+            el:"#app",
+            data(){
+                return{
+                    message:'안녕'
+                }
+            },
+            methods:{
+                updateMessage(value){
+                    this.message=value
+                }
+            }
+        })
+
+        
+        /*Vue.component('my-comp',{
+            template:'<div>{{msg}}</div>',
+            props:{
+                msg:{
+                    type:String, string, number, [,]
+                    default:'Default!', //데이터가 안 넘어 왔을 때 기본값 설정
+                    required:true, //msg를 필수적으로 사용해야함
+                    validator:function(value){
+                        return value==="안녕" //유효성검사
+                    }
+                }
+            }
+        })*/
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,div,h3,input,img,dl,dt,dd,ul,li,a{margin: 0;padding: 0;}
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: "Courier New", Courier, monospace;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        img{border: none;}
+        a{text-decoration: none;}
+
+        .wrap{
+            width: 500px; 
+            margin: 50px auto; 
+            border: 1px solid #d9d9d9; 
+            padding: 5px;
+            background-color: rgb(7, 1, 41);
+            overflow: hidden;
+        }
+        
+        li{
+            float: left;
+            width: 70px;
+            height: 70px;
+            border: 1px solid #d9d9d9;
+            padding: 2px;
+            margin-right: 5px;
+        }
+        li img{
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+        }
+        h3{
+            margin-bottom: 10px;
+            color: #fff;}
+
+        .text{
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        .gallery{
+            margin-top: 10px;
+        }
+
+    </style>
+
+    <script>
+        function showPic(whichPic){
+            //console.log(whichPic)
+            var source=whichPic.getAttribute('href')
+            //console.log(source)
+            var photo=document.getElementById('photo')
+            photo.setAttribute('src', source)
+
+            var title=whichPic.getAttribute('title')
+                //console.log(title)
+            var text=document.getElementById('text')
+                //console.log(text.firstChild)
+                //text.innerHTML=title;
+                //document,getElementById('text').innerHTML=title
+                text.firstChild.nodeValue=title;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <h3>[인테리어 쇼핑]</h3>
+        <ul>
+            <li> <!-- href와 onclick이 같이 있을 경우 onclick이 먼저 실행되고 href가 실행 됨 -->
+                <a href="ex1/b1.png" title="세련된 감각 디자인 스퀘어의 인테리어" onclick="showPic(this);return false;">
+                    <img src="ex1/sbtn1.jpg" alt="">
+                </a>
+            </li>
+
+            <li>
+                <a href="ex1/b2.png" title="인테리어에 좋은 장식 소품" onclick="showPic(this);return false;">
+                    <img src="ex1/sbtn2.jpg" alt="">
+                </a>
+            </li>
+
+            <li>
+                <a href="ex1/b3.png" title="빈티지 감성 포스터 인테리어" onclick="showPic(this);return false;">
+                    <img src="ex1/sbtn3.jpg" alt="">
+                </a>
+            </li>
+
+            <li>
+                <a href="ex1/b4.png" title="모던한 인테리어를 감각적으로" onclick="showPic(this);return false;">
+                    <img src="ex1/sbtn4.jpg" alt="">
+                </a>
+            </li>
+
+            <li>
+                <a href="ex1/b5.png" title="프리미엄 와이드 아트월데코 인테리어" onclick="showPic(this);return false;">
+                    <img src="ex1/sbtn5.jpg" alt="">
+                </a>
+            </li>
+
+            <li>
+                <a href="ex1/b6.png" title="가구소품인테리언 디자인" onclick="showPic(this);return false;">
+                    <img src="ex1/sbtn6.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+        <div class="gallery">
+            <img src="ex1/b1.png" alt="" id="photo"/>
+        </div>
+        <div id="text" class="text">
+            www.naver.com
+        </div>
+    </div>
+</body>
+</html>

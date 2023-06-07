@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script> <!--jQuery CDN ui, easing-->
+
+    <style>
+        body, div, h3, ul, li, a, img, span, p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{text-decoration: none;
+            color: #222;
+        }
+        img{border: none;}
+
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            letter-spacing: -0.05em;
+        }
+
+        .banner_deal_list{
+            position: relative;
+            height: 190px;
+            width: 980px;
+            padding: 3px;
+            border: 1px solid #d7d7d7;
+            background-color: #fff;
+            margin: 50px auto;
+        }
+        .roll{
+            width: 980px;
+            height: 190px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+        }
+        .page-location{
+            text-align: center;
+            margin-top: 10px
+        }
+        /*
+        .page-location a,
+        .page-location ul,
+        .page-location li{
+            display: inline-block;
+        }*/
+        .page-location *{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .page-location a{
+            background: url(ex51/sp_tmon.png) no-repeat 0 -120px;
+            width: 23px;
+            height: 23px;
+            text-indent: -999em;
+            margin-right: 10px;
+        }
+        .page-location .prev{
+            background-position: 0 -120px;
+        }
+        .page-location .next{
+            background-position: -25px -120px;
+        }
+        .page-location .page_navi li a{
+            width: 6px;
+            height: 6px;
+            background-position: -55px -128px;
+            display: block;
+            text-indent: -999em;
+        }
+        .page-location .page_navi li.on a{
+            background-position: -65px -128px;
+        }
+    </style>
+    <script>
+        var selectNum=0;
+        function changeItem(num){
+            if($('.slide').is(':animated')==false){
+                $('.page_navi li.on').removeClass('on')
+                $('.page_navi li').eq(num).addClass('on')
+                $('.slide').animate({
+                    top:-(num*196)+'px'
+                },1000,'easeOutBack')
+            }
+        }
+        $(document).ready(function(){
+            $('.page_navi li').on('click',function(e){
+                e.preventDefault();
+                selectNum=$(this).index()
+                changeItem(selectNum)
+            })
+            
+            $('.next').on('click',function(e){
+                e.preventDefault();
+                selectNum++
+                if(selectNum>$('.page_navi li').length-1){
+                    selectNum=0;
+                }
+                changeItem(selectNum)
+            })
+            
+            $('.prev').on('click',function(e){
+                e.preventDefault();
+                selectNum--
+                if(selectNum<0){
+                    selectNum=$('.page_navi li').length-1;
+                }
+                changeItem(selectNum)
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="banner_deal_list">
+        <div class="roll">
+            <div class="slide">
+                <div class="column">
+                    <span class="box">
+                        <a href=""><img src="ex51/item1.jpg" alt=""></a>
+                    </span>
+                    <span class="box">
+                        <a href=""><img src="ex51/item2.jpg" alt=""></a>
+                    </span>
+                </div>
+                
+                <div class="column">
+                    <span class="box">
+                        <a href=""><img src="ex51/item3.jpg" alt=""></a>
+                    </span>
+                    <span class="box">
+                        <a href=""><img src="ex51/item4.jpg" alt=""></a>
+                    </span>
+                </div>
+                
+                <div class="column">
+                    <span class="box">
+                        <a href=""><img src="ex51/item5.jpg" alt=""></a>
+                    </span>
+                    <span class="box">
+                        <a href=""><img src="ex51/item6.jpg" alt=""></a>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="page-location">
+            <a href="" class="prev">이전</a>
+            <ul class="page_navi">
+                <li class="on"><a href="">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+            </ul>
+            <a href="" class="next">다음</a>
+        </div>
+    </div>
+</body>
+</html>

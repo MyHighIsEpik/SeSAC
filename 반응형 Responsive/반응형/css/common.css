@@ -1,0 +1,146 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+body, div, ul, li, header, footer, section, article, span, p, a, img, iframe, h1, h2, h3, h4{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 16px;
+}
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #333;
+    font-weight: 400;
+}
+
+ul{
+    list-style: none;
+}
+a:link,
+a:visited{
+    text-decoration: none;
+    color: #222;
+}
+a:hover,
+a:active,
+a:focus{
+    text-decoration: underline;
+    color: #222;
+}
+input,img{
+    vertical-align: middle;
+}
+img{
+    border: 0 none;
+}
+.float--right{
+    float: right;
+}
+.float--left{
+    float: left;
+}
+.clearfix:after{
+    content: '';
+    clear: both;
+    display: block;
+}
+.skip{
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    display: inline-block;
+    text-indent: -9999rem;
+}
+
+#skip_menu{
+    position: relative;
+    width: 100%;
+}
+#skip_menu a{
+    position: absolute;
+    top: -100px;
+}
+#skip_menu a:hover,
+#skip_menu a:active,
+#skip_menu a:focus{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    display: block;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 10px;
+    border:  1px solid #d5d5d5;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+    background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
+}
+.btn:hover::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+.btn--primary{
+    border: 1px solid #65b836;
+    color: #fff;
+    background: #55a532 linear-gradient(#91dd70, #55a532);
+}
+.input--text{
+    height: 34px;
+    padding: 0 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.75);
+}
+.input--text:focus{
+    border-color: #51a7e8 !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.75), 0 0 5px rgba(80, 165, 230, 0.5);
+}
+
+.summary--title{
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+.summary--description{
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #767676;
+    line-height: 1.5;
+}
+
+.inner{
+    max-width: 980px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#wrapper{
+    width: 100%;
+    position: relative;
+}
+
+h1,h2,h3{
+    font-size: 1rem;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <style>
+        body,div, ul, li, p, img, dl,dt, input, span, a{
+            margin: 0;
+            padding: 0;
+        }
+        a{text-decoration: none;}
+        img{border: 0 none;}
+        body{
+            font-size: 12px;
+            color: #222;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        ul{
+            list-style-type: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var busToData=[];
+            busToData[0]=["210-고양","220-광명","230-대전"]
+            busToData[1]=["310-광주","320-청주","330-양주","340-전주"]
+            $('#busFrom').on('change',function(){
+                //console.log($(this).prop("selectedIndex"))
+                $('#busTo option:gt(0)').remove();
+                $(busToData[$(this).prop("selectedIndex")-1]).each(function(i,v){
+                    var data=v.split("-");
+                    //console.log(data)
+                    $('#busTo').append("<option value=\""+data[0]+"\">"+data[1]+"</option")
+                })
+            })
+            
+        })
+    </script>
+</head>
+<body>
+    <form action="" method="post" name="frm">
+        출발지
+        <select name="busFrom" id="busFrom">
+            <option value="">선택</option>
+            <option value="200">강릉[200]</option>
+            <option value="300">경주[300]</option>
+        </select>
+        도착지
+        <select name="busTo" id="busTo">
+            <option value="">선택</option>
+        </select>
+    </form>
+</body>
+</html>

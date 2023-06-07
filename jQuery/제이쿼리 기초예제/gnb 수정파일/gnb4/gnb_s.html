@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>국립중앙박물관 메인</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="keywords" content="키워드넣기" />
+    <meta name="description" content="설명넣기" />
+    <meta name="author" content="저자넣기" />
+
+    <link rel="stylesheet" type="text/css" href="css/header_수정.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function(){
+            var bg=$('<div class="subbg"></div>')
+            $('#gnb').after(bg)
+            $('#gnb > ul > li > a').on({
+                mouseenter:function(){
+                    $(this).css('color','#f60')
+                    $('.subMenu').stop().slideDown()
+                    $('.subbg').css('background','skyblue')
+                },
+                mouseleave:function(){
+                    $(this).css('color','#333')
+                    $('.subMenu').stop().slideUp()
+                    $('.subbg').css('background','none')
+                }
+            })
+            $('.subMenu').on({
+                mouseenter:function(){
+                    $('.subMenu').stop().slideDown()
+                    $('.subbg').css('background','skyblue')
+                },
+                mouseleave:function(){
+                    $('.subMenu').stop().slideUp()
+                    $('.subbg').css('background','none')
+                }
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="headerWrap">
+            <div id="headerBg">
+                <div id="header">
+                    <h1><img src="images/logo.gif" alt="국립중앙박물관" /></h1>
+                    <div class="info_right">
+                        <div class="user_info">
+                            <ul>
+                                <li><a href="#">로그인</a></li>
+                                <li><a href="#">회원가입</a></li>
+                                <li><a href="#">예약안내</a></li>
+                                <li><a href="#">일정안내</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--header end-->
+            </div>
+            <!--header_bg end-->
+
+
+            <div id="gnb">
+                <h2 class="skip">주메뉴</h2>
+                <ul>
+                    <li><a href="info.html">관람 정보*</a>
+                        <ul class="subMenu">
+                            <li><a href="info.html">전시 관람*</a></li>
+                            <li><a href="#">전시 해설</a></li>
+                            <li><a href="#">예약 예매</a></li>
+                            <li><a href="#">관람 편의시설</a></li>
+                            <li><a href="#">오시는 길</a></li>
+                            <li><a href="#">자주 하는 질문</a></li>
+                        </ul>
+
+                    </li>
+                    <li><a href="gallery.html">전시*</a>
+                        <ul class="subMenu">
+                            <li><a href="#">상설 전시</a></li>
+                            <li><a href="#">특별 해설</a></li>
+                            <li><a href="gallery.html">우리문화재 국외전시*</a></li>
+                            <li><a href="#">소속 국립박물관 전시</a></li>
+                            <li><a href="#">전시도록</a></li>
+                            <li><a href="#">외국박물관 내 문화재</a></li>
+                        </ul>
+
+                    </li>
+                    <li><a href="#">교육·행사</a>
+                        <ul class="subMenu">
+                            <li><a href="#">교육 신청</a></li>
+                            <li><a href="#">교육 자료</a></li>
+                            <li><a href="#">교육 소식</a></li>
+                            <li><a href="#">문화 행사</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">소장품</a>
+                        <ul class="subMenu">
+                            <li><a href="#">큐레이터 추천 소장품</a></li>
+                            <li><a href="#">주요 소장품 검색</a></li>
+                            <li><a href="#">국보·보물 검색</a></li>
+                            <li><a href="#">디지털 탑본</a></li>
+                            <li><a href="#">소자품 3D 보기</a></li>
+                            <li><a href="#">수어 동영상</a></li>
+                            <li><a href="#">소장품 열람 복제</a></li>
+                            <li><a href="#">문화재 기증 안내</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">학술</a>
+                        <ul class="subMenu">
+                            <li><a href="#">정기간행물</a></li>
+                            <li><a href="#">고고학</a></li>
+                            <li><a href="#">역사학</a></li>
+                            <li><a href="#">미술사학</a></li>
+                            <li><a href="#">아시아학</a></li>
+                            <li><a href="#">외규장각 의궤 원문</a></li>
+                            <li><a href="#">일제 강점기 조사 자료</a></li>
+                            <li><a href="#">도서관</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="board.html">소식·참여*</a>
+                        <ul class="subMenu">
+                            <li><a href="board.html">소식*</a></li>
+                            <li><a href="#">자원봉사 안내</a></li>
+                            <li><a href="#">학예사 자격증 안내</a></li>
+                            <li><a href="#">전자 민원</a></li>
+                            <li><a href="#">정보공개</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--gnb end-->
+        </div>
+        <!--headerwrap end-->
+
+
+    </div>
+    <!--wrap end-->
+</body>
+
+</html>

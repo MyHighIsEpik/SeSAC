@@ -1,0 +1,9 @@
+@charset "utf-8";
+body,div,h2,p{margin: 0;padding: 0;}
+body{font-size: 16px;}
+a{text-decoration: none;color: #222;}
+#wrap{width: 100%;position: relative;}
+#menu{position: fixed;top: 0;left: 0;height: 40px;z-index: 10;width: 100%;}
+#menu li{display: inline-block; margin: 10px; background: rgba(255, 255, 255, .5);border-radius: 10px;padding: 10px;}
+#menu li.active{background-color: rgba(0, 0, 0, 0.5);}
+#menu li.active a{color: #fff;}

@@ -1,0 +1,72 @@
+@charset "utf-8";
+#wrapper{
+    width: 100%;
+    position: relative;
+}
+.header{
+    width: 100%;
+    position: relative;
+    height: 55px;
+    background-color: #004a26;
+    z-index: 999;
+}
+.header h1{
+    background: url(../image/img_logo_ku.png) no-repeat center 10px / 83px 29px;
+    text-indent: -9999rem;
+    height: 55px;
+}
+.header .open_btn{
+    position: absolute;
+    top: 5px;
+    right: 3%;
+    background: url(../image/btn_gnb_all_view.png) no-repeat center 5px / 23px 23px;
+}
+.header .open_btn a{
+    display: block;
+    height: 55px;
+    width: 23px;
+    text-indent: -999rem;
+}
+.header .gnb{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #2c2e3a;
+    width: 60%;
+    height: 600px;
+    /* display: none; */
+}
+.header .gnb_header{
+    height: 55px;
+    background-color: #000;
+    line-height: 55px;
+}
+.header .gnb_header a{
+    color: #fff;
+    font-family: 'NanumBold';
+    font-weight: 600;
+    padding: 0 10px;
+}
+.gnb li{
+    line-height: 55px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background: url(../image/ico_arrow_off.png) no-repeat 30px 20px / 16px 16px;
+}
+.gnb li a{
+    color: #fff;
+    font-family: 'NanumBold';
+    font-weight: 600;
+    padding-left: 50px;
+}
+.close{
+    position: absolute;
+    top: 0;
+    right: 3%;
+    background: url(../image/btn_close.png) no-repeat 0 15px / 18px 18px;
+}
+.close a{
+    height: 55px;
+    width: 18px;
+    display: inline-block;
+    text-indent: -999rem;
+}

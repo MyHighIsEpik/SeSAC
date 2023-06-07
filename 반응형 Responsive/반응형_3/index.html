@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1"><!--반응형웹에 필수-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="js/fontawesome.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/web.css">
+    <link rel="stylesheet" type="text/css" href="css/mobile.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="skipMenu">
+        <a href="#container">본문바로가기</a>
+        <a href="#gnb">주메뉴바로가기</a>
+    </div>
+    <div id="wrapper">
+        <header id="header">
+            <div class="intro_wrap clearfix">
+                <aside class="intro_group clearfix">
+                    <ul class="intro">
+                        <li><a href="">로그인</a></li>
+                        <li class="none"><a href="">회원가입</a></li>
+                        <li class="none"><a href="">사이트맵</a></li>
+                        <li><a href="">ENGLISH</a></li>
+                    </ul>
+                    <ul class="sns none">
+                        <li><a href="">페이스북</a></li>
+                        <li><a href="">트위터</a></li>
+                        <li><a href="">블로그</a></li>
+                    </ul>
+                </aside>
+                <h1><span>공공데이터포털</span></h1>
+
+                <div class="m_gnb_menu">
+                    <span class="skip">주메뉴</span>
+                    <a href="">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
+            </div>
+
+            
+            <nav class="gnb_wrap" id="gnb">
+                <h2 class="skip">주메뉴</h2>
+                <div class="gnb_bg_wrap">
+                    <div class="gnb">
+                        <ul class="gnb_menu">
+                            <li class="on"><a href="">데이터셋</a>
+                                <ul class="deth2_menu">
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">제공신청</a>
+                                <ul class="deth2_menu">
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">활용사례</a>
+                                <ul class="deth2_menu">
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">오픈API</a>
+                                <ul class="deth2_menu">
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">정보공유</a>
+                                <ul class="deth2_menu">
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                    <li><a href="">파일데이터</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="m_gnb">
+                    <ul class="m_deth1">
+                        <li><a href="">데이터셋</a></li>
+                        <li><a href="">제공신청</a></li>
+                        <li><a href="">활용사례</a></li>
+                        <li><a href="">오픈API</a></li>
+                        <li><a href="">정보공유</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+
+        <section id="container">
+            <section class="information_wrap">
+                <div class="information_box clearfix">
+                    <form action="" method="post" name="datasearch" class="datasearch">
+                        <input type="text" name="textinput" placeholder="데이터를 검색해 보세요.">
+                        <a href="" class="search_btn"><img src="images/search_btn.png" alt="데이터검색"></a>
+                    </form>
+                    <div class="information none">
+                        <ul class="information_list">
+                            <li><a href="">빅데이터</a></li>
+                            <li><a href="">인공지능</a></li>
+                            <li><a href="">상가정보</a></li>
+                            <li><a href="">문화재정보</a></li>
+                        </ul>
+                        <span class="list_search_btn"><a href="">선택</a></span>
+                    </div>
+                </div>
+                <div class="information_text none">
+                    최근 사회 현안 및 이슈 <strong>저출산 고령화</strong>데이터를 확인해 보세요.
+                </div>
+            </section>
+
+            <section class="tab_wrap">
+                <div class="tab_news">
+                    <ul class="tab">
+                        <li class="on"><a href="">국가중점 데이터</a>
+                            <ul class="data_list">
+                                <li><a href=""><i class="fa-solid fa-atom"></i>미술교육</a></li>
+                                <li><a href="">과학기술</a></li>
+                                <li><a href="">음악교육</a></li>
+                                <li><a href="">체육교육</a></li>
+                                <li><a href="">영어교육</a></li>
+                                <li><a href="">사회교육</a></li>
+                                <li><a href="">윤리교육</a></li>
+                                <li><a href="">수학교육</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">데이터 카테고리</a>
+                            <ul class="data_list">
+                                <li><a href="">보건의료</a></li>
+                                <li><a href="">농축수산</a></li>
+                                <li><a href="">재정금융</a></li>
+                                <li><a href="">공공행정</a></li>
+                                <li><a href="">국토관리</a></li>
+                                <li><a href="">통일외교</a></li>
+                                <li><a href="">문화관광</a></li>
+                                <li><a href="">안정정보</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="banner_wrap">
+                <article class="banner_news clearfix">
+                    <div class="banner1">
+                        <a href="">
+                            <img src="images/banner1_2.jpg" alt="데이터1번가" class="bannerImg">
+                        </a>
+                    </div>
+                    <div class="banner2 pad10">
+                        <a href="">
+                            <span><strong>이슈데이터 </strong>저출산/고령화 정보</span>
+                            <img src="images/issue02_main.jpg" alt="저출산 고령화 데이터" class="bannerImg">
+                        </a>
+                    </div>
+                    <div class="banner3">
+                        <a href="">
+                            <img src="images/banner1_3.jpg" alt="OECD공공데이터 평가" class="bannerImg">
+                        </a>
+                    </div>
+                    <div class="banner4">
+                        <a href="">
+                            <img src="images/banner2_2.png" alt="오픈데이터 포럼" class="bannerImg">
+                        </a>
+                    </div>
+                    <div class="banner5 pad10">
+                        <a href="">
+                            <strong>공공데이터활용사례</strong>
+                            <img src="images/weather.jpg" alt="날씨" class="bannerImg">
+                            <dl>
+                                <dt>날씨냥</dt>
+                                <dd>날씨냥은 현재 미세먼지와 초미세먼지 단계</dd>
+                            </dl>
+                        </a>
+                    </div>
+                    <div class="banner6 pad10">
+                        <strong>인기데이터</strong>
+                        <ul class="best_data">
+                            <li class="on"><a href="">파일데이터</a>
+                                <ul>
+                                    <li><a href="">DATA 상가상권 정보</a></li>
+                                    <li><a href="">DATA 상가상권 정보</a></li>
+                                    <li><a href="">DATA 상가상권 정보</a></li>
+                                    <li><a href="">DATA 상가상권 정보</a></li>
+                                    <li><a href="">DATA 상가상권 정보</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">오픈API</a>
+                                <ul>
+                                    <li><a href="">DATA 문화재청 문화유산</a></li>
+                                    <li><a href="">DATA 문화재청 문화유산</a></li>
+                                    <li><a href="">DATA 문화재청 문화유산</a></li>
+                                    <li><a href="">DATA 문화재청 문화유산</a></li>
+                                    <li><a href="">DATA 문화재청 문화유산</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </section>
+
+            <section class="contents_wrap">
+                <div class="contents_box clearfix">
+                    <article class="notice">
+                        <h3>공지사항</h3>
+                        <div class="news">
+                            <a href="">
+                                <span class="over_title">
+                                    2022설명절 연휴기간 주차장 무료개방 안내
+                                </span>
+                                <span class="over_text">
+                                    공공데이터 포털에서는 전국 자치단체 교육청에서 명절 귀성객 편의를 위한 연휴기간 주차장 무료개방 안내를 합니다.
+                                </span>
+                            </a>
+                        </div>
+                        <ul class="notice_list">
+                            <li><a href="">2022년 공공 데이터 활용선정 TOP10</a></li>
+                            <li><a href="">공공데이터 02월 개방현황</a></li>
+                        </ul>
+                    </article>
+
+                    <article class="service">
+                        <h3>서비스바로가기</h3>
+                        <ul class="service_list clearfix">
+                            <li><a href="">공공데이터제공신청</a></li>
+                            <li><a href="">공공데이터제공신청</a></li>
+                            <li><a href="">공공데이터제공신청</a></li>
+                            <li><a href="">공공데이터제공분쟁</a></li>
+                            <li><a href="">공공데이터제공분쟁</a></li>
+                            <li><a href="">공공데이터제공분쟁</a></li>
+                        </ul>
+                    </article>
+
+                    <article class="dataopen clearfix">
+                        <h3>개방현황</h3>
+                        <ul class="open_list">
+                            <li>개방기관:333</li>
+                            <li>파일데이터:23,233</li>
+                            <li>오픈API:234</li>
+                            <li>표준데이터:120</li>
+                        </ul>
+                        <div class="open_banner">
+                            <a href="">
+                                <img src="images/quality_control.jpg" alt="공공데이터" />
+                            </a>
+                            <a href="">
+                                <img src="images/bigdata_bottom_banner.jpg" alt="빅데이터" />
+                            </a>
+                            <a href="">
+                                <img src="images/banner17.png" alt="빅데이터선택" />
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </section>
+
+
+        <footer id="footer">
+            <div class="footer_wrap">
+                <section class="footer_menu none clearfix">
+                    <ul class="footer_side_menu">
+                        <li><a href="" class="on">개인정보처리방침</a></li>
+                        <li><a href="">공공데이터포털약관</a></li>
+                        <li><a href="">사이트맵</a></li>
+                        <li><a href="">운영자에게 메일보내기</a></li>
+                        <li><a href="">뉴스레터수신</a></li>
+                        <li><a href="">개인정보분야별 책임자:홍길동</a></li>
+                    </ul>
+                    <div class="footer_site">
+                        <span class="site_title">관련사이트</span>
+                        <ul class="site">
+                            <li><a href="http://www.naver.com" title="새창" target="_blank">네이버</a></li>
+                            <li><a href="http://www.daum.net" title="새창" target="_blank">다음</a></li>
+                        </ul>
+                        <a href="" class="site_btn">
+                            <span>선택</span>
+                        </a>
+                    </div>
+                </section>
+
+                <div class="footer_col none clearfix">
+                    <div class="icon_wrap">
+                        <a href=""><span>행정안전부</span></a>
+                        <a href=""><span>한국정보문화진흥원</span></a>
+                    </div>
+                    <div class="address">
+                        <p>대구광역시 동구 첨단로 문화진흥원</p>
+                        <p>대표자:홍길동 사업자 등록번화"123-456-18374</p>
+                        <p>대표번호:1566-2222 문의시간:10:00~17:00(월~금) 팩스:053-1234-4847</p>
+                    </div>
+                    <div class="footer_icon">
+                        <a href=""><img src="images/call_center.png" alt=""></a>
+                        <a href=""><img src="images/winner_logo.png" alt="" width="65" height="89"></a>
+                        <a href=""><img src="images/web_award_logo.png" alt="" width="65" height="89"></a>
+                    </div>
+                </div>
+                <div class="m-footer">
+                    <p>공공데이터 개방문의 : <span>1566-0000</span></p>
+                    <p>문의시간 : 10:00 ~ 17:00 (월~금)</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

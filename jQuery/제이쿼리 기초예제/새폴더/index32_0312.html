@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel_list</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body, div, ul, li, span, strong, em, a, img{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            color: #222;
+        }
+        img{
+            border: none;
+        }
+        
+        .travel_wrapper{
+            width: 1000px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 40px;
+        }
+        .travel_group{
+            width: 330px;
+            height: 480px;
+            position: relative;
+            float: left;
+            margin-right: 30px;
+            overflow: scroll;
+        }
+        .travel_{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .travel_ li{
+            margin: 15px;
+            width: 330px;
+            height: 220px;
+        }
+        .travel_list{
+            width: 600px;
+            position: relative;
+            float: left;
+            margin-top: 10px;
+            border: 1px solid #d9d9d9;
+            height: 460px;
+        }
+        .travel_list img{
+            width: 100%;
+        }
+        .travel_list div{
+            width: 600px;
+            height: 460px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .text{display: block;
+            padding: 10px;
+        }
+        .point{
+            color: #07c;
+            margin: 0 20px;
+            border-top: 1px dotted #d9d9d9;
+            display: block;
+        }
+        .point em{color: #e86708;
+            margin-right: 20px;
+            font-style: normal
+        }
+        .ball{
+            width: 20px;
+            height: 20px;
+            background-color: #e86708;
+            border-radius: 100%;
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+        .ball_box{
+            width: 980px;
+            height: 0;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+        }
+        .bar{
+            clear: both;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 980px;
+            height: 1px;
+            background-color: #999;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $('.travel_list > div:not(:eq(0))').hide();
+            var height=$('.travel_').height() - $('.travel_group').height();
+            var width=$('.ball_box').width() - $('.ball').width();
+            var ratio=height/width;
+            $('.ball').draggable({
+                containment:'parent',
+                axis:'x',
+                scroll:false,
+                scrollSpeed:1,
+                drag:function(event,ui){
+                    //console.log(ui.position.left, ui.position.left * ratio)
+                    position=(ui.position.left * ratio);
+                    $('.travel_').css('top',-position+'px')
+                }
+            })
+
+            var num=0;
+            $('.travel_ > li').on({
+                mouseenter:function(){
+                    num=$(this).index();
+                    $('.travel_list > div').hide();
+                    $('.travel_list > div').eq(num).show();
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="travel_wrapper">
+        <div class="travel_group">
+            <ul class="travel_">
+                <li><img src="draggable/246237.jpg" alt=""></li>
+                <li><img src="draggable/246238.jpg" alt=""></li>
+                <li><img src="draggable/246239.jpg" alt=""></li>
+                <li><img src="draggable/246240.jpg" alt=""></li>
+                <li><img src="draggable/246241.jpg" alt=""></li>
+                <li><img src="draggable/246242.jpg" alt=""></li>
+            </ul>
+        </div>
+        <div class="travel_list">
+            <div>
+                <img src="draggable/246237.jpg" alt="">
+                <span class="text">
+                    <strong>HoneyMoon 스페인핵심일주8일</strong>
+                    알차게!편하게! 우리만의 스페인여행기
+                </span>
+                <span class="point">
+                    <em>POINT</em>바르셀로나 가우디버스투어,교통권포함
+                </span>
+            </div>
+
+            <div>
+                <img src="draggable/246238.jpg" alt="">
+                <span class="text">
+                    <strong>HoneyMoon 스페인핵심일주8일</strong>
+                    알차게!편하게! 우리만의 스페인여행기
+                </span>
+                <span class="point">
+                    <em>POINT</em>바르셀로나 가우디버스투어,교통권포함
+                </span>
+            </div>
+
+            <div>
+                <img src="draggable/246239.jpg" alt="">
+                <span class="text">
+                    <strong>HoneyMoon 스페인핵심일주8일</strong>
+                    알차게!편하게! 우리만의 스페인여행기
+                </span>
+                <span class="point">
+                    <em>POINT</em>바르셀로나 가우디버스투어,교통권포함
+                </span>
+            </div>
+
+            <div>
+                <img src="draggable/246240.jpg" alt="">
+                <span class="text">
+                    <strong>HoneyMoon 스페인핵심일주8일</strong>
+                    알차게!편하게! 우리만의 스페인여행기
+                </span>
+                <span class="point">
+                    <em>POINT</em>바르셀로나 가우디버스투어,교통권포함
+                </span>
+            </div>
+
+            <div>
+                <img src="draggable/246241.jpg" alt="">
+                <span class="text">
+                    <strong>HoneyMoon 스페인핵심일주8일</strong>
+                    알차게!편하게! 우리만의 스페인여행기
+                </span>
+                <span class="point">
+                    <em>POINT</em>바르셀로나 가우디버스투어,교통권포함
+                </span>
+            </div>
+
+            <div>
+                <img src="draggable/246242.jpg" alt="">
+                <span class="text">
+                    <strong>HoneyMoon 스페인핵심일주8일</strong>
+                    알차게!편하게! 우리만의 스페인여행기
+                </span>
+                <span class="point">
+                    <em>POINT</em>바르셀로나 가우디버스투어,교통권포함
+                </span>
+            </div>
+        </div>
+        <div class="bar"></div>
+        <div class="ball_box"><span class="ball"></span></div>
+    </div>
+</body>
+</html>

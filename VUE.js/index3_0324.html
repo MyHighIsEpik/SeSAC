@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>{{msg.split('').reverse().join('')}}</div>
+        <!-- methods : 3번 돌면서 3번 연산작업을 한다 -->
+        <div>{{reverseMsg()}}</div>
+        <div>{{reverseMsg()}}</div>
+        <div>{{reverseMsg()}}</div>
+        <!-- computed : 연산을 한 번만 하고 3번 뿌려줌 -->
+        <div>{{reversedMsg}}</div>
+        <div>{{reversedMsg}}</div>
+        <div>{{reversedMsg}}</div>
+
+    </div>
+
+
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'안녕하세요'
+            },
+            methods:{ //함수o
+                reverseMsg(){
+                    return this.msg.split('').reverse().join('')
+                }
+            },
+            computed:{ //함수x
+                reversedMsg(){
+                    return this.msg.split('').reverse().join('')
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        .box{width: 100px; height: 100px;}
+        .box-red{background-color: red;}
+        .box-blue{background-color: blue;}
+        .box-yellow{background-color: yellow;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <button v-on:click="toggle">toggle</button> -->
+        <button @click="toggle">toggle</button>
+        <div v-if="show" class="box box-red"></div>
+
+        <div v-show="show" class="box box-red"></div>
+
+        <!-- 
+            v-if는 요소를 삭제/생성하고
+            v-show는 display:none/block 처리
+        -->
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data :{
+                show: true
+            },
+            methods:{
+                toggle(){
+                    this.show=!this.show
+                }
+            }
+        })
+    </script>
+</body>
+</html>

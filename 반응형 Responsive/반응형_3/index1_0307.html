@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width: 100%;
+            height: 150px;
+            background: #fc0;
+        }
+        @media all and (min-width:768px){
+            .wrap{
+                width: 100%;
+                height: 150px;
+                background: green;
+            }
+        }
+        .wrap_2{
+            width: 100%;
+            height: 150px;
+            background: #07c;
+        }
+        @media all and (max-width:768px){
+            .wrap_2{
+                width: 100%;
+                height: 150px;
+                background: green;
+            }
+        }
+        .wrap_3{
+            width: 100%;
+            height: 150px;
+            background: #fc0;
+        }
+        @media all and (min-width:768px) and (max-width:1024px){
+            .wrap_3{
+                width: 100%;
+                height: 150px;
+                background: rgb(133, 4, 116);
+            }
+        }
+        .wrap_4{
+            width: 100%;
+            height: 150px;
+            background: #fc0;
+        }
+        @media all and (width:768px), (width:1024px){
+            .wrap_4{
+                width: 100%;
+                height: 150px;
+                background: rgb(133, 4, 116);
+            }
+        }
+        .wrap_6{
+            width: 100%;
+            height: 150px;
+            background: #fc0;
+        }
+        @media all and (orientation:portrait){
+            .wrap_6{
+                width: 100%;
+                height: 150px;
+                background: rgb(42, 49, 148);
+            }
+        }
+        .wrap_7{
+            width: 100%;
+            height: 150px;
+            background: #fc0;
+        }
+        @media all and (orientation:landscape){
+            .wrap_7{
+                width: 100%;
+                height: 150px;
+                background: rgb(42, 49, 148);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        @media all and (min-width:768px){
+            사용자 해상도 768px 이상일 때 코드가 실행됨
+        }
+    </div>
+
+    <div class="wrap_2">
+        @media all and (max-width:768px){
+            사용자 해상도 768px 이하일 때 코드가 실행됨
+        }
+    </div>
+
+    <div class="wrap_3">
+        @media all and (min-width:768px) and (max-width:1024px){
+            사용자 해상도 768px 이상, 1024px 이하일 때 코드가 실행됨
+        }
+    </div>
+    
+    <div class="wrap_4">
+        @media all and (width:768px), (width:1024px){
+            뷰포트의 너비가 768이거나 또는 1024일 때
+        }
+    </div>
+    
+    <div class="wrap_5">
+        @media all and (device-width:768px) and (device-width:1024px){
+            스크린 너비가 768이고 그리고 1024일 때
+        }
+    </div>
+    
+    <div class="wrap_6">
+        @media all and (orientation:portrait){
+            세로모드, 가로보다 세로가 길 때
+        }
+    </div>
+    
+    <div class="wrap_7">
+        @media all and (orientation:landscape){
+            가로모드, 세로보다 가로가 길 때
+        }
+    </div>
+</body>
+</html>

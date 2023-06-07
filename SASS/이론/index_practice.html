@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="scss/color.css">
+</head>
+<body>
+    <div class="container">
+        <div class="item"></div>
+    </div>
+    <div class="section">
+        <ul class="list">
+            <li>scss</li>
+            <li>scss</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <span class="inner">
+            상위선택자 참조
+        </span>
+    </div>
+
+    <button class="btn_blue">파란색버튼</button>
+    <button class="btn_red">빨간색버튼</button>
+    <button class="btn_green">초록색버튼</button>
+
+    <ul class="list">
+        <li>at-root 중첩벗어나기</li>
+    </ul>
+    <div class="box">중첩벗어나기 box</div>
+
+    <div class="attr">중첩된 속성</div>
+
+    <div class="gallery">변수설정</div>
+
+    <div class="box1">변수유효범위</div>
+    <div class="box2">변수유효범위</div>
+
+    <div class="box3">변수 재할당</div>
+
+    <div class="box4">전역설정</div>
+    <div class="box5">전역설정</div>
+    <div class="box6">전역설정</div>
+
+    <div class="box7">변수초깃값설정</div>
+
+    <!-- 문자보간 {} : #{}을 이용하여
+        어디든지 변수 값을 넣을 수 있다.
+    -->
+</body>
+</html>
+
+<!--
+    numbers 숫자 단위가 있을 수도 없을 수도 있음 1 1px
+    string 문자 " "가 있을 수도 없을 수도 있음 dotum "dotum"
+    color 색상 red, green, rgba(), #ffffff
+    boolean 논리    true    false
+    nulls 아무것도없음 null null값으로 사용되면 컴파일 하지 않음
+    lists 공백이나 ,로 구분된 값의 목록 ()괄호 없어도 됨
+            (apple, orange, banana) / apple, orange, banana
+    Maps lists와 유사하나 값이 key:value 형식 (apple:a, orange:o) ()있어야함
+-->

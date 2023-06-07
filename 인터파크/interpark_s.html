@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="Generator" content="EditPlus®">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>Document</title>
+	<style>
+		body,
+		div,
+		ul,
+		li,
+		a,
+		img,
+		form,
+		input,
+		fieldset,
+		label {
+			margin: 0;
+			padding: 0
+		}
+
+		img,
+		fieldset {
+			border: none
+		}
+
+		input,
+		img {
+			vertical-align: middle
+		}
+
+		ul {
+			list-style: none
+		}
+
+		body {
+			font-size: 12px;
+			color: #fff;
+			font-weight: bold;
+			background: #d3d3d3
+		}
+
+		.wrap {
+			width: 980px;
+			margin: 50px auto;
+			background: #fff;
+		}
+
+		.header {
+			background: #3b9dda;
+			border-radius: 10px 10px 0 0;
+			height: 40px;
+			padding: 16px 0 0 50px;
+		}
+
+		.tab li:first-child {
+			color: #333;
+			background: #fff;
+		}
+
+		.tab li {
+			display: inline-block;
+			height: 40px;
+			line-height: 40px;
+			border-radius: 5px 5px 0 0;
+			background: #4fa7de;
+			width: 100px;
+
+			text-align: center;
+		}
+
+		.tab,
+		form {
+			float: left;
+		}
+
+		form {
+			margin-left: 100px;
+		}
+
+		.selwrap {
+			float: right;
+		}
+
+		.on {
+			display: block
+		}
+
+		.off {
+			display: none
+		}
+
+		label {
+			cursor: pointer
+		}
+	</style>
+
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="header">
+			<ul class="tab">
+				<li>한국출발</li>
+				<li>해외출발</li>
+			</ul>
+			<form>
+				<fieldset>
+					<input type="radio" name="interparradio" id="interparkradio_1" checked='checked'/>
+					<label for="interparkradio_1" onclick="btn1(); return false">왕복</label>
+					<input type="radio" name="interparradio" id="interparkradio_2" />
+					<label for="interparkradio_2" onclick="btn2(); return false">편도</label>
+					<!--
+					<input type="radio" name="interparkradio" value="왕복" onclick="btn1(); return false">왕복
+					<input type="radio" name="interparkradio" value="편도" onclick="btn2(); return false">편도
+					-->
+				</fieldset>
+			</form>
+			<div class="selwrap">
+				<img src="images/teb2.png" alt="선택여정" />
+			</div>
+		</div>
+		<div class="on" id="sel1">
+			<img src="images/sel1.png" alt="" />
+		</div>
+		<div class="off" id="sel2">
+			<img src="images/sel2.png" alt="" />
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var interpark1=document.getElementById('sel1');
+		var interpark2=document.getElementById('sel2');
+
+		function btn1(){
+			if(interpark1.className=="off"){
+				interpark1.className="on"
+				document.getElementById('interparkradio_1').checked=true
+			}
+			interpark2.className="off"
+			document.getElementById('interparkradio_2').checked=false
+		}
+		function btn2(){
+			if(interpark2.className=="off"){
+				interpark2.className="on"
+				document.getElementById('interparkradio_2').checked=true
+			}
+			interpark1.className="off"
+			document.getElementById('interparkradio_1').checked=false
+		}
+	</script>
+</body>
+
+</html>

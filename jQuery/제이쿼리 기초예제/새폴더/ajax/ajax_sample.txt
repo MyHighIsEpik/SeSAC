@@ -1,0 +1,12 @@
+$.ajax({
+  type:"POST",
+  url:,
+  data:,
+  dataType:,
+  success: function(data) {
+	alert(data);
+  },
+   error: function(jqXHR,textStatus,errorThrown) {
+	alert(textStatus+", "+errorThrown);
+  }
+});

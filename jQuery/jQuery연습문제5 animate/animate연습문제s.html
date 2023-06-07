@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="Generator" content="EditPlus®">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+<title>우측에서 나오는 메뉴</title>
+<style>
+	body,div, ul, li,a, span,p{margin:0; padding:0}
+	ul{list-style:none}
+	a{text-decoration:none;
+	color:#fff;}
+	.wrap{background:url(images/bg.gif) 0 0;
+	    width:100%;
+		background-size:cover;
+		height:834px;
+		position:relative;
+		overflow-x:hidden;
+		overflow-y:hidden;}
+	body{font-size:20px;
+	    font-family:"나눔고딕",sans-serif;
+		color:#fff;}
+	.nav{position:absolute;
+		top:30%;
+		right:0;}
+	.nav li{background:url(images/btn.gif) no-repeat 0 0;
+		width:58px;}	
+	.nav li a{width:58px;
+		height:61px;
+			display:inline-block;
+			text-indent:-9999px;}	
+	.nav li:nth-child(1){background-position:0 0;}	
+	.nav li:nth-child(2){ background-position:0 -61px;}	
+	.nav li:nth-child(3){ background-position:0 -122px;}	
+
+	.nav_s{position:absolute;
+		top:0;
+		right:-600px;
+		width:500px;
+		height:853px;
+		background:#202020;
+		padding:50px 0 0 50px;}
+	.nav_s  li{line-height:80px;
+		font-size:48px;}
+
+
+	.address{border-top:1px solid rgba(255,255,255,0.5);
+		border-bottom:1px solid rgba(255,255,255,0.5);
+		margin:50px 0;
+		width:300px;
+		padding:30px 0;}
+
+	.close{position:absolute;
+        top:30%;
+		right:60px;
+		cursor:pointer}
+</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script  type="text/javascript">
+	
+	$(document).ready(function(){
+		/*
+		$('li.allbtn a').on('click', function(e){
+			e.preventDefault();
+			$('.nav_s').animate({
+				right:'-50px'
+			},500)
+		})
+		$('.close').on('click', function(e){
+			e.preventDefault();
+			$('.nav_s').animate({
+				right:'-600px'
+			},500)
+		})
+		$('.nav_s ul a').on('mouseover', function(){
+			$(this).css('color','yellow')
+		})
+		$('.nav_s ul a').on('mouseout', function(){
+			$(this).css('color','white')
+		})
+		*/
+		$('.allbtn').on('click',function(){
+			$('.nav_s').animate({
+				right:'-50px'
+			},500)
+		})
+		$('.nav_s li').each(function(){
+			$(this).mouseenter(function(){
+				$(this).find('a').css('color','yellow')
+			})
+			$(this).mouseleave(function(){
+				$(this).find('a').css('color','#fff')
+			})
+		})
+		$('.close').on('click',function(){
+			$('.nav_s').animate({
+				right:'-600px'
+			},500)
+		})
+	})
+</script>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav">
+				<li class="allbtn"><a href="#"><span>전체보기</span></a></li>
+				<li><a href="#"><span>페이스북</span></a></li>
+				<li><a href="#"><span>트위터</span></a></li>
+		</ul>
+		<div class="nav_s">
+			<ul>
+				<li><a href="#"><img src="images/home.gif" alt=""/></a>
+				</li>
+				<li><a href="#">about</a>
+				</li>
+				<li><a href="#">works</a>
+				</li>
+				<li><a href="#">news</a>
+				</li>
+				<li><a href="#">contact</a>
+				</li>
+			</ul>
+			<div class="address">
+				<p class="tel">070-7013-9710</p>
+				<p class="add">서울시 강남구 123545</p>
+		</div>
+			<div class="close">
+			<img src="images/close.gif" alt=""/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

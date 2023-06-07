@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" :value="message"> 단방향데이터-->
+        <!-- <input type="text" :model="message"> 양방향데이터-->
+        <!-- <input type="text" @input="message = $event.target.value"> -->
+        <!-- <input type="text" @input="bindMessage" :value="message"> -->
+        <!-- <input type="text" v-model="message" @change="message = $event.target.value" :value="message"> 실시간 양방향반응-->
+        <!-- <input type="text" v-model:lazy="message"> 입력 후 출력을 한다 -->
+        <!-- <input type="text" v-model.trim="message"> 공백 제거후 출력 -->
+        <input type="text" v-model.number="message">
+        <div>{{typeof message}}</div>
+        <div>{{typeof message}}</div>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:'#app',
+            data:{
+                message:'안녕하세요~'
+            }
+        })
+    </script>
+</body>
+</html>
